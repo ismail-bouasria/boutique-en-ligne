@@ -6,7 +6,7 @@
     public $commentaire;
     public $id_aticle;
     public $id_utilisateur;
-    public $bdd;
+    
 
 
     
