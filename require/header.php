@@ -3,7 +3,7 @@
     <nav>
 
         <ul>
-            <li class="top"><a href="#"> Accueil </a> </li>
+            <li class="top"><a href="accueil.php"> Accueil </a> </li>
             <li class="deroulant top"><a href="#">Nos produits &ensp;</a>
                 <ul class="sous">
                     <li><a href="">Sandwichs</a></li>

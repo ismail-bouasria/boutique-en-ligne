@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <link rel="stylesheet" href="../assets/css/boutique.css">
-    <link rel="stylesheet" href="../assets/css/inscription-connexion.css">
+    <link rel="stylesheet" href="../assets/css/profil.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
 </head>
   <body>
@@ -19,7 +19,7 @@ session_start();
     ?>
     <main>
       <section>
-        <article id='inscription'>
+        <article id='edition'>
           <h2>Modifier vos  <br><span>Information</span></h2>
             <form class="" action="index.html" method="post">
                 <input type="mail" name="mail" value="" placeholder="Votre adresse email">
@@ -29,7 +29,7 @@ session_start();
                 <a href="#"><button type="button" name="register">Inscription</button></a>
             </form>
         </article>
-        <article id='connexion'>
+        <article id='adresse'>
           <h2> Ajouter une <br><span> Adresse ?</span></h2>
             <form class="" action="index.html" method="post">
                 <input type="mail" name="mail" value="" placeholder="Votre adresse email">
