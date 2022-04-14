@@ -20,22 +20,26 @@ session_start();
     <main>
       <section>
         <article id='edition'>
-          <h2>Modifier vos  <br><span>Information</span></h2>
+          <h2>Modifier vos <span>informations</span></h2>
             <form class="" action="index.html" method="post">
+                <input type="text" name="login" value="" placeholder="Votre login">
                 <input type="mail" name="mail" value="" placeholder="Votre adresse email">
                 <input type="password" name="password" value="" placeholder="Votre mot de passe">
                 <input type="password" name="password2" value="" placeholder="Confirmez votre mot de passe">
-                <input type="text" name="adress" value="" placeholder="Votre adresse">
-                <a href="#"><button type="button" name="register">Inscription</button></a>
+                <a href="#"><button type="button" name="register">Modifier</button></a>
             </form>
         </article>
         <article id='adresse'>
-          <h2> Ajouter une <br><span> Adresse ?</span></h2>
+          <h2> Ajouter une <span> adresse ?</span></h2>
             <form class="" action="index.html" method="post">
-                <input type="mail" name="mail" value="" placeholder="Votre adresse email">
-                <input type="password" name="password" value="" placeholder="Votre mot de passe">
-                <a href="#"><button type="button" name="login">Connexion</button></a>
-                <small><a href="#">Mot de passe oublié ?</a></small>
+                <input type="text" name="nom" value="" placeholder="Nom">
+                <input type="text" name="prenom" value="" placeholder="Prenom">
+                <input type="text" name="numeroRue" value="" placeholder="Numero de rue">
+                <input type="text" name="nomRue" value="" placeholder="Nom de rue">
+                <input type="text" name="codePostal" value="" placeholder="Code Postal">
+                <input type="text" name="ville" value="" placeholder="Ville">
+                <input type="text" name="telephone" value="" placeholder="Téléphone">
+                <a href="#"><button type="button" name="login">Ajouter</button></a>
             </form>
         </article>
       </section>

@@ -27,7 +27,7 @@
                 <div id="panier">
                     <div id="bullePanier">
                         <p>0</p>
-                    </div><a href="#">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="15%" alt=""> 
+                    </div><a href="#">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="14%" alt=""> 
                 </div>
             </li>
         </ul>
