@@ -3,12 +3,12 @@
     margin: 0px;
     padding: 0px;
     font-family: 'Baloo 2', cursive;
-    font-size: 100%;
+   
 }
 body{
     width: 100%;
-    background-image: url(../img/fond.png);
-    background-size: 50%;
+    
+    background-size: cover;
  
 }
 
@@ -38,7 +38,7 @@ nav{
 
 nav ul{
     list-style-type: none;
-    margin-left: 15%;
+    margin: auto;
 
 }
 
@@ -57,12 +57,13 @@ nav ul::after{
 }
 
 nav a{
+    font-weight: bold;
+    font-size: medium;
     display: block;
     text-decoration: none;
     color:  black;;
     border-bottom: 2px solid transparent;
-    font-size: x-large;
-    text-align:center;
+    
 }
 
 .top{
@@ -76,22 +77,17 @@ nav a:hover{
 .sous{
     
     display: none;
+   
     background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 1000;
 }
-nav > ul li:hover:nth-child(2) .sous{
+nav > ul li:hover .sous{
     display: block;
     width: 100%;
     
-    
 }
-nav > ul li:hover:nth-child(4) .sous{
-    display: block;
-    width: 170%;
-    text-align: center;
-    
-}
+
 .sous li{
     float: none;
     width: 100%;
@@ -127,13 +123,13 @@ nav > ul li:hover:nth-child(4) .sous{
 
 #bullePanier{
     width: 10%;
-    height: 23px;
+    height: 3vh;
     position: absolute;
     background-color: rgba(199, 32, 32, 1);
     border-radius: 55px;
     display: flex;
-    top : 3vh;
-    left: 85px;
+    top : 2vh;
+    left: 65px;
     color: white;
     justify-content: center;
     font-size: medium;
@@ -155,7 +151,6 @@ nav > ul li:hover:nth-child(4) .sous{
     font-weight: bold;
     font-size:600%;
     bottom: 70vh;
-    margin-left: 2% ;
 }
 
 #text2{
@@ -164,7 +159,6 @@ nav > ul li:hover:nth-child(4) .sous{
     font-weight: bold;
     font-size:550%;
     bottom: 40vh;
-    margin-left: 2% ;
 }
 
 #text3{
@@ -173,16 +167,15 @@ nav > ul li:hover:nth-child(4) .sous{
     font-weight: bold;
     font-size:550%;
     bottom: 10vh;
-    margin-left: 2% ;
 }
 
 #enCeMoment a button{
- width: 32%;
+ width: 30%;
  position: absolute;
  border-radius: 20px;
- height: 15%;
- bottom: 15%;
- left: 65%;
+ height: 15vh;
+ bottom: 15vh;
+ left: 65vw;
  border: none;
  background-color: rgba(97, 159, 68, 1);
  color: white;
@@ -191,134 +184,22 @@ nav > ul li:hover:nth-child(4) .sous{
  cursor: pointer;
 }
 
-#enCeMoment a button:hover{
-    width: 32%;
+#enCeMoment a:hover button{
+    width: 30%;
     position: absolute;
     border-radius: 20px;
-    height: 15%;
-    bottom: 15%;
-    left: 65%;
+    height: 15vh;
+    bottom: 15vh;
+    left: 65vw;
     border: none;
-    background-color: rgb(130, 186, 104);
+    background-color: rgba(97, 159, 68, 1);
     color: white;
     font-size: 350%;
     font-weight: bold;
     cursor: pointer;
-}
-#bienvenue {
-    font-size: 300%;
-    text-align: center;
-}
-
-#presentation{
-    display: flex;
-}
-#color1 {
-    color: #518B68;
-}
-#color2 {
-    color: #9DBF8D;
-}
-#imgPresentation{
-    margin: 2%;
-    border: solid ;
-    background: url(image.png);
-    border: 10px solid #518B68;
-    box-sizing: border-box;
-   
-}
-
-#presentation article{
-    margin: 15% 5% 15% ;
-    background-color: white;
-    text-align: center;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 3%;
-}
-
-#presentation article p{
-    font-size: 150%;
-}
-
-#presentation article p span {
-    font-weight: 900;
-   font-size: 150%;
-}
-
-#presentation article h1{
-   font-weight: 900;
-   font-size: 250%;
-}
-#informations{
-    background-color: #9DBF8D;
-    display: flex;
-    width: 100%;
-}
-#localisation{
-    margin: 2%;
-    display: flex;
-    color: white;
-    flex-direction: column;
-
-}
-#localisation div:nth-child(1) {
-    display: flex;
-    margin: 0 0 5% 8%;
-  
-}
-
-#localisation div h1{
-    font-weight:900;
-    font-size: 290%;
-    margin:3% 0 0 3%;
-}
-
-iframe{
-    border-radius: 25px;
-}
-
-#horaires{
-    margin: 2%;
-    display: flex;
-    color: white;
-    flex-direction: column;
-}
-#horaires div:nth-child(1) {
-    display: flex;
-    margin: 0 0 5%;
-  
-}
-#horaires div h1{
-    font-weight:900;
-    font-size: 290%;
-    margin:3% 0 0 3%;
-}
-#horaires div h2{
-    font-weight:900;
-    font-size: 250%;
-    margin:3% 0 0 3%;
-    text-align: center;
-}
-
-.contenairProduit{
- margin-top: 5%;
- background-color: white;
- display:flex;
- flex-direction: column;
-}
-
-.contenairProduit h1{
-    margin-left: 4%;
-    font-weight:900;
-    font-size: 400%;
-    }
-
-
-
-
-
-
-   /* ----------------------------------------------------------------------FOOTER---------------------------------------------------------------------*/
+    filter: drop-shadow(1);
+   }
+/* ----------------------------------------------------------------------FOOTER---------------------------------------------------------------------*/
 
 footer{
 
@@ -330,7 +211,7 @@ footer{
  
 }
 
-#piedDePage{
+ #piedDePage{
      
     background-color: rgba(167, 196, 144, 1);
     width: 90%;
