@@ -3,6 +3,7 @@ session_start();
 
 include('../require/header.php');
 ?>
+
 <main>
     <section id="enCeMoment">
         <img src="../assets/img/Breads-poulet-pane.jpg" width=100% alt="">

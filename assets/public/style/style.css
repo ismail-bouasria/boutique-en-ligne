@@ -38,8 +38,8 @@ nav{
 
 nav ul{
     list-style-type: none;
-    margin-left: 15%;
-
+    margin: auto ;
+ 
 }
 
 nav ul li{
@@ -243,4 +243,8 @@ footer{
 
 fieldset{
   background-color: #d2d976 ;
+}
+
+li {
+list-style-type: none;
 }

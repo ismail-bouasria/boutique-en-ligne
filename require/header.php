@@ -1,7 +1,10 @@
 <?php
 require_once("../Categorie.php");
+require_once("../Bdd.php");
+$bdd = new Bdd();
 $categorie = new Categorie();
 $lesCategoriesNavbar = $categorie->getLesCategories();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,6 +23,21 @@ $lesCategoriesNavbar = $categorie->getLesCategories();
 <body>
     <header>
         <nav>
+            <!--  barre de recherche -->
+            <form action="" method="post">
+                <input type="text" name="produits">
+                <input type="submit" name="recherche" value="Rechercher">
+                <?php
+                if (isset($_POST['recherche']) && !empty($_POST['produits'])) {
+                    $recherche = $_POST['produits'];
+                    $query = "SELECT * FROM produits WHERE nom LIKE ? ORDER BY id DESC";
+                    $produit = $bdd->bdd->prepare($query);
+                    $produit->execute(array('%' . $recherche . '%'));
+                }
+
+                ?>
+            </form>
+
             <ul>
                 <li class="top"><a href="../index.php"> Accueil </a> </li>
                 <li class="deroulant top"><a href="#">Nos produits &ensp;</a>
@@ -68,5 +86,7 @@ $lesCategoriesNavbar = $categorie->getLesCategories();
                     </div>
                 </li>
             </ul>
+
         </nav>
+
     </header>
