@@ -1,3 +1,8 @@
+<?php
+session_start();
+require '../classes/Bdd.php';
+require '../classes/Categorie.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

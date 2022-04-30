@@ -1,0 +1,47 @@
+#contenair{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.typeProduit{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 40%;
+    margin-bottom: 3%;
+}
+
+.typeProduit section {
+    background-color: white;
+    width: 100%;
+}
+
+.typeProduit a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.typeProduit a:hover{
+    
+    color:rgb(34, 114, 46) ;
+}
+
+
+.typeProduit img{
+    width: 100%;
+}
+
+h1{
+    margin-left: 4%;
+    font-weight:900;
+    font-size: 400%;
+}
+
+.typeProduit h2{
+    font-weight:900;
+    font-size: 350%;
+}

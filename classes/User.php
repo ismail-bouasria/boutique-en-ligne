@@ -1,6 +1,6 @@
 
 <?php
-
+session_start();
 require 'Bdd.php';
 
  class User extends Bdd
@@ -24,7 +24,7 @@ require 'Bdd.php';
 
     public function register()
     {
-        $sql = "INSERT INTO `utilisateurs`( `login`, `email`,`password`) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO `utilisateurs`(`login`, `email`,`password`) VALUES (?, ?, ?)";
         $register = $this->bdd->prepare($sql);
         $register->execute([$this->login,$this->email,$this->password]);
     }
@@ -55,23 +55,27 @@ require 'Bdd.php';
         $connect = $this->bdd->prepare($sql);
         $connect->execute([$email]);
         $connexion = $connect->fetch();
-            var_dump($connexion);
-        if (!empty($email) && !empty($password)) {
+       
 
-            if ($email == $connexion['email'] && $this->password == $connexion['password']) {
+        if (!empty($email) && !empty($password)) {
+              
+            
+            if ($email == $connexion['email'] && password_verify($password, $connexion['password'])) {
     
                 $_SESSION['id']= $connexion['id'];
                 $_SESSION['username'] = $connexion['login'];
                 
-                if ($connexion['id_droits'] == 1) {
+                if ($connexion['id_droit'] == 1) {
                     $_SESSION['droit'] = 'utilisateur';
-                }elseif($connexion['id_droits'] == 1337){
+                }elseif($connexion['id_droit'] == 1337){
                     $_SESSION['droit'] = 'administrateur';
                 }
                  header('location: ../php/accueil.php');
+            }else {
+                header('Location: ../php/inscription-connexion.php?err3=errormailpassword');
             }
         }else {
-            header('Location: ../php/connexion.php?err1=errormailpassword');
+            header('Location: ../php/inscription-connexion.php?err3=errormailpassword');
         }
     }
 
@@ -168,8 +172,8 @@ require 'Bdd.php';
 }
  
  
- $user = new User('','','');
- $user->connect('b','b');
- var_dump($user->connect('b','b'));
+//  $user = new User('','','');
+//  $user->connect('a@gm.com','@Isma13700');
+
 
 ?>

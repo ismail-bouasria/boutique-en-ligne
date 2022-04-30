@@ -21,12 +21,8 @@ header{
     z-index: 100;
 }
 
-main{
-    min-height: 70vh;
-}
 
-
-nav{
+header nav{
     width: 100%;
     background-color: rgb(255, 255, 255);
     position:sticky;
@@ -36,13 +32,13 @@ nav{
    
 }
 
-nav ul{
+header nav ul{
     list-style-type: none;
     margin-left: 15%;
 
 }
 
-nav ul li{
+header nav ul li{
     float: left;
     width: 16.4%;
     text-align: center;
@@ -50,13 +46,13 @@ nav ul li{
 
 }
 
-nav ul::after{
+ header nav ul::after{
     content: "";
     display: table;
     clear: both;
 }
 
-nav a{
+ nav a{
     display: block;
     text-decoration: none;
     color:  black;;
@@ -69,7 +65,7 @@ nav a{
     margin-top: 5%;
 }
 
-nav a:hover{
+header nav a:hover{
     color: #B4C10B;
 }
 
@@ -79,14 +75,15 @@ nav a:hover{
     background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 1000;
+    
 }
-nav > ul li:hover:nth-child(2) .sous{
+header nav > ul li:hover:nth-child(2) .sous{
     display: block;
-    width: 100%;
+    display: flex;
     
     
 }
-nav > ul li:hover:nth-child(4) .sous{
+header nav > ul li:hover:nth-child(4) .sous{
     display: block;
     width: 170%;
     text-align: center;
@@ -114,6 +111,7 @@ nav > ul li:hover:nth-child(4) .sous{
 .deroulant > a::after{
     content:" ▼";
     font-size: 12px;
+   
 }
 
 .conteneur{
@@ -311,14 +309,9 @@ iframe{
     margin-left: 4%;
     font-weight:900;
     font-size: 400%;
-    }
+}
 
-
-
-
-
-
-   /* ----------------------------------------------------------------------FOOTER---------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------FOOTER---------------------------------------------------------------------*/
 
 footer{
 
