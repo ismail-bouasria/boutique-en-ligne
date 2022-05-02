@@ -1,9 +1,34 @@
 <?php
 require_once("../Categorie.php");
-require_once("../Bdd.php");
-$bdd = new Bdd();
+require_once("../Produit.php");
+
+$produit = new Produit();
 $categorie = new Categorie();
 $lesCategoriesNavbar = $categorie->getLesCategories();
+
+
+if (isset($_SESSION["utilisateur"])) {
+    $lesProduits = [];
+    $quantiteEnPanier = 0;
+    if (isset($_SESSION["panier"])) {
+        foreach ($_SESSION["panier"] as $idProduit) {
+            $unProduit = $produit->getUnProduit($idProduit);
+
+            if (!array_key_exists($idProduit, $lesProduits)) {
+                $lesProduits[$idProduit] = ["produit" => $unProduit, "quantite" => 1, "prixTotal" => number_format($unProduit["prix"], 2, '.', '')];
+            } else {
+                $lesProduits[$idProduit]["quantite"] += 1;
+                $prixTotal = $unProduit["prix"] * $lesProduits[$idProduit]["quantite"];
+                $prixTotalFormate = number_format($prixTotal, 2, '.', '');
+
+                $lesProduits[$idProduit]["prixTotal"] = $prixTotalFormate;
+            }
+            $quantiteEnPanier++;
+        }
+    }
+}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +57,8 @@ $lesCategoriesNavbar = $categorie->getLesCategories();
                     $recherche = $_POST['produits'];
                     $query = "SELECT * FROM produits WHERE nom LIKE ? ORDER BY id DESC";
                     $produit = $bdd->bdd->prepare($query);
-                    $produit->execute(array('%' . $recherche . '%'));
+                    $produit = $produit->execute(array('%' . $recherche . '%'));
+                    var_dump($produit);
                 }
 
                 ?>
@@ -43,7 +69,7 @@ $lesCategoriesNavbar = $categorie->getLesCategories();
                 <li class="deroulant top"><a href="#">Nos produits &ensp;</a>
                     <ul class="sous">
                         <?php foreach ($lesCategoriesNavbar as $uneCategorie) : ?>
-                            <li><a href=""><?= $uneCategorie["nom"] ?></a></li>
+                            <li><a href="lesProduits.php?idCategorie=<?= $uneCategorie["id"] ?>"><?= $uneCategorie["nom"] ?></a></li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -67,6 +93,7 @@ $lesCategoriesNavbar = $categorie->getLesCategories();
 
 
                             <li><a href="../php/listeCategorie.php">Categorie</a></li>
+                            <li><a href="../php/listeSousCategorie.php">Sous Categorie</a></li>
                             <li><a href="../php/listeProduit.php">Produit</a></li>
                         </ul>
 
@@ -77,12 +104,11 @@ $lesCategoriesNavbar = $categorie->getLesCategories();
                         <?php echo $_SESSION["utilisateur"]["login"]; ?>
                     </li>
                 <?php endif; ?>
-
                 <li class="top">
                     <div id="panier">
                         <div id="bullePanier">
-                            <p>0</p>
-                        </div><a href="#">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="15%" alt="">
+                            <p><?= $quantiteEnPanier ?></p>
+                        </div><a href="panier.php">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="15%" alt="">
                     </div>
                 </li>
             </ul>

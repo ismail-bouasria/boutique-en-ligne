@@ -14,7 +14,7 @@ include('../require/header.php');
 ?>
 
 <form method="POST">
-    <fieldset class="container mt-1 border border-5 p-2 rounded">
+    <fieldset class="container mt-1 border border-5 p-2 rounded ">
         <legend class="float-none w-auto p-2">Ajouter catégorie</legend>
         <div class="row justify-content-center">
             <div class="form-group col-md-7 mt-2">

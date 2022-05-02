@@ -38,5 +38,17 @@ class Categorie
         $query->execute([
             ":id" => $id
         ]);
+
+    }
+    public function getCategorieParId($id)
+    {
+        $req = "SELECT * 
+                FROM categories
+                WHERE id = :id";
+        $query = $this->bdd->prepare($req);
+        $query->execute([
+               ":id" => $id
+        ]);
+        return $query->fetch();
     }
 }

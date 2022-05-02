@@ -1,24 +1,24 @@
 <?php
 session_start();
-require_once("../Categorie.php");
-$categorie = new Categorie();
-$lesCategories = $categorie->getLesCategories();
+require_once("../SousCategorie.php");
+$sousCategorie = new SousCategorie();
+$lesSousCategories = $sousCategorie->getLesSousCategories();
 
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] == "supprimer") {
     $id = $_REQUEST["id"];
-    $categorie->supprimerCategorie($id);
-    header("Location:listeCategorie.php");
+    $sousCategorie->supprimerSousCategorie($id);
+    header("Location:listeSousCategorie.php");
 }
 include('../require/header.php');
 ?>
-<h1 class="text-center mt-3">Les Catégories</h1>
+<h1 class="text-center mt-3">Les Sous Catégories</h1>
 
 <div class="text-center mt-3">
-    <a href="ajouterCategorie.php">
+    <a href="ajouterSousCategorie.php">
         <button class="btn btn-primary">Ajouter</button>
     </a>
 </div>
-<?php if (empty($lesCategories)) : ?>
+<?php if (empty($lesSousCategories)) : ?>
     <div class="container rounded mt-2 text-center fw-bold">
         <div class="row">
             <ul class="list-group col-md-8 col-12 mx-auto">
@@ -38,18 +38,18 @@ include('../require/header.php');
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($lesCategories as $uneCategorie) : ?>
+            <?php foreach ($lesSousCategories as $uneSousCategorie) : ?>
                 <tr>
-                    <td scope="row"><?= $uneCategorie["id"] ?></td>
-                    <td><?= $uneCategorie["nom"] ?></td>
+                    <td scope="row"><?= $uneSousCategorie["id"] ?></td>
+                    <td><?= $uneSousCategorie["nom"] ?></td>
                     <td class="d-flex justify-content-center">
                         <div class="p-2">
-                            <a class="text-decoration-none" href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["id"] ?>">
+                            <a class="text-decoration-none" href="index.php?controleur=categorie&action=modifier&id=<?= $uneSousCategorie["id"] ?>">
                                 <i class="fas fa-user-edit text-primary"></i>
                             </a>
                         </div>
                         <div class="p-2">
-                            <a href="listeCategorie.php?action=supprimer&id=<?= $uneCategorie["id"] ?>">
+                            <a href="listeSousCategorie.php?action=supprimer&id=<?= $uneSousCategorie["id"] ?>">
                                 <i class="fas fa-trash-alt text-danger"></i>
                             </a>
                         </div>

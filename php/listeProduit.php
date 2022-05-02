@@ -29,14 +29,14 @@ include('../require/header.php');
         </div>
     </div>
 <?php else : ?>
-    <table class="table table-dark table-striped table-sm mt-3 container">
+    <table class="table table-striped table-sm mt-3 container">
         <thead>
             <tr>
                 <th scope="col">nom</th>
                 <th scope="col">description</th>
                 <th scope="col">prix</th>
                 <th scope="col">stock</th>
-                <th scope="col">Categorie</th>
+                <th scope="col">Categorie / Sous Categorie</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -47,7 +47,7 @@ include('../require/header.php');
                     <td><?= $unProduit["description"] ?></td>
                     <td><?= $unProduit["prix"] ?>€</td>
                     <td><?= $unProduit["stock"] ?></td>
-                    <td><?= $unProduit["categorie"] ?></td>
+                    <td><?= $unProduit["categorie"] . " / " . $unProduit["sousCategorie"] ?></td>
                     <td class="d-flex justify-content-start">
                         <div class="p-2">
                             <a class="text-decoration-none" href="index.php?controleur=article&action=modifier&id=<?= $unProduit["id"] ?>">

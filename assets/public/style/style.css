@@ -248,3 +248,7 @@ fieldset{
 li {
 list-style-type: none;
 }
+.table tr:nth-child(even){
+    background-color: rgb(139, 240, 149);
+    
+}

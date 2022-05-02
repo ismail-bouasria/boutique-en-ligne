@@ -3,10 +3,10 @@ session_start();
 
 require("../Produit.php");
 $produit = new Produit();
-require_once("../Categorie.php");
-$categorie = new Categorie();
-$lesCategories = $categorie->getLesCategories();
-$lesProduits = $produit->getLesProduits();
+require_once("../SousCategorie.php");
+$sousCategorie = new SousCategorie();
+$lesSousCategories = $sousCategorie->getLesSousCategories();
+
 
 if (isset($_REQUEST["formAjouterProduit"])) {
     $nom = $_REQUEST["nom"];
@@ -42,9 +42,9 @@ include('../require/header.php');
                 <input type="number" class="form-control" name="stock" required>
             </div>
             <div class="form-group col-md-7 mt-2">
-                <label for="categorie">Categorie</label>
+                <label for="categorie">Sous Categorie</label>
                 <select class="form-control" name="categorie">
-                    <?php foreach ($lesCategories as $uneCategorie) : ?>
+                    <?php foreach ($lesSousCategories as $uneCategorie) : ?>
                         <option value="<?= $uneCategorie["id"] ?>">
                             <?= $uneCategorie["nom"] ?>
                         </option>
