@@ -23,19 +23,24 @@
                     <a href="#"> Compte </a> <?php } ?>
                 <ul class="sous">
 
-                     <?php if ($_SESSION['droit'] == 'administrateur') { ?>
+                     <?php 
+                     if (isset($_SESSION['id'])){
+                        
+                     if ($_SESSION['droit'] == 'administrateur') { ?>
                             <li><a href="utilisateurs.php">Utilisateurs</a></li>
                             <li><a href="admin-produits.php">Produits</a></li>
                             <li><a href="admin-categories.php">Categories</a></li>
                             <li><a href="commandes.php">Commandes</a></li>
+                            <li><a href="deconnexion.php">Déconnexion</a></li> 
                            
-                        <?php }elseif(isset($_SESSION['id'])){?>
+                        <?php }elseif($_SESSION['droit'] == 'utilisateur'){?>
                                  <li><a href="profil.php">Profil</a></li>
                                  <li><a href="commandes.php"> Mes Commandes</a></li>
                                  <li><a href="deconnexion.php">Déconnexion</a></li> 
-                       <?php }else { ?>
+                       <?php } } else { ?>
                             <li><a href="inscription-connexion.php">Inscription/connexion</a></li>                            
-                       <?php } ?>
+                       <?php } 
+                   ?>
                     
                 </ul>
             </li>
@@ -44,7 +49,7 @@
                 <div id="panier">
                     <div id="bullePanier">
                         <p>0</p>
-                    </div><a href="#">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="14%" alt="">
+                    </div><a href="panier.php">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="14%" alt="">
                 </div>
             </li>
         </ul>

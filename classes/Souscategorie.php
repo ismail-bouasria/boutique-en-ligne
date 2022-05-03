@@ -14,7 +14,7 @@ class SousCategorie extends Bdd
     }
 
 
-    //  Methode pour récuperer les infos de la sous categorie selon l'id de la catégorie'
+    //  Methode pour récuperer les infos de la sous categorie selon l'id de la catégorie
  public function getAllSousCategorie($id,$firstcat,$bycat)
  {
      $sql = 'SELECT * FROM `sous_categorie`WHERE `id_categorie`= :id LIMIT :firstcat,:bycat';
@@ -28,6 +28,21 @@ class SousCategorie extends Bdd
      $getSousCategorie = $getAllSousCategorie->fetchAll();
      return $getSousCategorie;
  }
+
+   //  Methode pour récuperer les infos de toutes les sous categories
+   public function getAllSousCategorie2()
+   {
+       $sql = 'SELECT sous_categorie.nom 
+       AS sousnom,sous_categorie.id AS souscatid, categories.nom 
+       AS categoriesnom, categories.id AS catid FROM `sous_categorie`
+       INNER JOIN categories ON sous_categorie.`id_categorie` = categories.id';
+  
+       $getAllSousCategorie = $this->bdd->prepare($sql);
+       $getAllSousCategorie->execute();
+       $getSousCategorie = $getAllSousCategorie->fetchAll();
+       return $getSousCategorie;
+   }
+  
 
 
 

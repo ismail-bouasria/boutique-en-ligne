@@ -1,0 +1,77 @@
+#add-produit{
+border: solid 1px green;
+width: 50%;
+}
+#prix{
+    text-align: end;
+}
+#add-produit{
+   text-align: center;
+}
+#image{
+    width: 50%;
+}
+
+
+#infos{
+    display: flex;
+}
+
+
+#boxquantite{
+    display:flex;
+    justify-content: center;
+    width: 80%;
+}
+
+
+
+#plus1 {
+    background: #A7C490;
+    border-radius: 3px;
+    width: 10%;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+#plus1:hover {
+    background: #A7C490;
+    border-radius: 3px;
+    width: 10%;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    filter: brightness(95%);
+    cursor: pointer;
+}
+
+
+#moins1 {
+    background: #E90F0F;
+    border-radius: 3px;
+    width: 10%;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin: 0 0 0 1%;
+}
+
+#moins1:hover {
+    background: #E90F0F;
+    border-radius: 3px;
+    width: 10%;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    filter: brightness(95%);
+    cursor: pointer;
+}
+
+.number{
+    width: 10% !important;
+    text-align: center !important;
+    margin: 0% 1% 0 1%;
+}

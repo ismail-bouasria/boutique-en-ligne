@@ -23,6 +23,7 @@ if (isset($_SESSION['droit']) == 'administrateur') {
     <link rel="stylesheet" href="../assets/css/boutique.css">
     <link rel="stylesheet" href="../assets/css/interface-produits.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53bdaa6800.js" crossorigin="anonymous"></script>
     <title>Administration Produits</title>
 
 </head>
@@ -38,11 +39,11 @@ if (isset($_SESSION['droit']) == 'administrateur') {
             <section id="messageErreur">
                 <?php echo $_SESSION['erreur']; ?>
             </section>
-        <?php }elseif (isset($_GET['succed'])) { ?>
+        <?php } elseif (isset($_GET['succed'])) { ?>
             <section id="messageSucces">
-            <?php echo $_SESSION['reussi']; ?>
-        </section>
-       <?php } ?>
+                <?php echo $_SESSION['reussi']; ?>
+            </section>
+        <?php } ?>
         <div class="contenairFormulair">
 
             <section>
@@ -70,11 +71,79 @@ if (isset($_SESSION['droit']) == 'administrateur') {
 
                 <input id="bouton" type="submit" name="submit" value='Ajouter le produit'>
             </form>
+        </div>
 
-
+        <div class="contenairCategorie">
             <section>
-                <h1>Liste des produits </h1>
+                <h1>Liste des produits categories </h1>
             </section>
+
+            <?php
+            $listeSousCategories = $sousCategorie->getAllSousCategorie2();
+            if (empty($listeSousCategories)) : ?>
+                <div>
+                    <div>
+                        <ul>
+                            <li>
+                                <i></i> Aucune catégorie pour l'instant. Veuillez en ajouter.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <?php else : ?>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                <h3>Sous Categorie</h3>
+                            </th>
+                            <th>
+                                <h3>Image</h3>
+                            </th>
+                            <th>
+                                <h3>Nom</h3>
+                            </th>
+                            <th>
+                                <h3>Descritpiton</h3>
+                            </th>
+                            <th>
+                                <h3>Prix</h3>
+                            </th>
+                            <th>
+                                <h3>stock</h3>
+                            </th>
+                            <th>
+                                <h3>Action</h3>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($listeSousCategories as $uneCategorie) : ?>
+                            <tr>
+
+                                <td><?= $uneCategorie["categoriesnom"] ?></td>
+                                <td><?= $uneCategorie["sousnom"] ?></td>
+                                <td><?= $uneCategorie["categoriesnom"] ?></td>
+                                <td><?= $uneCategorie["sousnom"] ?></td>
+                                <td><?= $uneCategorie["categoriesnom"] ?></td>
+                                <td><?= $uneCategorie["sousnom"] ?></td>
+
+                                <td>
+                                    <div class="flex">
+                                        <button id="size"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
+                                                <i class="fas fa-user-edit text-primary"></i>
+                                            </a> </button>
+
+                                        <button  id="size"> <a href="listeCategorie.php?action=supprimer&id=<?= $uneCategorie["souscatid"] ?>">
+                                                <i class="fas fa-trash-alt text-danger"></i>
+                                            </a> </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
         </div>
 
 

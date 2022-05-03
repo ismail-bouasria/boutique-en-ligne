@@ -9,15 +9,29 @@ class Produit extends Bdd
     }
 
 
+     //  Methode pour importer les infos des produits lajouter au panier
+     public function getAllProduitPanier($id)
+     {
+         $sql = 'SELECT * FROM `produits` WHERE `id` IN (?)';
+ 
+         $getAllProduit = $this->bdd->prepare($sql);
+         $getAllProduit->execute([$id]);
+         $getAllProduitPanier = $getAllProduit->fetchAll();
+         return $getAllProduitPanier;
+     }
+ 
 
-    //  Methode pour trouver le nom d'un produit
-    public function getNameProduct($nom)
+    //  Methode pour récuperer les infos des produits lajouter au panier
+    public function getIdProduitPanier($id)
     {
-        $getNameProduct = $this->bdd->prepare("SELECT  `nom`  FROM `produits` WHERE nom = ?");
-        $getNameProduct->execute([$nom]);
-        $getName = $getNameProduct->fetch();
-        return $getName;
+        $sql = 'SELECT id FROM `produits` WHERE `id`= ?';
+
+        $getIdProduit = $this->bdd->prepare($sql);
+        $getIdProduit->execute([$id]);
+        $getId = $getIdProduit->fetch();
+        return $getId;
     }
+
 
 
     //  Methode pour trouver les informations de tous les produits
@@ -30,6 +44,27 @@ class Produit extends Bdd
     }
 
 
+
+    //  Methode pour trouver les informations de tous les produits
+    public function getAllProductsByIDSous($id)
+    {
+        $sql = "SELECT * FROM `produits` WHERE id = ?";
+        $getAllProducts = $this->bdd->prepare($sql);
+        $getAllProducts->execute([$id]);
+        return $getAllProducts->fetch();
+    }
+
+     //  Methode pour trouver le nom d'une catégorie'
+public function getNameProduct($nom)
+{
+    $getNameProduct= $this->bdd->prepare("SELECT  `nom`  FROM `produits` WHERE nom = ?");
+    $getNameProduct->execute([$nom]);
+    $getName= $getNameProduct->fetch();
+     return $getName;
+
+}
+
+    //  Methode pour ajouter les informations du produits dans la bdd
     public function addProduct($image, $nom, $description, $prix, $stock, $categorie)
     {
         $sql = "INSERT INTO produits( image,nom, description, prix, stock, id_sous_categorie)
@@ -37,6 +72,7 @@ class Produit extends Bdd
         $addProduct = $this->bdd->prepare($sql);
         $addProduct->execute([$image, $nom, $description, $prix, $stock, $categorie]);
     }
+
 
 
     public function deleteProduct($id)

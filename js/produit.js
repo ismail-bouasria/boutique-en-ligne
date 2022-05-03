@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', function loaded(){
             plus = document.getElementById('plus'),
             moins = document.getElementById('moins');
         var colisage = parseInt(document.getElementById('quantite').getAttribute('colisage'));
-        var miniCommande = parseInt(document.getElementById('quantite').getAttribute('min'));
+        var mini = parseInt(document.getElementById('quantite').getAttribute('min'));
+        var max = parseInt(document.getElementById('quantite').getAttribute('max'));
 
-        if(miniCommande < 2){
+        if(mini < 2 || input.value < max){
             plus.onclick=function(e){
                 e.preventDefault();
                 input.value++;
@@ -32,6 +33,8 @@ document.addEventListener('DOMContentLoaded', function loaded(){
                 if(input.value>1) input.value = value - colisage;
             }
         }
+
+        
     };
     
 
