@@ -4,9 +4,9 @@ require("../User.php");
 $user = new User();
 
 if (isset($_REQUEST["formInscription"])) {
-    $login = $_REQUEST["identifiant"];
-    $password = ($_REQUEST["motDePasse"]);
-    $email = $_REQUEST["email"];
+    $login = htmlspecialchars($_REQUEST["identifiant"]);
+    $password = htmlspecialchars($_REQUEST["motDePasse"]);
+    $email = htmlspecialchars($_REQUEST["email"]);
 
     $user->Register($login, $password, $email);
 }

@@ -44,10 +44,20 @@ include("../require/header.php");
                                     Prix unitaire <?= number_format($unProduit["produit"]["prix"], 2, '.', '') ?>€
                                 </span>
                             </div>
-                            <div>
-                                <span>
+                            <div class="d-flex justify-content-between col-md-1 ">
+                                <div>
+                                    <a href="" class="text-decoration-none">
+                                        -
+                                    </a>
+                                </div>
+                                <div>
                                     <?= $unProduit["quantite"] ?>
-                                </span>
+                                </div>
+                                <div>
+                                    <a href="" class="text-decoration-none">
+                                        +
+                                    </a>
+                                </div>
                             </div>
                             <div>
                                 <span class="font-weight-bold">
@@ -56,9 +66,37 @@ include("../require/header.php");
                             </div>
                         </div>
                     </div>
-
                 <?php endforeach; ?>
             <?php endif; ?>
+        </div>
+        <div class="mt-3 p-2 items rounded">
+            <div class="d-flex col justify-content-end text-center">
+                <div class="col col-md-6 text-end">
+                    <p class="fw-bold">
+                        Total quantité
+                    </p>
+                    <p>
+                        <?= $quantiteEnPanier ?>
+                    </p>
+                </div>
+                <div class="col col-md-3 text-end">
+                    <p class="fw-bold">
+                        Total commande
+                    </p>
+                    <p>
+                        <?= $commandeTotalEnPanier ?>€
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div>
+                <button class="btn btn-success">
+                    <a href="">
+                        Valider Panier
+                    </a>
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -8,9 +8,10 @@ $produit = new Produit();
 $categorie = new Categorie();
 $lesCategoriesNavbar = $categorie->getLesCategories();
 
-
 $lesProduitsEnPanier = [];
 $quantiteEnPanier = 0;
+$commandeTotalEnPanier = 0;
+
 if (isset($_SESSION["panier"])) {
     foreach ($_SESSION["panier"] as $idProduit) {
         $unProduit = $produit->getUnProduit($idProduit);
@@ -25,8 +26,11 @@ if (isset($_SESSION["panier"])) {
             $lesProduitsEnPanier[$idProduit]["prixTotal"] = $prixTotalFormate;
         }
         $quantiteEnPanier++;
+        $commandeTotalEnPanier += $unProduit["prix"];
     }
+    $commandeTotalEnPanier = number_format($commandeTotalEnPanier, 2, '.', '');
 }
+
 
 if (isset($_REQUEST['produits'])) {
     $recherche = $_REQUEST['produits'];
