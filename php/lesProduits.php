@@ -19,8 +19,19 @@ if (!isset($_REQUEST["start"])) {
     header("Location:" . $_SERVER["REQUEST_URI"] . "&start=0");
 }
 
-$laCategorie                    = $categorie->getCategorieParId($_REQUEST["idCategorie"]);
-$lesProduits                    = $produit->getUnProduitParIdCategorie($laCategorie["id"]);
+
+
+if (isset($_REQUEST["idCategorie"])) {
+    $laCategorie                    = $categorie->getCategorieParId($_REQUEST["idCategorie"]);
+    $lesProduits = $produit->getUnProduitParIdCategorie($laCategorie["id"]);
+    $hrefPagination = "idCategorie=" . $laCategorie["id"];
+} else if (isset($_REQUEST["action"]) && $_REQUEST["action"] === "recherche") {
+    $recherche = isset($_REQUEST["nom"]) ? $_REQUEST['nom'] : "";
+    $lesProduits = $produit->getLesProduitsParRecherche($recherche);
+    $hrefPagination = "action=rechercher&nom=" . $_REQUEST["nom"];
+}
+
+
 /**
  * On stocke dans $start la valeur entière du paramètre 
  * start de la requête avec la fonction intval()
@@ -138,21 +149,21 @@ include('../require/header.php');
             <div>
                 <?php if (!empty(count($lesProduitsTronquesPrecedents))) : ?>
                     <div class="text-center">
-                        <a href="index.php?controleur=article&action=liste&idCategorie=<?= $laCategorie["id"] ?>&start=<?= $start - $decalage ?>" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Precedent </a>
+                        <a href="lesProduits.php?<?= $hrefPagination ?>&start=<?= $start - $decalage ?>" class="btn btn-danger"><i class="fas fa-arrow-left"></i> Precedent </a>
                     </div>
                 <?php endif; ?>
             </div>
             <div>
                 <div class="d-flex justify-content-center">
                     <?php for ($i = 1; $i <= $nombreDePage; $i++) : ?>
-                        <a href="index.php?controleur=article&action=liste&idCategorie=<?= $laCategorie["id"] ?>&start=<?= ($i * $decalage) - $decalage ?>" class="m-3 fs-3 text-decoration-none text-dark <?= (($i * $decalage) - $decalage == $start) ? "bg-warning rounded-circle" : "bg-light rounded" ?>"><?= $i ?></a>
+                        <a href="lesProduits.php?<?= $hrefPagination ?>&start=<?= ($i * $decalage) - $decalage ?>" class="m-3 fs-3 text-decoration-none text-dark <?= (($i * $decalage) - $decalage == $start) ? "bg-warning rounded-circle" : "bg-light rounded" ?>"><?= $i ?></a>
                     <?php endfor; ?>
                 </div>
             </div>
             <div>
                 <?php if (!empty(count($lesProduitsTronquesSuivants))) : ?>
                     <div class="text-center">
-                        <a href="index.php?controleur=article&action=liste&idCategorie=<?= $laCategorie["id"] ?>&start=<?= $start + $decalage ?>" class="btn btn-primary">Suivant <i class="fas fa-arrow-right"></i></a>
+                        <a href="lesProduits.php?<?= $hrefPagination ?>&start=<?= $start + $decalage ?>" class="btn btn-primary">Suivant <i class="fas fa-arrow-right"></i></a>
                     </div>
                 <?php endif; ?>
             </div>

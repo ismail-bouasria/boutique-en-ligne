@@ -27,6 +27,7 @@ class Produit extends Bdd
         $query->execute([]);
         return $query->fetchAll();
     }
+
     public function ajouterProduit($nom, $description, $prix, $stock, $categorie)
     {
         $req = "INSERT INTO produits(nom, description, prix, stock, idSousCategorie)
@@ -84,6 +85,35 @@ class Produit extends Bdd
         $query->execute([
             ":id" => $idCategorie
         ]);
+        return $query->fetchAll();
+    }
+
+    public function getLesProduitsParRecherche($recherche)
+    {
+        $schemaDeRecherche = '%' . $recherche . '%';
+
+        $req =      "SELECT         produits.id,
+                                    produits.nom,
+                                    description,
+                                    prix,
+                                    stock,
+                                    idSousCategorie,
+                                    categories.id AS idCategorie,
+                                    categories.nom AS categorie, 
+                                    souscategories.nom AS sousCategorie
+                    FROM            produits
+                    INNER JOIN      souscategories
+                    ON              produits.idSousCategorie = souscategories.id
+                    INNER JOIN      categories
+                    ON              souscategories.idCategorie = categories.id
+                    WHERE           produits.nom LIKE :recherche";
+
+        $query = $this->bdd->prepare($req);
+        $query->execute([
+            ":recherche" => $schemaDeRecherche
+        ]);
+
+
         return $query->fetchAll();
     }
 }

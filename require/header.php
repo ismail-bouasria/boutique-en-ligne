@@ -1,33 +1,37 @@
 <?php
 require_once("../Categorie.php");
 require_once("../Produit.php");
+require_once("../Bdd.php");
+
 
 $produit = new Produit();
 $categorie = new Categorie();
 $lesCategoriesNavbar = $categorie->getLesCategories();
 
 
-if (isset($_SESSION["utilisateur"])) {
-    $lesProduits = [];
-    $quantiteEnPanier = 0;
-    if (isset($_SESSION["panier"])) {
-        foreach ($_SESSION["panier"] as $idProduit) {
-            $unProduit = $produit->getUnProduit($idProduit);
+$lesProduitsEnPanier = [];
+$quantiteEnPanier = 0;
+if (isset($_SESSION["panier"])) {
+    foreach ($_SESSION["panier"] as $idProduit) {
+        $unProduit = $produit->getUnProduit($idProduit);
 
-            if (!array_key_exists($idProduit, $lesProduits)) {
-                $lesProduits[$idProduit] = ["produit" => $unProduit, "quantite" => 1, "prixTotal" => number_format($unProduit["prix"], 2, '.', '')];
-            } else {
-                $lesProduits[$idProduit]["quantite"] += 1;
-                $prixTotal = $unProduit["prix"] * $lesProduits[$idProduit]["quantite"];
-                $prixTotalFormate = number_format($prixTotal, 2, '.', '');
+        if (!array_key_exists($idProduit, $lesProduitsEnPanier)) {
+            $lesProduitsEnPanier[$idProduit] = ["produit" => $unProduit, "quantite" => 1, "prixTotal" => number_format($unProduit["prix"], 2, '.', '')];
+        } else {
+            $lesProduitsEnPanier[$idProduit]["quantite"] += 1;
+            $prixTotal = $unProduit["prix"] * $lesProduitsEnPanier[$idProduit]["quantite"];
+            $prixTotalFormate = number_format($prixTotal, 2, '.', '');
 
-                $lesProduits[$idProduit]["prixTotal"] = $prixTotalFormate;
-            }
-            $quantiteEnPanier++;
+            $lesProduitsEnPanier[$idProduit]["prixTotal"] = $prixTotalFormate;
         }
+        $quantiteEnPanier++;
     }
 }
 
+if (isset($_REQUEST['produits'])) {
+    $recherche = $_REQUEST['produits'];
+    header("Location: lesProduits.php?action=recherche&nom=" . $recherche);
+}
 
 
 ?>
@@ -46,25 +50,15 @@ if (isset($_SESSION["utilisateur"])) {
 </head>
 
 <body>
+
     <header>
         <nav>
-            <!--  barre de recherche -->
-            <form action="" method="post">
-                <input type="text" name="produits">
-                <input type="submit" name="recherche" value="Rechercher">
-                <?php
-                if (isset($_POST['recherche']) && !empty($_POST['produits'])) {
-                    $recherche = $_POST['produits'];
-                    $query = "SELECT * FROM produits WHERE nom LIKE ? ORDER BY id DESC";
-                    $produit = $bdd->bdd->prepare($query);
-                    $produit = $produit->execute(array('%' . $recherche . '%'));
-                    var_dump($produit);
-                }
-
-                ?>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="produits" placeholder="Rechercher un produit" required>
+                </div>
             </form>
-
-            <ul>
+            <ul class="flex col justify-content-around">
                 <li class="top"><a href="../index.php"> Accueil </a> </li>
                 <li class="deroulant top"><a href="#">Nos produits &ensp;</a>
                     <ul class="sous">
@@ -104,10 +98,11 @@ if (isset($_SESSION["utilisateur"])) {
                         <?php echo $_SESSION["utilisateur"]["login"]; ?>
                     </li>
                 <?php endif; ?>
+
                 <li class="top">
                     <div id="panier">
                         <div id="bullePanier">
-                            <p><?= $quantiteEnPanier ?></p>
+                            <p><?= isset($quantiteEnPanier) ? $quantiteEnPanier : 0 ?></p>
                         </div><a href="panier.php">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="15%" alt="">
                     </div>
                 </li>

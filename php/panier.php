@@ -27,34 +27,38 @@ include("../require/header.php");
                     </div>
                 </div>
             </div>
-            <?php foreach ($lesProduits as $unProduit) : ?>
-                <div class="mt-3 p-2 items rounded">
-                    <div class="d-flex col justify-content-between text-center">
-                        <div>
-                            <img class="rounded" src="../assets/img/sandwith.jpg" width="100">
-                        </div>
-                        <div class="d-flex flex-column">
-                            <span class="fw-bold">
-                                <?= $unProduit["produit"]["nom"] ?>
-                            </span>
-                            <span>
-                                Prix unitaire <?= number_format($unProduit["produit"]["prix"], 2, '.', '') ?>€
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                <?= $unProduit["quantite"] ?>
-                            </span>
-                        </div>
-                        <div>
-                            <span class="font-weight-bold">
-                                <?= $unProduit["prixTotal"] . "€" ?>
-                            </span><i class="fa fa-trash-o ml-3 text-black-50"></i>
+            <?php if (isset(
+                $lesProduitsEnPanier
+            )) : ?>
+                <?php foreach ($lesProduitsEnPanier as $unProduit) : ?>
+                    <div class="mt-3 p-2 items rounded">
+                        <div class="d-flex col justify-content-between text-center">
+                            <div>
+                                <img class="rounded" src="../assets/img/sandwith.jpg" width="100">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="fw-bold">
+                                    <?= $unProduit["produit"]["nom"] ?>
+                                </span>
+                                <span>
+                                    Prix unitaire <?= number_format($unProduit["produit"]["prix"], 2, '.', '') ?>€
+                                </span>
+                            </div>
+                            <div>
+                                <span>
+                                    <?= $unProduit["quantite"] ?>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold">
+                                    <?= $unProduit["prixTotal"] . "€" ?>
+                                </span><i class="fa fa-trash-o ml-3 text-black-50"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
 
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </div>
