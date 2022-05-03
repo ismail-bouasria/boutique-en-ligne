@@ -1,5 +1,6 @@
 <?php
-require 'Bdd.php';
+require_once('Bdd.php');
+
 class Produit extends Bdd
 {
     public function __construct()

@@ -3,6 +3,10 @@ session_start();
 require("../User.php");
 $user = new User();
 
+if (!$_SESSION["utilisateur"] &&  end(explode($_SERVER["HTTP_REFERER"], "/")) === "paiement.php") {
+    $enAttenteDePaiement = true;
+}
+
 if (isset($_REQUEST["formInscription"])) {
     $login = htmlspecialchars($_REQUEST["identifiant"]);
     $password = htmlspecialchars($_REQUEST["motDePasse"]);
@@ -18,8 +22,17 @@ if (isset($_REQUEST["formConnexion"])) {
     $user->Connect($login, $password);
 }
 
+if (isset($_REQUEST["formConnexionPourPaiement"])) {
+    $login = htmlspecialchars($_REQUEST["identifiant"]);
+    $password = htmlspecialchars($_REQUEST["motDePasse"]);
+
+    $user->Connect($login, $password);
+
+    header("Location: paiement.php");
+}
+
 if (isset($_REQUEST["formModifier"])) {
-    header("Location:modiff utilisateur.php");
+    header("Location:modifierProfil.php");
 }
 
 include("../require/header.php"); ?>
@@ -69,7 +82,7 @@ include("../require/header.php"); ?>
                         <spa class="psw"><a href="forgot_password.php">Mot de passe oublié ?</a></span>
                     </div>
                     <div class="btn-group-md text-center mt-5">
-                        <button type="submit" class="rounded-pill p-2 btn btn-success mt-4 mb-3 col-md-10" name="formConnexion">
+                        <button type="submit" class="rounded-pill p-2 btn btn-success mt-4 mb-3 col-md-10" name="<?= isset($enAttenteDePaiement) ? "formConnexionPourPaiement" : "formConnexion" ?>">
                             Connexion
                         </button>
                     </div>

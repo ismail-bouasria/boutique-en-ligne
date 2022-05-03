@@ -4,6 +4,7 @@ require_once("../Produit.php");
 require_once("../Bdd.php");
 
 
+
 $produit = new Produit();
 $categorie = new Categorie();
 $lesCategoriesNavbar = $categorie->getLesCategories();
@@ -36,6 +37,7 @@ if (isset($_REQUEST['produits'])) {
     $recherche = $_REQUEST['produits'];
     header("Location: lesProduits.php?action=recherche&nom=" . $recherche);
 }
+
 
 
 ?>

@@ -67,13 +67,9 @@ $lesProduits                    = $lesProduitsTronques;
 if (isset($_REQUEST["action"]) && $_REQUEST["action"] === "ajouterPanier") {
     $idProduit = $_REQUEST["id"];
 
-    if (empty($_SESSION["panier"])) {
-        $_SESSION["panier"] = [];
-    }
-
     array_push($_SESSION["panier"], $idProduit);
 
-    var_dump($_SESSION["panier"]);
+    var_dump($_SESSION);
 }
 include('../require/header.php');
 ?>

@@ -44,8 +44,17 @@ class User
 
     public function getUnUtilisateurParLogin($login) //Select
     {
-        $req = "SELECT  * 
-                FROM    utilisateurs 
+        $req = "SELECT      utilisateurs.id,
+                            utilisateurs.nom,
+                            prenom,
+                            adresse,
+                            telephone,
+                            droits.nom AS droit,
+                            email,
+                            login
+                FROM        utilisateurs
+                INNER JOIN droits
+                ON          utilisateurs.id_droit = droits.id
                 WHERE   login = :login";
         $query = $this->bdd->prepare($req);
         $query->execute([':login' => $login]);

@@ -16,6 +16,22 @@ if (isset($_REQUEST["formModifier"])) {
     $password = $_REQUEST["password"];
     $user->Update($login, $password, $email);
 }
+if (isset($_REQUEST["formModifierPuisPaiement"])) {
+    $login = $_REQUEST["login"];
+    $email = $_REQUEST["email"];
+    $password = $_REQUEST["password"];
+    $user->Update($login, $password, $email);
+
+    header("Location: paiement.php");
+}
+var_dump($_SERVER);
+if (
+    isset($_SESSION["utilisateur"])
+    && empty($_SESSION["utilisateur"]["adresse"])
+    && end(explode($_SERVER["HTTP_REFERER"], "/")) === "paiement.php"
+) {
+    $enAttenteDePaiement = true;
+}
 include("../require/header.php"); ?>
 <div class="container row justify-content-center mx-auto">
 
@@ -41,7 +57,7 @@ include("../require/header.php"); ?>
                     <input type="password" class="form-control" name="confirmerMotDePasse" placeholder="Confirmer le Mot de passe">
                 </div>
                 <div class="row form-group justify-content-center">
-                    <button type="submit" class="rounded-pill p-2 btn btn-success mt-5 mb-3 col-md-10" name="formModifier">
+                    <button type="submit" class="rounded-pill p-2 btn btn-success mt-5 mb-3 col-md-10" name="<?= $enAttenteDePaiement ? "formModifierPuisPaiement" : "formModifier" ?>">
                         Modifier
                     </button>
                 </div>

@@ -2,7 +2,11 @@
 
 session_start();
 
-
+if (isset($_REQUEST["formValiderPanier"])) {
+    if (!empty($_SESSION["panier"])) {
+        header("Location: paiement.php");
+    }
+}
 
 include("../require/header.php");
 ?>
@@ -89,15 +93,13 @@ include("../require/header.php");
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-end">
+        <form class="d-flex justify-content-end">
             <div>
-                <button class="btn btn-success">
-                    <a href="">
-                        Valider Panier
-                    </a>
+                <button type="submit" name="formValiderPanier" class="btn btn-success">
+                    Valider Panier
                 </button>
             </div>
-        </div>
     </div>
+</div>
 </div>
 </div>
