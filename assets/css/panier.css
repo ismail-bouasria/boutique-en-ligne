@@ -1,32 +1,57 @@
-#add-produit{
-border: solid 1px green;
-width: 50%;
-}
-#prix{
-    text-align: end;
-}
-#add-produit{
-   text-align: center;
-}
-#image{
-    width: 50%;
-}
-
-
-#infos{
+#panier-container {
+    width: 100%;
     display: flex;
+    margin: 2%;
 }
 
 
-#boxquantite{
-    display:flex;
+#panier-produit {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    border-right: 3px solid rgba(0, 0, 0, 0.24);
+    display: flex;
+    justify-content: space-between;
+     align-items: center;
+}
+
+#add-produit {
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    width: 85%;
+    margin-bottom: 3%;
+}
+
+.prix {
+    text-align: end;
+    margin: 1%;
+    color: #A7C490;
+    font-weight: 900;
+}
+
+#image {
+    width: 70%;
+   margin: 0 0 0 15%;
+}
+
+#information{
+
+    width: 100%;
+}
+
+#infos {
+    display: flex;
+   width: 100% ;
+}
+
+#boxquantite {
+    display: flex;
     justify-content: center;
     width: 80%;
 }
 
 
-
-#plus1 {
+.plus1 {
     background: #A7C490;
     border-radius: 3px;
     width: 10%;
@@ -36,7 +61,7 @@ width: 50%;
     cursor: pointer;
 }
 
-#plus1:hover {
+.plus1:hover {
     background: #A7C490;
     border-radius: 3px;
     width: 10%;
@@ -48,7 +73,9 @@ width: 50%;
 }
 
 
-#moins1 {
+
+
+.moins1 {
     background: #E90F0F;
     border-radius: 3px;
     width: 10%;
@@ -59,7 +86,7 @@ width: 50%;
     margin: 0 0 0 1%;
 }
 
-#moins1:hover {
+.moins1:hover {
     background: #E90F0F;
     border-radius: 3px;
     width: 10%;
@@ -70,8 +97,48 @@ width: 50%;
     cursor: pointer;
 }
 
-.number{
+.number {
     width: 10% !important;
     text-align: center !important;
     margin: 0% 1% 0 1%;
+}
+#total-infos{
+    width: 40%;
+    margin: auto;
+}
+
+#total-produit {
+    margin: auto;
+    background: #FCFCFC;
+    border: 1px solid #848484;
+    border-radius: 7px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#boxquantite{
+width: 100%;
+}
+#supprimer{
+    text-align: end;
+    margin: 1%;
+    text-decoration: none;
+}
+
+#supprimer button a{
+  
+    text-decoration: none;
+    color: black;
+}
+
+
+#total-produit section {
+ width: 100% ;
+ text-align: center;
+}
+
+#total-produit button {
+    margin: 2%;
 }

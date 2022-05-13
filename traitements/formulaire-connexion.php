@@ -1,6 +1,7 @@
 <!-- =========================== TRAITEMENT CONNEXION ========================== -->   
 
 <?php 
+session_start();
 require "../classes/User.php";
 
 //    Condition de connexion

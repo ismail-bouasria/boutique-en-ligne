@@ -1,4 +1,5 @@
 <?php
+session_start();
 // <!-- =========================== TRAITEMENT INSCRIPTION ========================== -->
 
 require "../classes/User.php";
@@ -33,6 +34,6 @@ if (isset($_POST['submit'])) {
     }else {
       header('location: ../php/inscription-connexion.php?err1=errorloginoremail');
     }
-}
+} 
     
 ?>

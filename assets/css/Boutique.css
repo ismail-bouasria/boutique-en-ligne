@@ -1,44 +1,46 @@
 /* -----------------------------------GENERAL-------------------------------------------- */
-*{
+* {
     margin: 0px;
     padding: 0px;
     font-family: 'Baloo 2', cursive;
     font-size: 100%;
 }
-body{
+
+body {
     width: 100%;
     background-image: url(../img/fond.png);
     background-size: 50%;
- 
+
 }
 
 /* ------------------------------------------------------------HEADER------------------------------------------- */
 
 /* ------------------------------------Menu---------------------------------------------- */
-header{
+header {
     position: sticky;
     top: 0%;
     z-index: 100;
 }
 
 
-header nav{
+header nav {
     width: 100%;
     background-color: rgb(255, 255, 255);
-    position:sticky;
+    position: sticky;
     top: 0px;
     display: flex;
     justify-content: center;
-   
+    
+
 }
 
-header nav ul{
+header nav ul {
     list-style-type: none;
     margin-left: 15%;
 
 }
 
-header nav ul li{
+header nav ul li {
     float: left;
     width: 16.4%;
     text-align: center;
@@ -46,150 +48,159 @@ header nav ul li{
 
 }
 
- header nav ul::after{
+header nav ul::after {
     content: "";
     display: table;
     clear: both;
 }
 
- nav a{
+nav a {
     display: block;
     text-decoration: none;
-    color:  black;;
+    color: black;
+    ;
     border-bottom: 2px solid transparent;
     font-size: x-large;
-    text-align:center;
+    text-align: center;
 }
 
-.top{
+.top {
     margin-top: 5%;
 }
 
-header nav a:hover{
+header nav a:hover {
     color: #B4C10B;
 }
 
-.sous{
-    
+.sous {
+
     display: none;
     background-color: rgb(255, 255, 255);
     position: absolute;
     z-index: 1000;
-    
+
 }
-header nav > ul li:hover:nth-child(2) .sous{
+
+header nav>ul li:hover:nth-child(2) .sous {
     display: block;
     display: flex;
-    
-    
+
+
 }
-header nav > ul li:hover:nth-child(4) .sous{
+
+header nav>ul li:hover:nth-child(4) .sous {
     display: block;
     width: 170%;
     text-align: center;
-    
+
 }
-.sous li{
+
+.sous li {
     float: none;
     width: 100%;
     text-align: left;
 }
-.sous a{
+
+.sous a {
     padding: 10px;
     border-bottom: none;
-}
-.sous a:hover{
-    border-bottom: none;
-    background-color: RGBa(200,200,200,0.1);
-} 
-.sous h4{
-    padding: 10px;
-    border-bottom: none;
-    
 }
 
-.deroulant > a::after{
-    content:" ▼";
+.sous a:hover {
+    border-bottom: none;
+    background-color: RGBa(200, 200, 200, 0.1);
+}
+
+.sous h4 {
+    padding: 10px;
+    border-bottom: none;
+
+}
+
+.deroulant>a::after {
+    content: " ▼";
     font-size: 12px;
-   
+
 }
 
-.conteneur{
-  margin: 50px 20px;
-  height: 1500px;
+.conteneur {
+    margin: 50px 20px;
+    height: 1500px;
 }
+
 #panier {
     display: flex;
     position: relative;
 }
 
-#bullePanier{
+#bullePanier {
     width: 10%;
     height: 23px;
     position: absolute;
     background-color: rgba(199, 32, 32, 1);
     border-radius: 55px;
     display: flex;
-    top : 3vh;
+    top: 3vh;
     left: 85px;
     color: white;
     justify-content: center;
     font-size: medium;
 }
-#imgPanier{
+
+#imgPanier {
     margin-left: 2%;
 }
 
 /*----------------------------------------------------------------------MAIN---------------------------------------------------------------------*/
 
-#enCeMoment{
- position: relative;
+#enCeMoment {
+    position: relative;
 
 }
 
-#text{
+#text {
     position: absolute;
     color: white;
     font-weight: bold;
-    font-size:600%;
+    font-size: 600%;
     bottom: 70vh;
-    margin-left: 2% ;
+    margin-left: 2%;
 }
 
-#text2{
+#text2 {
     position: absolute;
     color: white;
     font-weight: bold;
-    font-size:550%;
+    font-size: 550%;
     bottom: 40vh;
-    margin-left: 2% ;
+    margin-left: 2%;
 }
 
-#text3{
+#text3 {
     position: absolute;
     color: white;
     font-weight: bold;
-    font-size:550%;
+    font-size: 550%;
     bottom: 10vh;
-    margin-left: 2% ;
+    margin-left: 2%;
 }
 
-#enCeMoment a button{
- width: 32%;
- position: absolute;
- border-radius: 20px;
- height: 15%;
- bottom: 15%;
- left: 65%;
- border: none;
- background-color: rgba(97, 159, 68, 1);
- color: white;
- font-size: 350%;
- font-weight: bold;
- cursor: pointer;
+#enCeMoment a button {
+    width: 32%;
+    position: absolute;
+    border-radius: 20px;
+    height: 15%;
+    bottom: 15%;
+    left: 65%;
+    border: none;
+    background-color: rgba(97, 159, 68, 1);
+    color: white;
+    font-size: 350%;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-#enCeMoment a button:hover{
+#enCeMoment a button:hover {
     width: 32%;
     position: absolute;
     border-radius: 20px;
@@ -203,133 +214,143 @@ header nav > ul li:hover:nth-child(4) .sous{
     font-weight: bold;
     cursor: pointer;
 }
+
 #bienvenue {
     font-size: 300%;
     text-align: center;
 }
 
-#presentation{
+#presentation {
     display: flex;
 }
+
 #color1 {
     color: #518B68;
 }
+
 #color2 {
     color: #9DBF8D;
 }
-#imgPresentation{
+
+#imgPresentation {
     margin: 2%;
-    border: solid ;
+    border: solid;
     background: url(image.png);
     border: 10px solid #518B68;
     box-sizing: border-box;
-   
+
 }
 
-#presentation article{
-    margin: 15% 5% 15% ;
+#presentation article {
+    margin: 15% 5% 15%;
     background-color: white;
     text-align: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 3%;
 }
 
-#presentation article p{
+#presentation article p {
     font-size: 150%;
 }
 
 #presentation article p span {
     font-weight: 900;
-   font-size: 150%;
+    font-size: 150%;
 }
 
-#presentation article h1{
-   font-weight: 900;
-   font-size: 250%;
+#presentation article h1 {
+    font-weight: 900;
+    font-size: 250%;
 }
-#informations{
+
+#informations {
     background-color: #9DBF8D;
     display: flex;
     width: 100%;
 }
-#localisation{
+
+#localisation {
     margin: 2%;
     display: flex;
     color: white;
     flex-direction: column;
 
 }
+
 #localisation div:nth-child(1) {
     display: flex;
     margin: 0 0 5% 8%;
-  
+
 }
 
-#localisation div h1{
-    font-weight:900;
+#localisation div h1 {
+    font-weight: 900;
     font-size: 290%;
-    margin:3% 0 0 3%;
+    margin: 3% 0 0 3%;
 }
 
-iframe{
+iframe {
     border-radius: 25px;
 }
 
-#horaires{
+#horaires {
     margin: 2%;
     display: flex;
     color: white;
     flex-direction: column;
 }
+
 #horaires div:nth-child(1) {
     display: flex;
     margin: 0 0 5%;
-  
+
 }
-#horaires div h1{
-    font-weight:900;
+
+#horaires div h1 {
+    font-weight: 900;
     font-size: 290%;
-    margin:3% 0 0 3%;
+    margin: 3% 0 0 3%;
 }
-#horaires div h2{
-    font-weight:900;
+
+#horaires div h2 {
+    font-weight: 900;
     font-size: 250%;
-    margin:3% 0 0 3%;
+    margin: 3% 0 0 3%;
     text-align: center;
 }
 
-.contenairProduit{
- margin-top: 5%;
- background-color: white;
- display:flex;
- flex-direction: column;
+.contenairProduit {
+    margin-top: 5%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 
-.contenairProduit h1{
+.contenairProduit h1 {
     margin-left: 4%;
-    font-weight:900;
+    font-weight: 900;
     font-size: 400%;
 }
 
 /* ----------------------------------------------------------------------FOOTER---------------------------------------------------------------------*/
 
-footer{
+footer {
 
     width: 100%;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
- 
+
 }
 
-#piedDePage{
-     
+#piedDePage {
+
     background-color: rgba(167, 196, 144, 1);
     width: 90%;
     color: white;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     align-items: flex-end;
     text-align: center;
 }

@@ -1,10 +1,10 @@
-#contenair{
+#contenair {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.typeProduit{
+.typeProduit {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -19,29 +19,29 @@
     width: 100%;
 }
 
-.typeProduit a{
+.typeProduit a {
     text-decoration: none;
     color: black;
     font-weight: bold;
 }
 
-.typeProduit a:hover{
-    
-    color:rgb(34, 114, 46) ;
+.typeProduit a:hover {
+
+    color: rgb(34, 114, 46);
 }
 
 
-.typeProduit img{
+.typeProduit img {
     width: 100%;
 }
 
-h1{
+h1 {
     margin-left: 4%;
-    font-weight:900;
+    font-weight: 900;
     font-size: 400%;
 }
 
-.typeProduit h2{
-    font-weight:900;
+.typeProduit h2 {
+    font-weight: 900;
     font-size: 350%;
 }

@@ -4,6 +4,8 @@ session_start();
 require '../classes/Produit.php';
 require '../classes/Souscategorie.php';
 require '../classes/Categorie.php';
+require '../classes/Panier.php';
+
 
 
 $produit = new Produit('');
@@ -75,7 +77,7 @@ $categorie = new SousCategorie('');
                                         <h1> <?php echo $valueP['nom']; ?></h1>
                                         <p> <?php echo $valueP['description']; ?></p>
                                         <h1> Prix : <span> <?php echo $valueP['prix']; ?>€</span> </h1>
-                                        <a href="page-produit.php?produit=<?php echo $valueP['id'];?>" class="btn btn-primary" target="blank"> Commander !</a>
+                                        <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class="btn btn-primary" target="blank"> Commander !</a>
                                     </div>
                                 </div>
                             </div>
@@ -89,19 +91,19 @@ $categorie = new SousCategorie('');
 
             <?php  } ?>
 
-            
+
             <!-----------------------------------------BOX PAGINATION-------------------------------------------->
             <div class="boxpagination">
 
                 <nav id=" navPagination">
-                    <ul >
+                    <ul>
                         <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
 
                         <li class="<?= ($pageActuelle == 1) ? "disabled" : "" ?>">
                             <?php if (isset($_GET['categorie'])) { ?>
-                                <a href="categorie-produit.php?categorie=<?= $categorieId ?>&start=<?= $pageActuelle - 1 ?>" >Précédente</a>
+                                <a href="categorie-produit.php?categorie=<?= $categorieId ?>&start=<?= $pageActuelle - 1 ?>">Précédente</a>
                             <?php } else { ?>
-                                <a href="categorie-produit.php?categorie=<?= $categorieId ?>?start=<?= $pageActuelle - 1 ?>" >Précédente</a>
+                                <a href="categorie-produit.php?categorie=<?= $categorieId ?>?start=<?= $pageActuelle - 1 ?>">Précédente</a>
                             <?php } ?>
                         </li>
 
@@ -109,14 +111,14 @@ $categorie = new SousCategorie('');
                             <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
                             <li class=" page-link">
                                 <?php if (isset($_GET['categorie'])) { ?>
-                                    <a class=" <?= ($pageActuelle == $page) ? "active" : "" ?>" href="categorie-produit.php?categorie=<?= $categorieId ?>&start=<?= $page ?>" ><?= $page ?></a>
+                                    <a class=" <?= ($pageActuelle == $page) ? "active" : "" ?>" href="categorie-produit.php?categorie=<?= $categorieId ?>&start=<?= $page ?>"><?= $page ?></a>
                                 <?php } else { ?>
-                                    <a  href="categorie-produit.php?categorie=<?= $categorieId ?>?start=<?= $page ?>" ><?= $page ?></a>
+                                    <a href="categorie-produit.php?categorie=<?= $categorieId ?>?start=<?= $page ?>"><?= $page ?></a>
                                 <?php } ?>
                             </li>
                         <?php endfor ?>
                         <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-                        <li class="<?= ($pageActuelle == $pages)? "disabled" : "" ?>">
+                        <li class="<?= ($pageActuelle == $pages) ? "disabled" : "" ?>">
                             <?php if (isset($_GET['categorie'])) { ?>
                                 <a href="categorie-produit.php?categorie=<?= $categorieId ?>&start=<?= $pageActuelle + 1 ?>">Suivante</a>
                             <?php } else { ?>

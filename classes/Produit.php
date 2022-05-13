@@ -9,17 +9,17 @@ class Produit extends Bdd
     }
 
 
-     //  Methode pour importer les infos des produits lajouter au panier
-     public function getAllProduitPanier($id)
-     {
-         $sql = 'SELECT * FROM `produits` WHERE `id` IN (?)';
- 
-         $getAllProduit = $this->bdd->prepare($sql);
-         $getAllProduit->execute([$id]);
-         $getAllProduitPanier = $getAllProduit->fetchAll();
-         return $getAllProduitPanier;
-     }
- 
+    //  Methode pour importer les infos des produits lajouter au panier
+    public function getAllProduitPanier($id)
+    {
+        $sql = 'SELECT * FROM `produits` WHERE `id` IN (?)';
+
+        $getAllProduit = $this->bdd->prepare($sql);
+        $getAllProduit->execute([$id]);
+        $getAllProduitPanier = $getAllProduit->fetchAll();
+        return $getAllProduitPanier;
+    }
+
 
     //  Methode pour récuperer les infos des produits lajouter au panier
     public function getIdProduitPanier($id)
@@ -28,7 +28,7 @@ class Produit extends Bdd
 
         $getIdProduit = $this->bdd->prepare($sql);
         $getIdProduit->execute([$id]);
-        $getId = $getIdProduit->fetch();
+        $getId = $getIdProduit->fetchAll();
         return $getId;
     }
 
@@ -54,15 +54,14 @@ class Produit extends Bdd
         return $getAllProducts->fetch();
     }
 
-     //  Methode pour trouver le nom d'une catégorie'
-public function getNameProduct($nom)
-{
-    $getNameProduct= $this->bdd->prepare("SELECT  `nom`  FROM `produits` WHERE nom = ?");
-    $getNameProduct->execute([$nom]);
-    $getName= $getNameProduct->fetch();
-     return $getName;
-
-}
+    //  Methode pour trouver le nom d'une catégorie'
+    public function getNameProduct($nom)
+    {
+        $getNameProduct = $this->bdd->prepare("SELECT  `nom`  FROM `produits` WHERE nom = ?");
+        $getNameProduct->execute([$nom]);
+        $getName = $getNameProduct->fetch();
+        return $getName;
+    }
 
     //  Methode pour ajouter les informations du produits dans la bdd
     public function addProduct($image, $nom, $description, $prix, $stock, $categorie)
@@ -92,4 +91,14 @@ public function getNameProduct($nom)
         $getAllProducts->execute();
         return $getAllProducts->fetchAll();
     }
+
+
+     //  Methode pour trouver les informations de tous les produits
+     public function getListingProducts()
+     {
+         $sql = "SELECT * FROM `produits`";
+         $getAllProducts = $this->bdd->prepare($sql);
+         $getAllProducts->execute();
+         return $getAllProducts->fetchAll();
+     }
 }

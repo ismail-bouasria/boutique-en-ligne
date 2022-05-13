@@ -1,10 +1,13 @@
 <?php
 
 session_start();
-require '../classes/Bdd.php';
+require '../classes/Produit.php';
 require '../classes/Souscategorie.php';
 require '../classes/Categorie.php';
+require '../classes/Panier.php';
+
 $sousCategorie = new SousCategorie('');
+$produit = new Produit();
 
 if (isset($_SESSION['droit']) == 'administrateur') {
 } else {
@@ -94,9 +97,7 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                 <table>
                     <thead>
                         <tr>
-                            <th>
-                                <h3>Sous Categorie</h3>
-                            </th>
+                           
                             <th>
                                 <h3>Image</h3>
                             </th>
@@ -118,15 +119,16 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($listeSousCategories as $uneCategorie) : ?>
+                        <?php 
+                         $listeProduits = $produit->getListingProducts();
+                        foreach ($listeProduits as $produit) : ?>
                             <tr>
 
-                                <td><?= $uneCategorie["categoriesnom"] ?></td>
-                                <td><?= $uneCategorie["sousnom"] ?></td>
-                                <td><?= $uneCategorie["categoriesnom"] ?></td>
-                                <td><?= $uneCategorie["sousnom"] ?></td>
-                                <td><?= $uneCategorie["categoriesnom"] ?></td>
-                                <td><?= $uneCategorie["sousnom"] ?></td>
+                                <td> <img class="sizeimg" src="<?= $produit["image"] ?>" alt=""></td>
+                                <td><?= $produit["nom"] ?></td>
+                                <td><?= $produit["description"] ?></td>
+                                <td><?= $produit["prix"] ?>€</td>
+                                <td><?= $produit["stock"] ?></td>
 
                                 <td>
                                     <div class="flex">
@@ -134,7 +136,7 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                                                 <i class="fas fa-user-edit text-primary"></i>
                                             </a> </button>
 
-                                        <button  id="size"> <a href="listeCategorie.php?action=supprimer&id=<?= $uneCategorie["souscatid"] ?>">
+                                        <button id="size"> <a href="listeCategorie.php?action=supprimer&id=<?= $uneCategorie["souscatid"] ?>">
                                                 <i class="fas fa-trash-alt text-danger"></i>
                                             </a> </button>
                                     </div>

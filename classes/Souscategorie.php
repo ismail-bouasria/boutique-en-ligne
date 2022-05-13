@@ -77,8 +77,6 @@ class SousCategorie extends Bdd
 
 
 
-   
-     
 
     // Méthode pour récuperer le nom et l'id des categorie
     public function selectAllSousCategorie()
@@ -91,11 +89,18 @@ class SousCategorie extends Bdd
             echo '<option value="' . $value['id'] . '">' . $value['nom'] . '</option>';
         }
     }
+
+
+
+    // Méthode pour delete des sous-categories
+ public function deleteSousCategorie($id)
+ {
+     $sql = "DELETE FROM `sous_categorie` WHERE  `id`=?";
+     $deleteCat = $this->bdd->prepare($sql);
+     $deleteCat->execute([$id]);
+    
+ }
+
 }
-
-
-
-?>
-
 
  

@@ -2,6 +2,7 @@
 session_start();
 require '../classes/Bdd.php';
 require '../classes/Categorie.php';
+require '../classes/Panier.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -63,25 +64,25 @@ require '../classes/Categorie.php';
                 <div>
                     <h2>DU LUNDI AU SAMEDI </h2>
 
-                     <h2>12h – 14h30 & 19h – 22h</h2>      
+                    <h2>12h – 14h30 & 19h – 22h</h2>
                 </div>
             </div>
         </div>
 
         <div class="contenairProduit">
-         <section>
-             <h1>
-                Nos produits phares !
-             </h1>
-         </section>
+            <section>
+                <h1>
+                    Nos produits phares !
+                </h1>
+            </section>
         </div>
 
         <div class="contenairProduit">
-         <section>
-             <h1>
-             Nos dernières recettes !
-             </h1>
-         </section>
+            <section>
+                <h1>
+                    Nos dernières recettes !
+                </h1>
+            </section>
         </div>
     </main>
     <?php

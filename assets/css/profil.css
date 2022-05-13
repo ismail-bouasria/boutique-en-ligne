@@ -1,6 +1,7 @@
-main{
+main {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 section {
@@ -9,24 +10,26 @@ section {
     display: flex;
     width: 90%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 5% 16%;
+    margin: 0 0 0 5%;
+
 }
-  
-  
-#edition, #adresse {
+
+
+#edition,
+#adresse {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 }
-  
+
 h2 {
     font-size: 2em;
     width: 86%;
     margin-bottom: 50px;
     letter-spacing: 1px;
 }
-  
+
 #edition h2 span {
     color: #88A66A;
 }
@@ -34,13 +37,14 @@ h2 {
 #adresse h2 span {
     color: #88A66A
 }
-  
-#edition form, #adresse form {
+
+#edition form,
+#adresse form {
     display: flex;
     flex-direction: column;
     width: 80%;
 }
-  
+
 input {
     font-size: 0.8em;
     color: #848484;
@@ -49,23 +53,23 @@ input {
     border-style: none;
     height: auto;
     margin-bottom: 50px;
-    height: 70px;
-    box-shadow:1px 1px 1px lightgrey;
+    height: 40px;
+    box-shadow: 1px 1px 1px lightgrey;
 }
-  
+
 #edition {
     width: 50%;
-    border-right:5px solid rgb(88 139 103);
+    border-right: 5px solid rgb(88 139 103);
     background-color: rgba(255, 255, 255, 0.77);
-    padding-right:4% ;
+    padding-right: 4%;
 }
 
 #adresse {
     width: 50%;
     background-color: rgba(255, 255, 255, 0.77);
-    padding-left:4% ;
+    padding-left: 4%;
 }
-  
+
 a {
     text-decoration: none;
     display: flex;
@@ -80,7 +84,7 @@ a {
     width: 60%;
     height: 55px;
     background-color: #88A66A;
-   
+
 }
 
 #adresse button {
@@ -93,5 +97,33 @@ a {
     background-color: #88A66A;
     margin: 0 0 10%;
 }
-  
- 
+
+#messageErreur {
+
+    text-align: center;
+    background-color: rgb(188, 24, 24);
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+
+#messageErreur h1 {
+
+    font-size: large;
+    font-weight: 600;
+}
+
+#messageSucces {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: rgb(24, 188, 92);
+    color: whitesmoke;
+
+}
+
+#messageSucces h1 {
+
+    font-size: large;
+    font-weight: 600;
+}

@@ -4,8 +4,8 @@ session_start();
 require '../classes/Produit.php';
 require '../classes/Souscategorie.php';
 require '../classes/Categorie.php';
+require '../classes/Panier.php';
 
-var_dump($_SESSION['panier']);
 
 $produit = new Produit('');
 $categorie = new SousCategorie('');
@@ -14,6 +14,7 @@ $_GET['produit'] = intval(strip_tags($_GET['produit']));
 $infosProduit = $produit->getAllProductsByIDSous($_GET['produit']);
 $_SESSION['stockproduit'] = $infosProduit['stock'];
 $_SESSION['idproduit'] = $infosProduit['id'];
+
 
 ?>
 
@@ -71,9 +72,7 @@ $_SESSION['idproduit'] = $infosProduit['id'];
 
                             <label> Quantité</label>
                             <div>
-                                <button id="moins">-</button>
                                 <input type="number" id="quantite" name="quantite" min="1" value="1" max="<?php echo $_SESSION['stockproduit']; ?>" class="form-control" colisage="1">
-                                <button id="plus">+</button>
                             </div>
                             <div>
                                 <button class="button-5" type="submit" name="panier"> Ajouter au panier </button>
@@ -108,7 +107,7 @@ $_SESSION['idproduit'] = $infosProduit['id'];
                                     <h1> <?php echo $valueP['nom']; ?></h1>
                                     <p> <?php echo $valueP['description']; ?></p>
                                     <h1> Prix : <span> <?php echo $valueP['prix']; ?>€</span> </h1>
-                                    <a href="page-produit.php?produit= <?php echo $valueP['id']; ?>" class="btn btn-primary" target="blank"> Commander !</a>
+                                    <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class="btn btn-primary" target="blank"> Commander !</a>
                                 </div>
                             </div>
                         

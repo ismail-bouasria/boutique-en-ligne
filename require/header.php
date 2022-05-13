@@ -1,7 +1,6 @@
 <header>
 
     <nav>
-
         <ul>
             <li class="top"><a href="accueil.php"> Accueil </a> </li>
             <li class="deroulant top"><a href="nos-produits.php">Nos produits</a>
@@ -48,10 +47,16 @@
             <li class="top">
                 <div id="panier">
                     <div id="bullePanier">
-                        <p>0</p>
+                        <?php if (isset($_SESSION['id'])) {
+                            
+                            $count = new Panier();
+                        ?>
+                        <p><?php echo $count->countProduit(intval($_SESSION['id'])); ?></p> 
+                        <?php } ?>
                     </div><a href="panier.php">Panier</a><img id="imgPanier" src="../assets/img/panier.png" width="14%" alt="">
                 </div>
             </li>
         </ul>
     </nav>
+    
 </header>

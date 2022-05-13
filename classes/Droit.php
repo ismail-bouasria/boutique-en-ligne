@@ -35,5 +35,3 @@ class Droit extends Bdd
 
 // $droit = new Droit('');
 // $droit->getDroit('administrateur')
-
-?>

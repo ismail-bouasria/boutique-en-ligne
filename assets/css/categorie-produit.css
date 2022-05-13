@@ -26,7 +26,7 @@ h2 {
     color: #8d8d8d;
     margin-left: 5%;
 }
- 
+
 
 
 /*--------------------------------------------------------------------PRODUITS-------------------------------------------------------- */
@@ -49,7 +49,7 @@ h2 {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    align-items:stretch;
+    align-items: stretch;
 
 }
 
@@ -176,18 +176,19 @@ span {
 
 
 /*--------------------------------------------------------------------PAGINATIONS-------------------------------------------------------- */
-.boxpagination{
+.boxpagination {
     width: 100%;
-   display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
-.boxpagination nav{
-  width: 30%;
-  border-radius: 5px;
-    
+.boxpagination nav {
+    width: 30%;
+    border-radius: 5px;
+
 }
-.boxpagination nav ul{
+
+.boxpagination nav ul {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -195,10 +196,11 @@ span {
     background: #9DBF8D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 100%;
-   
-   
+
+
 }
-.boxpagination nav ul li{
+
+.boxpagination nav ul li {
     text-align: center;
     list-style-type: none;
     width: 100%;
@@ -207,16 +209,16 @@ span {
 
 
 
-.boxpagination nav ul li a{
+.boxpagination nav ul li a {
     text-align: center;
     text-decoration: none;
-    
+
     border-radius: 1px;
     width: 100%;
     color: white;
 }
 
-.boxpagination nav ul li a:hover{
+.boxpagination nav ul li a:hover {
     text-align: center;
     text-decoration: none;
     border: 1px white solid;
@@ -225,17 +227,17 @@ span {
     background-color: white;
 }
 
-.page-link{
-   color: white;
-   width: 2%;
+.page-link {
+    color: white;
+    width: 2%;
 }
 
 
-#pagination{
+#pagination {
     width: 100%;
     display: flex;
     justify-content: center;
-  
+
 }
 
 

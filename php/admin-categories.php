@@ -4,6 +4,7 @@ session_start();
 require '../classes/Bdd.php';
 require '../classes/Souscategorie.php';
 require '../classes/Categorie.php';
+require '../classes/Panier.php';
 $categorie = new Categorie('');
 $sousCategorie = new SousCategorie('');
 
@@ -12,6 +13,13 @@ if (isset($_SESSION['droit']) == 'administrateur') {
     header('Location : accueil.php');
 }
 
+if (isset($_GET['supprimer'])) {
+   $id =  intval($_GET['supprimer']);
+$categorie->deleteCategorie($id);
+}elseif (isset($_GET['supprSCat'])) {
+    $id =  intval($_GET['supprSCat']);
+    $sousCategorie->deleteSousCategorie($id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -102,8 +110,12 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                     <thead>
                         <tr>
 
-                            <th> <h3>Nom</h3></th>
-                            <th><h3>Action</h3></th>
+                            <th>
+                                <h3>Nom</h3>
+                            </th>
+                            <th>
+                                <h3>Action</h3>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -113,13 +125,14 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                                 <td><?= $uneCategorie["nom"] ?></td>
                                 <td>
                                     <div class="flex">
-                                        <button id="edit"><a class="text-decoration-none" href="admin-categories?action=modifier&id=<?= $uneCategorie["id"] ?>">
-                                            <i class="fas fa-user-edit text-primary edit"></i>
-                                        </a></button>
-                                    
-                                    <button><a href="admin-categories.php?action=supprimer&id=<?= $uneCategorie["id"] ?>">
-                                            <i class="fas fa-trash-alt text-danger"></i>
-                                        </a></button>
+                                        <button id="edit"><a href="admin-categories?action=modifier&id=<?= $uneCategorie["id"] ?>">
+                                                <i class="fas fa-user-edit text-primary edit"></i>
+                                            </a></button>
+
+                                        <button><a href="admin-categories.php?supprimer=<?= $uneCategorie["id"] ?>">
+                                        
+                                                <i class="fas fa-trash-alt text-danger"></i>
+                                            </a></button>
                                     </div>
                                 </td>
                             </tr>
@@ -135,12 +148,12 @@ if (isset($_SESSION['droit']) == 'administrateur') {
 
             <?php
             $listeSousCategories = $sousCategorie->getAllSousCategorie2();
-           if (empty($listeSousCategories)) : ?>
+            if (empty($listeSousCategories)) : ?>
                 <div>
                     <div>
                         <ul>
                             <li>
-                                <i></i> Aucune catégorie pour l'instant. Veuillez en ajouter.
+                                <i></i> Aucune sous-catégorie pour l'instant. Veuillez en ajouter.
                             </li>
                         </ul>
                     </div>
@@ -149,9 +162,15 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                 <table>
                     <thead>
                         <tr>
-                        <th> <h3>Categorie</h3></th>
-                        <th> <h3>Nom</h3></th>
-                        <th> <h3>Action</h3></th>
+                            <th>
+                                <h3>Categorie</h3>
+                            </th>
+                            <th>
+                                <h3>Nom</h3>
+                            </th>
+                            <th>
+                                <h3>Action</h3>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -162,13 +181,14 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                                 <td><?= $uneCategorie["sousnom"] ?></td>
                                 <td>
                                     <div class="flex">
-                                    <button> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
-                                            <i class="fas fa-user-edit text-primary"></i>
-                                        </a> </button>
-                                   
-                        <button> <a href="listeCategorie.php?action=supprimer&id=<?= $uneCategorie["souscatid"] ?>">
-                                            <i class="fas fa-trash-alt text-danger"></i>
-                                        </a> </button>
+                                        <button> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
+                                                <i class="fas fa-user-edit text-primary"></i>
+                                                
+                                            </a> </button>
+
+                                        <button> <a href="admin-categories.php?supprSCat=<?=$uneCategorie["souscatid"];?>">
+                                                <i class="fas fa-trash-alt text-danger"></i>
+                                            </a> </button>
                                     </div>
                                 </td>
                             </tr>

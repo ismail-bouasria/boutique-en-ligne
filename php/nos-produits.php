@@ -2,6 +2,7 @@
 session_start();
 require '../classes/Bdd.php';
 require '../classes/Categorie.php';
+require '../classes/Panier.php';
 $categorie = new Categorie('');
 ?>
 <!DOCTYPE html>

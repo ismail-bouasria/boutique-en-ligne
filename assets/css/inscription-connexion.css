@@ -1,136 +1,141 @@
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
-main{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    
 }
+
 #formulaire {
-    z-index: 1;
-    background-color: rgba(243, 120, 58, 0.04);
-    display: flex;
-    justify-content: center;
-    width: 90%;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 3% 0 0 5%;
-   
-  }
-  
-  #messageErreur{
+  z-index: 1;
+  background-color: rgba(243, 120, 58, 0.04);
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 3% 0 0 5%;
 
-    text-align: center;
-    background-color: rgb(188, 24, 24);
-    color: whitesmoke;
-  }
-
-  #messageErreur h1{
-
-   font-size: large;
-   font-weight: 600;
-}
-  
-#messageSucces{
-
-    text-align: center;
-    background-color: rgb(24, 188, 92);
-    color: whitesmoke;
-    
 }
 
-#messageSucces h1{
+#messageErreur {
 
-    font-size: large;
-    font-weight: 600;
-   }
-  
-  
-  #inscription, #connexion {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
-  h2 {
-    font-size: 2em;
-    width: 86%;
-    margin-bottom: 50px;
-    letter-spacing: 1px;
-  }
-  
-  #inscription h2 span {
-    color: #88A66A;
-  }
-  #connexion h2 span {
-    color: #88A66A
-  }
-  
-  #inscription form, #connexion form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+  text-align: center;
+  background-color: rgb(188, 24, 24);
+  color: whitesmoke;
 }
-  
+
+#messageErreur h1 {
+
+  font-size: large;
+  font-weight: 600;
+}
+
+#messageSucces {
+
+  text-align: center;
+  background-color: rgb(24, 188, 92);
+  color: whitesmoke;
+
+}
+
+#messageSucces h1 {
+
+  font-size: large;
+  font-weight: 600;
+}
+
+
+#inscription,
+#connexion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+h2 {
+  font-size: 2em;
+  width: 86%;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
+
+#inscription h2 span {
+  color: #88A66A;
+}
+
+#connexion h2 span {
+  color: #88A66A
+}
+
+#inscription form,
+#connexion form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
 input {
-    font-size: 0.8em;
-    color: #848484;
-    padding-left: 10px;
-    font-weight: bold;
-    border-style: none;
-    height: auto;
-    margin-bottom: 50px;
-    height: 70px;
-    box-shadow:1px 1px 1px lightgrey;
-}
-  
-#inscription {
-    width: 50%;
-    border-right:5px solid rgb(88 139 103);
-    background-color: rgba(255, 255, 255, 0.77);
-    padding-right:4% ;
+  font-size: 0.8em;
+  color: #848484;
+  padding-left: 10px;
+  font-weight: bold;
+  border-style: none;
+  height: auto;
+  margin-bottom: 50px;
+  height: 70px;
+  box-shadow: 1px 1px 1px lightgrey;
 }
 
-  #connexion {
-    width: 50%;
-    background-color: rgba(255, 255, 255, 0.77);
-    padding-left:4% ;
+#inscription {
+  width: 50%;
+  border-right: 5px solid rgb(88 139 103);
+  background-color: rgba(255, 255, 255, 0.77);
+  padding-right: 4%;
 }
-  
-  a {
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  #inscription button {
-    color: white;
-    font-size: 1em;
-    border-style: none;
-    border-radius: 40px;
-    width: 60%;
-    height: 55px;
-    background-color: #88A66A;
-    margin: 0 0 10%;
-  }
-  #connexion button {
-    color: white;
-    font-size: 1em;
-    border-style: none;
-    border-radius: 40px;
-    width: 60%;
-    height: 55px;
-    background-color: #88A66A;
-  }
-  
-  small a{
-    color: #848484;
-  }
-  
-  small a:hover{
-    color: #88A66A;
-  }
- #mdp{
-    color: #848484;
-    font-size: x-small;
-    text-align: center;
- }
+
+#connexion {
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.77);
+  padding-left: 4%;
+}
+
+a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+#inscription button {
+  color: white;
+  font-size: 1em;
+  border-style: none;
+  border-radius: 40px;
+  width: 60%;
+  height: 55px;
+  background-color: #88A66A;
+  margin: 0 0 10%;
+}
+
+#connexion button {
+  color: white;
+  font-size: 1em;
+  border-style: none;
+  border-radius: 40px;
+  width: 60%;
+  height: 55px;
+  background-color: #88A66A;
+}
+
+small a {
+  color: #848484;
+}
+
+small a:hover {
+  color: #88A66A;
+}
+
+#mdp {
+  color: #848484;
+  font-size: x-small;
+  text-align: center;
+}
