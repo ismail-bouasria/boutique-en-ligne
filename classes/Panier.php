@@ -47,7 +47,7 @@ class Panier extends Bdd
  
     }
 
-    
+
 
     // Methode pour compter le nombre d'article 
 
@@ -125,7 +125,7 @@ class Panier extends Bdd
 
     //  Methode pour montrer des produits dans le panier  panier
     public function showProduitPanier($id){
-        $sql = "SELECT
+        $sql = "SELECT panier.id,
          panier.quantite,
          produits.image,produits.nom,produits.id,produits.description,produits.prix,produits.stock
          FROM `panier`

@@ -18,7 +18,7 @@ class Commandes extends Bdd
     //  Methode pour enregister des commandes au panier;
     public function insertCommandes($numero, $idUser, $idPanier)
     {
-        $sql = "INSERT INTO `commandes`(`numero`, `id_utilisateur`, `id_panier`, ) VALUES (?,?,?)";
+        $sql = "INSERT INTO `commande_panier`(`numero`, `id_panier`) VALUES (?,?,?)";
         $addPanier = $this->bdd->prepare($sql);
         $addPanier->execute([$numero, $idUser, $idPanier]);
     }
@@ -53,11 +53,6 @@ class Commandes extends Bdd
     
     }
    
-
-
-
-
-
 
 
 
