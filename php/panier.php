@@ -23,8 +23,9 @@ if (isset($_GET['supprimer'])) {
     <link rel="stylesheet" href="../assets/css/panier.css">
     <link rel="stylesheet" href="../assets/css/page-produit.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../js/panier.js"></script>
+    <script src="../js/bootstrap.js"></script>
     <title>Panier</title>
 
 </head>

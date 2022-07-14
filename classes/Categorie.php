@@ -95,7 +95,7 @@ class Categorie extends Bdd
         $getAll->execute();
         $getAllLink = $getAll->fetchAll();
         foreach ($getAllLink as $value) {
-            echo '<li><a href="categorie-produit.php?categorie=' . $value['id'] . '">' . $value['nom'] . '</a></li>';
+            echo '<a class="dropdown-item" href="categorie-produit.php?categorie=' . $value['id'] . '">' . $value['nom'] . '</a>';
         }
     }
 }

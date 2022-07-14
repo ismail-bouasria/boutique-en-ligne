@@ -134,14 +134,14 @@ header nav>ul li:hover:nth-child(4) .sous {
 }
 
 #bullePanier {
-    width: 10%;
+    width: 30%;
     height: 23px;
     position: absolute;
     background-color: rgba(199, 32, 32, 1);
     border-radius: 55px;
     display: flex;
-    top: 3vh;
-    left: 85px;
+    top: 2vh;
+    left: 75px;
     color: white;
     justify-content: center;
     font-size: medium;
