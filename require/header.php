@@ -1,18 +1,18 @@
 <header>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white">
-  <a class="navbar-brand" href="accueil.php"><img src="../assets/img/nwfe-logo.png" width="100" height="100" alt=""></a>
+  <a class="navbar-brand" href="accueil.php"><img src="../assets/img/nwfe-logo.png" width="120" height="120" alt=""></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="mr-1 nav-item active">
-        <a class="nav-link " href="accueil.php">Accueil <span class="sr-only">(current)</span></a>
+      <li class=" nav-item active">
+        <a class="nav-link bg-white " href="accueil.php">Accueil </a>
       </li>
-      <li class=" mr-5 nav-item dropdown">
-        <a class="  nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="  nav-item dropdown">
+        <a class="  nav-link dropdown-toggle" href="nos-produits.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Nos produits
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -21,7 +21,7 @@
                     $link->selectAllLinkCategorie(); ?>
         </div>
       </li>
-      <li class=" ml-5 mr-2 nav-item dropdown">
+      <li class=" nav-item dropdown">
         <!-- condition d'affichage de compte utilisateurs -->
         <?php if (isset($_SESSION['id'])) { ?>
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,24 +55,24 @@
                        <?php } ?>
         </div>
       </li>
-      <li class=" ml-3 nav-item">
+      <li class=" nav-item">
         <div id="panier">
-                   
+        <a  class="nav-link"href="panier.php">Panier</a>
                         <?php if (isset($_SESSION['id'])) {
                             
                             $count = new Panier();
                         ?>
-                         <div id="bullePanier">
-                        <p><?php echo $count->countProduit(intval($_SESSION['id'])); ?></p> 
+                         <div >
+                        <p id="bullePanier"><?php echo $count->countProduit(intval($_SESSION['id'])); ?></p> 
                         <?php } ?>
                         </div>
-                    <a  class="nav-link"href="panier.php">Panier</a>
+                    
                 </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-3" type="search" placeholder="Chercher votre produit" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
+      <input class="form-control mr-sm-3" type="search" placeholder="Votre produit" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><span id="chercher">Chercher</span></button>
     </form>
   </div>
 </nav>

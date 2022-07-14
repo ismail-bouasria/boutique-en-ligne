@@ -56,7 +56,7 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                 <h1>Ajouter un produit </h1>
             </section>
 
-            <form action="../traitements/formulaire-produit.php" method="post" enctype="multipart/form-data">
+            <form class="form1" action="../traitements/formulaire-produit.php" method="post" enctype="multipart/form-data">
 
                 <label>Choisir une sous-catégorie:</label>
 

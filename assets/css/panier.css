@@ -4,6 +4,13 @@
     margin: 2%;
 }
 
+#chercher{
+    text-transform: none;
+    color: #28a745;
+}
+#chercher:hover{
+    color: white;
+}
 
 #panier-produit {
     display: flex;
@@ -121,6 +128,7 @@
 #boxquantite{
 width: 100%;
 }
+
 #supprimer{
     text-align: end;
     margin: 1%;
@@ -141,4 +149,16 @@ width: 100%;
 
 #total-produit button {
     margin: 2%;
+}
+
+@media only screen and (min-width:320px) and (max-width:991px) { 
+      
+    button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+        cursor: pointer;
+        width: 15% !important;
+        padding: 2%;
+    }
+        
+   
+  
 }

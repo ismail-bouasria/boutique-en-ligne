@@ -61,21 +61,21 @@ $categorie->deleteCategorie($id);
                 <h1>Ajouter une catégorie</h1>
             </section>
 
-            <form action="../traitements/formulaire-categorie.php" method="post" enctype="multipart/form-data">
+            <form class="form1" action="../traitements/formulaire-categorie.php" method="post" enctype="multipart/form-data">
 
 
                 <label>Nom</label>
                 <input type="text" name="name">
                 <label>Image </label>
                 <input type="file" name="photo">
-                <input id="bouton" type="submit" name="subcat" value='Ajouter la  catégorie'>
+                <input id="bouton" type="submit" name="subcat" value='Ajouter'>
             </form>
 
             <section>
                 <h1>Ajouter une sous categorie</h1>
             </section>
 
-            <form action="../traitements/formulaire-sous-categorie.php" method="post" enctype="multipart/form-data">
+            <form class="form1" action="../traitements/formulaire-sous-categorie.php" method="post" enctype="multipart/form-data">
 
                 <label>Choisir une catégorie:</label>
                 <select name="category">
@@ -85,7 +85,7 @@ $categorie->deleteCategorie($id);
                 <label>Nom</label>
                 <input type="text" name="name">
 
-                <input id="bouton" type="submit" name="subsouscat" value='Ajouter la sous catégorie'>
+                <input id="bouton" type="submit" name="subsouscat" value='Ajouter'>
             </form>
 
         </div>

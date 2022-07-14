@@ -1,12 +1,11 @@
-main {
+/* main {
 
     display: flex;
     flex-direction: column;
     margin-top: 2%;
-    align-content: center;
     align-items: center;
     width: 100%;
-}
+} */
 
 section {
     width: 100%;
@@ -26,6 +25,7 @@ h2 {
     color: #8d8d8d;
     margin-left: 5%;
 }
+
 
 
 

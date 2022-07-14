@@ -26,7 +26,7 @@ require '../classes/Panier.php';
     ?>
     <main>
         <section id="enCeMoment">
-            <img src="../assets/img/Breads-poulet-pane.jpg" width=100% alt="">
+            <img class="responsimg" src="../assets/img/Breads-poulet-pane.jpg" width=100% alt="">
             <h1 id="text">EN CE MOMENT</h1>
             <h1 id="text2">LE BREAD</h1>
             <h1 id="text3"> CROUSTI POULET</h1>
@@ -39,7 +39,7 @@ require '../classes/Panier.php';
         </section>
 
         <section id="presentation">
-            <img id="imgPresentation" src="../assets/img/restaurant.jpg" width="35%" alt="">
+            <div class="responsimg2"><img id="imgPresentation" src="../assets/img/restaurant.jpg" width="100%" alt="No Wasting for eat"></div>
             <article>
                 <h1>CONCEPT INÉDIT !</h1>
                 <p> No Wasting For Eat, propose aux clients des produits de qualités issues de l'agriculture Bio et d'un circuit de distribution cours
