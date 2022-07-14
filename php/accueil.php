@@ -17,6 +17,7 @@ require '../classes/Panier.php';
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="https://kit.fontawesome.com/53bdaa6800.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="w-full h-full">
