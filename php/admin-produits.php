@@ -101,13 +101,13 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                     <thead>
                         <tr>
                            
-                            <th>
+                            <th class="responsimg2">
                                 <h3>Image</h3>
                             </th>
                             <th>
                                 <h3>Nom</h3>
                             </th>
-                            <th>
+                            <th class="responsimg2">
                                 <h3>Descritpiton</h3>
                             </th>
                             <th>
@@ -127,9 +127,9 @@ if (isset($_SESSION['droit']) == 'administrateur') {
                         foreach ($listeProduits as $produit) : ?>
                             <tr>
 
-                                <td> <img class="sizeimg" src="<?= $produit["image"] ?>" alt=""></td>
+                                <td class="responsimg2"> <img class="sizeimg" src="<?= $produit["image"] ?>" alt=""></td>
                                 <td><?= $produit["nom"] ?></td>
-                                <td><?= $produit["description"] ?></td>
+                                <td class="responsimg2"><?= $produit["description"] ?></td>
                                 <td><?= $produit["prix"] ?>€</td>
                                 <td><?= $produit["stock"] ?></td>
 

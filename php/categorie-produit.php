@@ -80,7 +80,7 @@ $categorie = new SousCategorie('');
                                         <h1> <?php echo $valueP['nom']; ?></h1>
                                         <p> <?php echo $valueP['description']; ?></p>
                                         <h1> Prix : <span> <?php echo $valueP['prix']; ?>€</span> </h1>
-                                        <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class="btn btn-primary" target="blank"> Commander !</a>
+                                        <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class=" btn-primary2" target="blank"> Commander !</a>
                                     </div>
                                 </div>
                             </div>

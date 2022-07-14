@@ -31,6 +31,7 @@ h1 {
 
     display: flex;
     flex-direction: column;
+    align-self: center;
     width: 70%;
     text-align: start;
 }
@@ -182,29 +183,59 @@ i {
   @media only screen and (min-width:320px) and (max-width:991px){ 
     
     .contenairFormulair {
-        width: 180%;
+        width: 100%;
       
     }
     .contenairCategorie {
-        width: 180%;
+        width: 100%;
         
     }
+
+    .form1 input,
+.form1 select,
+.form1 textarea {
+    text-align: center;
+    width: 100%;
+}
+
+#bouton {
+    cursor: pointer;
+    background-color: #31965b;
+    border: none;
+    color: white;
+    font-size: x-large;
+    border-radius: 5px;
+    margin: 3% 0 3%;
+    padding: 1%;
+    width: 100%;
+}
+
+table {
+    border: medium solid #28ab65;
+    border-collapse: collapse;
+    margin-bottom: 3%;
+    width: 100%;
+    font-size: medium;
+}
+
+th {
+    font-family: monospace;
+    border: thin solid #ffffffb6;
+    color: white;
+    background-color: #1f6e3c8b;
+}
+
+td {
+    border: thin solid #5e615f84;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.responsbutton{
+    width: 36% !important;
+}
+    
     }
   
     
-    @media only screen and (min-width:1400px){ 
-        
-      #pres h2{
-        color: #1652a0;
-        font-size: 80px;
-      }
-    
-      #pres p{
-        font-size: 50px;
-      }
-     
-      
-      
-     
-    }
   

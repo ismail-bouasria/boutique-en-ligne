@@ -45,7 +45,7 @@ h2 {
 }
 
 #cat-produits {
-    width: 23%;
+    width: 33%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -97,10 +97,10 @@ span {
 
 .img-content p {
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
 
 }
 
@@ -133,7 +133,12 @@ span {
     top: 40%;
 }
 
-.btn {
+
+
+.btn-primary2 {
+    color: #fff;
+    background-color: rgba(97, 159, 68, 1);
+    margin-bottom: 4%;
     display: inline-block;
     padding: 0.5em 1.5em;
     text-decoration: none;
@@ -143,18 +148,22 @@ span {
     text-transform: uppercase;
     font-weight: small;
     margin-bottom: 4%;
+    
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: rgba(97, 159, 68, 1);
-    margin-bottom: 4%;
-}
-
-.btn-primary:hover {
+.btn-primary2:hover {
     background-color: rgb(130, 186, 104);
+    color: #fff;
     margin-bottom: 4%;
-
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: small;
+    margin-bottom: 4%;
 }
 
 
@@ -251,3 +260,64 @@ span {
     background-color: rgb(46, 113, 46);
     color: #fff;
 }
+
+/* MEDIAQUERY */
+
+@media only screen and (min-width:320px) and (max-width:991px) { 
+
+    .img-container {
+        position: relative;
+        border-radius: 10px;
+        width: 150% !important;
+    
+    }
+
+    .img-content a {
+        font-size: 65%;
+    }
+  
+    .img-content h1 {
+
+        display: none;
+    }
+    
+    span {
+        color: white;
+    
+    }
+    
+    .img-content p {
+        display: none;
+    
+    }
+
+    .btn-primary2 {
+        color: #fff;
+        background-color: rgba(97, 159, 68, 1);
+        margin-bottom: 4%;
+        display: inline-block;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: small;
+        margin-bottom: 4%;
+        
+    }
+    
+    .btn-primary2:hover {
+        background-color: rgb(130, 186, 104);
+        color: #fff;
+        margin-bottom: 4%;
+        display: inline-block;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        outline: none;
+        text-transform: uppercase;
+        font-weight: small;
+        margin-bottom: 4%;
+    }
+}
+

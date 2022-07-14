@@ -128,11 +128,11 @@ $categorie->deleteCategorie($id);
                                 <td><?= $uneCategorie["nom"] ?></td>
                                 <td>
                                     <div class="flex">
-                                        <button id="edit"><a href="admin-categories?action=modifier&id=<?= $uneCategorie["id"] ?>">
+                                        <button class="responsbutton" id="edit"><a href="admin-categories?action=modifier&id=<?= $uneCategorie["id"] ?>">
                                                 <i class="fas fa-user-edit text-primary edit"></i>
                                             </a></button>
 
-                                        <button><a href="admin-categories.php?supprimer=<?= $uneCategorie["id"] ?>">
+                                        <button class="responsbutton"><a href="admin-categories.php?supprimer=<?= $uneCategorie["id"] ?>">
                                         
                                                 <i class="fas fa-trash-alt text-danger"></i>
                                             </a></button>
@@ -184,12 +184,12 @@ $categorie->deleteCategorie($id);
                                 <td><?= $uneCategorie["sousnom"] ?></td>
                                 <td>
                                     <div class="flex">
-                                        <button> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
+                                        <button class="responsbutton"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
                                                 <i class="fas fa-user-edit text-primary"></i>
                                                 
                                             </a> </button>
 
-                                        <button> <a href="admin-categories.php?supprSCat=<?=$uneCategorie["souscatid"];?>">
+                                        <button class="responsbutton"> <a href="admin-categories.php?supprSCat=<?=$uneCategorie["souscatid"];?>">
                                                 <i class="fas fa-trash-alt text-danger"></i>
                                             </a> </button>
                                     </div>
