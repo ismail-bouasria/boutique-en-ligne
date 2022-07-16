@@ -49,7 +49,7 @@ class Panier extends Bdd
 
 
 
-    // Methode pour compter le nombre d'article 
+    // Methode pour compter le total prix 
 
     public function totalPrix ($id) {
 
@@ -77,7 +77,7 @@ class Panier extends Bdd
 
     }
 
-     // Methode pour compter le nombre d'article 
+     // Methode pour compter la somme du prix 
 
     public function sumPrix ($id) {
 
@@ -90,7 +90,7 @@ class Panier extends Bdd
 
 }
 
- // Methode pour compter le nombre d'article 
+ // Methode pour compter la somme des produits
 
  public function sumProduit ($id) {
 
