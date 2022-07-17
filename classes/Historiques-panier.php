@@ -36,12 +36,12 @@ class HistoriquePanier extends Bdd
     }
 
 
-     //  Methode pour modifier la quantite des article déjà dans le panier
-     public function updatePanier($quantite, $idProduit, $idUser)
+     //  Methode pour modifier la quantite des article déjà dans l'historique'
+     public function updateHistorique($quantite, $idProduit, $numero)
      {
          $sql = "UPDATE `historiques_panier` SET `quantite`= ? WHERE `id_produit`= ? AND `numero_commande`= ? ";
          $getProduitPanier = $this->bdd->prepare($sql);
-         $getProduitPanier->execute([$quantite,$idProduit,$idUser]);
+         $getProduitPanier->execute([$quantite,$idProduit,$numero]);
         
  
     }

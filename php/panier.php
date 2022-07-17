@@ -13,14 +13,28 @@ $historique = new HistoriquePanier();
 
 if (isset($_GET['supprimer'])) {
     $idUser = $_SESSION['id'];
-    $idProduit =  intval($_GET['supprimer']);
+    $idProduit =  strip_tags(intval($_GET['supprimer']));
     $numero = $commande->getNumero($idUser);
     
  $panier->deleteProduitPanier($idUser,$idProduit);
  $historique->deleteProduitHistorique($numero,$idProduit);
  }
 
+ if (isset($_GET['modifier'])) {
+    $idUser = $_SESSION['id'];
+    $idProduit =  strip_tags(intval($_GET['modifier']));
+    $numero = $commande->getNumero($idUser);
+    $quantite = intval($_POST["quantite"]);
+   
+    
+ $panier->updatePanier($quantite, $idProduit, $idUser);
+ $historique->updateHistorique($quantite,$idProduit,$numero);
+ }
+
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,10 +88,10 @@ if (isset($_GET['supprimer'])) {
                             <p> Description : <?php echo $value['description']; ?> </p>
                             <p> Prix : <?php echo $value['prix']; ?> € </p>
                             <div>
-                                <form action="" method="post">
+                                <form action="panier.php?modifier=<?= $value["id"] ?>" method="post">
                                 <p>Quantité :</p>
-                                <input type="number"  data-id ="<?php echo $value['id']; ?> " class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite'];?>" max="<?php echo $value['stock']; ?>" colisage="1">
-                                <button class="button-5" type="submit" name="panier"> Modifier </button>
+                                <input type="number"  class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite'];?>" max="<?php echo $value['stock']; ?>" colisage="1">
+                                <button type="submit"  class="plus1">Modifier </button>
                                  </form>
                             </div>
                         </div>
@@ -85,7 +99,7 @@ if (isset($_GET['supprimer'])) {
                     </div>
                     <section id="supprimer">
                     
-                        <button><a class="text-decoration-none" href="panier.php?supprimer=<?= $value["id"] ?>">supprimer </a></button>
+                        <button class="moins1"><a class="text-decoration-none" href="panier.php?supprimer=<?= $value["id"] ?>">Supprimer </a></button>
                     </section>
                     
                 </div>
