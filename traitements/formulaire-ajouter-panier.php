@@ -24,7 +24,7 @@ if (isset($_POST['panier'])) {
 
     $quantite = intval($_POST['quantite']);
     $idUser = intval($_SESSION['id']);
-    $commandeExist = $commande->commandeExist($idUser);
+    $commandeExist = $commande->getNumero($idUser);
 
 
     if (empty($commandeExist)) {

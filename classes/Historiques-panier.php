@@ -125,10 +125,10 @@ class HistoriquePanier extends Bdd
 
 
     //  Methode pour montrer des produits dans le panier  panier
-    public function deleteProduitPanier($idUser,$idProduit){
-        $sql = "DELETE FROM `panier` WHERE `id_utilisateur`=? AND `id_produit`=?";
+    public function deleteProduitHistorique($idNumero,$idProduit){
+        $sql = "DELETE FROM `historiques_panier` WHERE `numero_commande`=? AND `id_produit`=?";
         $addPanier = $this->bdd->prepare($sql);
-        $addPanier->execute([$idUser,$idProduit]);
+        $addPanier->execute([$idNumero,$idProduit]);
         $panier = $addPanier->fetchAll();
 
         return $panier;

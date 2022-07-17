@@ -3,12 +3,21 @@ session_start();
 require '../classes/Produit.php';
 require '../classes/Categorie.php';
 require '../classes/Panier.php';
+require '../classes/Historiques-panier.php';
+require '../classes/Commandes.php';
+
 $produit = new Produit();
 $panier = new Panier('');
+$commande = new Commandes();
+$historique = new HistoriquePanier();
 
 if (isset($_GET['supprimer'])) {
-    $idProd =  intval($_GET['supprimer']);
- $panier->deleteProduitPanier($_SESSION['id'],$idProd);
+    $idUser = $_SESSION['id'];
+    $idProduit =  intval($_GET['supprimer']);
+    $numero = $commande->getNumero($idUser);
+    
+ $panier->deleteProduitPanier($idUser,$idProduit);
+ $historique->deleteProduitHistorique($numero,$idProduit);
  }
 ?>
 

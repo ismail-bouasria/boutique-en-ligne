@@ -24,22 +24,11 @@ class Commandes extends Bdd
         $addCommande->execute([$numero, $idUser]);
     }
 
-    //  Methode pour savoir si la commande existe déjà et en cours (ON) : 
-    public function commandeExist($idUser)
-    {
-        $sql = "SELECT  `numero` FROM `commandes` WHERE `id_utilisateur`= ? AND `etat`='on' ";
-        $commandeExist = $this->bdd->prepare($sql);
-        $commandeExist->execute([$idUser]);
-        $getExist= $commandeExist->fetch();
-
-        return $getExist;
-        
-    }
 
 //  Methode pour selectionner le numero de commande si la commande existe déjà et en cours (ON) : 
 public function getNumero($idUser)
 {
-    $sql = "SELECT `numero` FROM `commandes` WHERE `id_utilisateur`= ? ;
+    $sql = "SELECT `numero` FROM `commandes` WHERE `id_utilisateur`= ?  AND `etat`='on'  ;
     ";
     $getNumero = $this->bdd->prepare($sql);
     $getNumero->execute([$idUser]);
