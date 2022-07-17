@@ -15,54 +15,39 @@ class Commandes extends Bdd
 
 
 
-    //  Methode pour enregister des commandes au panier;
-    public function insertCommandes($numero, $idUser, $idPanier)
+    //  Methode pour enregister la commande : 
+    public function createCommande($numero, $idUser)
     {
-        $sql = "INSERT INTO `commande_panier`(`numero`, `id_panier`) VALUES (?,?,?)";
-        $addPanier = $this->bdd->prepare($sql);
-        $addPanier->execute([$numero, $idUser, $idPanier]);
+        
+        $sql = "INSERT INTO `commandes`( `numero`, `id_utilisateur`) VALUES (?,?)";
+        $addCommande = $this->bdd->prepare($sql);
+        $addCommande->execute([$numero, $idUser]);
     }
 
+    //  Methode pour savoir si la commande existe déjà et en cours (ON) : 
+    public function commandeExist($idUser)
+    {
+        $sql = "SELECT  `numero` FROM `commandes` WHERE `id_utilisateur`= ? AND `etat`='on' ";
+        $commandeExist = $this->bdd->prepare($sql);
+        $commandeExist->execute([$idUser]);
+        $getExist= $commandeExist->fetch();
 
+        return $getExist;
+        
+    }
 
-    public function selectAllcommandes () {
+//  Methode pour selectionner le numero de commande si la commande existe déjà et en cours (ON) : 
+public function getNumero($idUser)
+{
+    $sql = "SELECT `numero` FROM `commandes` WHERE `id_utilisateur`= ? ;
+    ";
+    $getNumero = $this->bdd->prepare($sql);
+    $getNumero->execute([$idUser]);
+    $numero=$getNumero->fetch();
 
-        $sql = "SELECT commandes.numero, produits.nom,produits.prix, panier.quantite, utilisateurs.login,utilisateurs.email 
-        FROM `commandes` JOIN `panier` ON commandes.id_panier = panier.id 
-        JOIN `produits` ON panier.id_produit = produits.id 
-        JOIN `utilisateurs` ON commandes.id_utilisateur = utilisateurs.id";
-        $selectAll = $this->bdd->prepare($sql);
-        $selectAll->execute();
-        $selectAllcommandes = $selectAll->fetchAll();
-       
-        return $selectAllcommandes;
+    return $numero[0];
     
-    }
-   
+}
+  
 
-    public function selectAllById($id) {
-
-        $sql = "SELECT commandes.numero, produits.nom,produits.prix, panier.quantite 
-        FROM `commandes` JOIN `panier` ON commandes.id_panier = panier.id 
-        JOIN `produits` ON panier.id_produit = produits.id WHERE commandes.id_utilisateur = ?";
-        $selectAll = $this->bdd->prepare($sql);
-        $selectAll->execute([$id]);
-        $selectAllcommandes = $selectAll->fetchAll();
-       
-        return $selectAllcommandes;
-    
-    }
-   
-
-
-
-    //  Methode pour montrer des produits dans le panier  panier
-    public function deleteProduitPanier($idUser,$idProduit){
-        $sql = "DELETE FROM `panier` WHERE `id_utilisateur`=? AND `id_produit`=?";
-        $addPanier = $this->bdd->prepare($sql);
-        $addPanier->execute([$idUser,$idProduit]);
-        $panier = $addPanier->fetchAll();
-
-        return $panier;
-    }
 }

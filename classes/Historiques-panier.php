@@ -18,19 +18,19 @@ class HistoriquePanier extends Bdd
     //  Methode pour ajouter des produits à l'historique 
     public function addHistoriquePanier($quantite, $idProduit, $idCommande)
     {
-        $sql = "INSERT INTO `historiques_panier`(`quantite`,`id_produit`, `id_commande`) VALUES (?,?,?)";
-        $addPanier = $this->bdd->prepare($sql);
-        $addPanier->execute([$quantite, $idProduit, $idCommande]);
+        $sql = "INSERT INTO `historiques_panier`(`quantite`,`id_produit`, `numero_commande`) VALUES (?,?,?)";
+        $addHistoriquePanier = $this->bdd->prepare($sql);
+        $addHistoriquePanier->execute([$quantite, $idProduit, $idCommande]);
     }
 
 
 
     //  Methode pour modifier la quantite  si l'article existe déjà dans l'historique
-    public function addOneMoreProduit($quantite, $idProduit, $idUser)
+    public function addOneMoreHistorique($quantite, $idProduit, $idCommande)
     {
-        $sql = "UPDATE `historiques_panier` SET `quantite` = quantite + ? WHERE `id_produit`= ? AND `id_utilisateur`= ? ";
+        $sql = "UPDATE `historiques_panier` SET `quantite` = quantite + ? WHERE `id_produit`= ? AND `numero_commande`= ? ";
         $getProduitPanier = $this->bdd->prepare($sql);
-        $getProduitPanier->execute([$quantite,$idProduit,$idUser]);
+        $getProduitPanier->execute([$quantite,$idProduit,$idCommande]);
        
 
     }
@@ -39,7 +39,7 @@ class HistoriquePanier extends Bdd
      //  Methode pour modifier la quantite des article déjà dans le panier
      public function updatePanier($quantite, $idProduit, $idUser)
      {
-         $sql = "UPDATE `historiques_panier` SET `quantite`= ? WHERE `id_produit`= ? AND `id_utilisateur`= ? ";
+         $sql = "UPDATE `historiques_panier` SET `quantite`= ? WHERE `id_produit`= ? AND `numero_commande`= ? ";
          $getProduitPanier = $this->bdd->prepare($sql);
          $getProduitPanier->execute([$quantite,$idProduit,$idUser]);
         
@@ -103,39 +103,25 @@ class HistoriquePanier extends Bdd
 
 
 //  Methode pour recuperer le nom des produits ajouté panier
-    public function getProduitPanier($idProduit, $idUser)
+    public function getProduitHistorique($idProduit, $idUser)
     {
         $sql = "SELECT
         produits.nom
          FROM `produits`
-         JOIN `panier`
-         ON panier.id_produit = produits.id
-        WHERE produits.id = ? AND `id_utilisateur`= ? ";
-        $getProduitPanier = $this->bdd->prepare($sql);
-        $getProduitPanier->execute([$idProduit, $idUser]);
-        $getProduit= $getProduitPanier->fetch();
+         JOIN `historiques_panier`
+         ON historiques_panier.id_produit = produits.id
+        WHERE produits.id = ? AND `numero_commande`= ? ";
+        $getProduitHistorique = $this->bdd->prepare($sql);
+        $getProduitHistorique->execute([$idProduit, $idUser]);
+        $getHistorique= $getProduitHistorique->fetch();
 
-        return $getProduit;
+        return $getHistorique;
 
     }
 
 
 
-    //  Methode pour montrer des produits dans le panier  panier
-    public function showProduitPanier($id){
-        $sql = "SELECT panier.id,
-         panier.quantite,
-         produits.image,produits.nom,produits.id,produits.description,produits.prix,produits.stock
-         FROM `panier`
-         JOIN `produits`
-         ON panier.id_produit = produits.id
-        WHERE panier.id_utilisateur =?";
-        $addPanier = $this->bdd->prepare($sql);
-        $addPanier->execute([$id]);
-        $panier = $addPanier->fetchAll();
-
-        return $panier;
-    }
+   
 
 
     //  Methode pour montrer des produits dans le panier  panier
