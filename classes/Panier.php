@@ -140,7 +140,7 @@ class Panier extends Bdd
     }
 
 
-    //  Methode pour montrer des produits dans le panier  panier
+    //  Methode pour supprimer des produits dans le panier  
     public function deleteProduitPanier($idUser,$idProduit){
         $sql = "DELETE FROM `panier` WHERE `id_utilisateur`=? AND `id_produit`=?";
         $addPanier = $this->bdd->prepare($sql);
