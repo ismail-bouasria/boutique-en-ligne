@@ -19,6 +19,7 @@ if (isset($_GET['supprimer'])) {
  $panier->deleteProduitPanier($idUser,$idProduit);
  $historique->deleteProduitHistorique($numero,$idProduit);
  }
+
 ?>
 
 <!DOCTYPE html>
@@ -72,15 +73,18 @@ if (isset($_GET['supprimer'])) {
                             <h2><?php echo $value['nom'];?></h2>
                             <p> Description : <?php echo $value['description']; ?> </p>
                             <p> Prix : <?php echo $value['prix']; ?> € </p>
-                            <div id="boxquantite">
+                            <div>
+                                <form action="" method="post">
                                 <p>Quantité :</p>
-                                <input type="number"  data-id ="<?php echo $value['id']; ?> " class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite']; ?>" max="<?php echo $value['stock']; ?>" colisage="1">
-                              
+                                <input type="number"  data-id ="<?php echo $value['id']; ?> " class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite'];?>" max="<?php echo $value['stock']; ?>" colisage="1">
+                                <button class="button-5" type="submit" name="panier"> Modifier </button>
+                                 </form>
                             </div>
                         </div>
 
                     </div>
                     <section id="supprimer">
+                    
                         <button><a class="text-decoration-none" href="panier.php?supprimer=<?= $value["id"] ?>">supprimer </a></button>
                     </section>
                     

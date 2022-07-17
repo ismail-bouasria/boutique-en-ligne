@@ -55,7 +55,7 @@
 
 #boxquantite {
     display: flex;
-    justify-content: center;
+    text-align: center;
     width: 80%;
 }
 
@@ -107,9 +107,11 @@
 }
 
 .number {
-    width: 10% !important;
+    width: 12% !important;
+    height: 5vh;
     text-align: center !important;
-    margin: 0% 1% 0 1%;
+    margin: 0% 1% 0 10%;
+
 }
 #total-infos{
     width: 40%;
