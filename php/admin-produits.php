@@ -9,10 +9,6 @@ require '../classes/Panier.php';
 $sousCategorie = new SousCategorie('');
 $produit = new Produit();
 
-if (isset($_SESSION['droit']) == 'administrateur') {
-} else {
-    header('Location : accueil.php');
-}
 
 ?>
 
@@ -135,7 +131,7 @@ if (isset($_SESSION['droit']) == 'administrateur') {
 
                                 <td>
                                     <div class="flex">
-                                        <button id="size"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
+                                        <button id="size"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>"target ="_blank">
                                                 <i class="fas fa-user-edit text-primary"></i>
                                             </a> </button>
 

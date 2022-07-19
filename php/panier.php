@@ -6,30 +6,37 @@ require '../classes/Panier.php';
 require '../classes/Historiques-panier.php';
 require '../classes/Commandes.php';
 
+
 $produit = new Produit();
 $panier = new Panier('');
 $commande = new Commandes();
 $historique = new HistoriquePanier();
 
+
+// condition de suppression 
+
 if (isset($_GET['supprimer'])) {
     $idUser = $_SESSION['id'];
     $idProduit =  strip_tags(intval($_GET['supprimer']));
     $numero = $commande->getNumero($idUser);
-    
- $panier->deleteProduitPanier($idUser,$idProduit);
- $historique->deleteProduitHistorique($numero,$idProduit);
- }
 
- if (isset($_GET['modifier'])) {
+    $panier->deleteProduitPanier($idUser, $idProduit);
+    $historique->deleteProduitHistorique($numero, $idProduit);
+}
+
+
+// condition de modification
+
+if (isset($_GET['modifier'])) {
     $idUser = $_SESSION['id'];
     $idProduit =  strip_tags(intval($_GET['modifier']));
     $numero = $commande->getNumero($idUser);
     $quantite = intval($_POST["quantite"]);
-   
-    
- $panier->updatePanier($quantite, $idProduit, $idUser);
- $historique->updateHistorique($quantite,$idProduit,$numero);
- }
+
+
+    $panier->updatePanier($quantite, $idProduit, $idUser);
+    $historique->updateHistorique($quantite, $idProduit, $numero);
+}
 
 ?>
 
@@ -60,71 +67,85 @@ if (isset($_GET['supprimer'])) {
     require '../require/header.php';
     ?>
 
-
-
     <main>
         <div id="panier-container">
             <div id="panier-produit">
-                <?php 
-                  $contenuPanier = $panier->showProduitPanier($_SESSION['id']);
-                 if (!empty($contenuPanier)) {
-                
-          
-                 foreach ($contenuPanier as $value) { 
-
-                    
-                ?>
-                 
-                <div id="add-produit">
-                    <section class="prix">
-                        <h3><b>Total = <?php echo $total = $value['prix'] * $value['quantite']; ?> € TTC</b></h3>
-                    </section>
-                    <div id="infos">
-                        <section >
-                            <img  id="image" src="<?php echo $value['image'];?>" alt="">
-                        </section>
-                        <div id="information">
-                            <h2><?php echo $value['nom'];?></h2>
-                            <p> Description : <?php echo $value['description']; ?> </p>
-                            <p> Prix : <?php echo $value['prix']; ?> € </p>
-                            <div>
-                                <form action="panier.php?modifier=<?= $value["id"] ?>" method="post">
-                                <p>Quantité :</p>
-                                <input type="number"  class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite'];?>" max="<?php echo $value['stock']; ?>" colisage="1">
-                                <button type="submit"  class="plus1">Modifier </button>
-                                 </form>
-                            </div>
-                        </div>
-
-                    </div>
-                    <section id="supprimer">
-                    
-                        <button class="moins1"><a class="text-decoration-none" href="panier.php?supprimer=<?= $value["id"] ?>">Supprimer </a></button>
-                    </section>
-                    
-                </div>
-                <?php 
+                <?php
+                if (isset($_SESSION['id'])) {
+                    $contenuPanier = $panier->showProduitPanier($_SESSION['id']);
+                }else {
+                    header("Location: inscription-connexion.php");
                 }
-                 }else { ?>
+
+                if (!empty($contenuPanier)) {
+
+
+                    foreach ($contenuPanier as $value) {
+
+
+                ?>
+
+                        <div id="add-produit">
+                            <section class="prix">
+                                <h3><b>Total = <?php echo $total = $value['prix'] * $value['quantite']; ?> € TTC</b></h3>
+                            </section>
+                            <div id="infos">
+                                <section>
+                                    <img id="image" src="<?php echo $value['image']; ?>" alt="<?php echo $value['nom']; ?>">
+                                </section>
+                                <div id="information">
+                                    <h2><?php echo $value['nom']; ?></h2>
+                                    <p> Description : <?php echo $value['description']; ?> </p>
+                                    <p> Prix : <?php echo $value['prix']; ?> € </p>
+                                    <div>
+                                        <form action="panier.php?modifier=<?= $value["id"] ?>" method="post">
+                                            <p>Quantité :</p>
+                                            <input type="number" class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite']; ?>" max="<?php echo $value['stock']; ?>" colisage="1">
+                                            <button type="submit" class="plus1">Modifier </button>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <section id="supprimer">
+
+                                <button class="moins1"><a class="text-decoration-none" href="panier.php?supprimer=<?= $value["id"] ?>">Supprimer </a></button>
+                            </section>
+
+                        </div>
+                    <?php
+                    }
+                } else { ?>
                     <div id="add-produit">
                         <h2>Le Panier est vide</h2>
                     </div>
-                 <?php } ?>
+                <?php } ?>
 
             </div>
 
             <div id="total-infos">
                 <div id="total-produit">
-                    <section>  <h2>  Total produit : <?php echo $count->sumProduit(intval($_SESSION['id'])); ?> </h2>  </section>
+                    <?php ?>
+                    <section>
+                        <h2> Total produit : <?php if (isset($_SESSION['id'])) {
+                                                    echo $count->sumProduit(intval($_SESSION['id']));
+                                                }; ?> </h2>
+                    </section>
 
-                    <section> <h2> Total TTC : <?php  echo $panier->sumPrix($_SESSION['id']);?>€</h2></section>
+                    <section>
+                        <h2> Total TTC : <?php if (isset($_SESSION['id'])) {
+                                                echo $panier->sumPrix($_SESSION['id']);
+                                            }; ?>€</h2>
+                    </section>
 
-                      
-                   <a href="livraisons.php"><button type="submit" name="Commander"> Passer commande </button></a>
-                   
+
+
+
+                    <a href="mode-livraison.php"><button type="submit" name="Commander"> Passer à la prochaine etape de la commande </button></a>
+
                 </div>
 
-                
+
 
             </div>
 
@@ -136,7 +157,7 @@ if (isset($_GET['supprimer'])) {
 
         <div id="categorie">
             <section>
-                <h2><b>Selection inspirée par nos clients  </b></h2>
+                <h2><b>Selection inspirée par nos clients </b></h2>
             </section>
             <div id="flexcat">
                 <?php
@@ -169,6 +190,3 @@ if (isset($_GET['supprimer'])) {
 </body>
 
 </html>
-
-
-   

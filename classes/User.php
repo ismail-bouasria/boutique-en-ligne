@@ -184,11 +184,11 @@ public function selectAllInfosUser()
         }
     }
 
-    //  Methode pour update les droits des utilisateurs 
+    //  Methode pour selectionner les droits des utilisateurs 
     public function updateDroit($id_droits, $id)
     {
 
-        $updateDroit = $this->bdd->prepare("UPDATE `utilisateurs`  SET `id_droits`=? WHERE `id` =?");
+        $updateDroit = $this->bdd->prepare("Select `utilisateurs`  SET `id_droits`=? WHERE `id` =?");
         $updateDroit->execute([$id_droits, $id]);
     }
 }

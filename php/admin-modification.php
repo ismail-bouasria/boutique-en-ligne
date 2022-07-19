@@ -8,13 +8,7 @@ require '../classes/Panier.php';
 $categorie = new Categorie('');
 $sousCategorie = new SousCategorie('');
 
-if (isset($_GET['supprimer'])) {
-   $id =  intval($_GET['supprimer']);
-$categorie->deleteCategorie($id);
-}elseif (isset($_GET['supprSCat'])) {
-    $id =  intval($_GET['supprSCat']);
-    $sousCategorie->deleteSousCategorie($id);
-} ?>
+?>
 
 
 <!DOCTYPE html>
@@ -32,7 +26,7 @@ $categorie->deleteCategorie($id);
     <script src="../js/bootstrap.js"></script>
 
     <script src="https://kit.fontawesome.com/53bdaa6800.js" crossorigin="anonymous"></script>
-        <title>Administration Categories</title>
+        <title> Modification </title>
 </head>
 
 
