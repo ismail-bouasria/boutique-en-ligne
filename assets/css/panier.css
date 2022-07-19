@@ -28,7 +28,7 @@
     width: 85%;
     margin-bottom: 3%;
     text-align: center;
-    padding: 3%;
+    padding: 0.5%;
 }
 
 .prix {
@@ -139,7 +139,6 @@ width: 100%;
     display: flex;
     justify-content: left;
     text-align: end;
-    margin: 1%;
     text-decoration: none;
 }
 

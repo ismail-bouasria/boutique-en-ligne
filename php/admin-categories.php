@@ -69,22 +69,7 @@ $categorie->deleteCategorie($id);
                 <input id="bouton" type="submit" name="subcat" value='Ajouter'>
             </form>
 
-            <section>
-                <h1>Ajouter une sous categorie</h1>
-            </section>
-
-            <form class="form1" action="../traitements/formulaire-sous-categorie.php" method="post" enctype="multipart/form-data">
-
-                <label>Choisir une catégorie:</label>
-                <select name="category">
-                    <option value="">catégories</option>
-                    <?php $categorie->selectAllCategorie() ?>
-                </select> 
-                <label>Nom</label>
-                <input type="text" name="name">
-
-                <input id="bouton" type="submit" name="subsouscat" value='Ajouter'>
-            </form>
+            
 
         </div>
 
@@ -126,7 +111,7 @@ $categorie->deleteCategorie($id);
                                 <td><?= $uneCategorie["nom"] ?></td>
                                 <td>
                                     <div class="flex">
-                                        <button class="responsbutton" id="edit"><a href="admin-categories.php?modifier=<?= $uneCategorie["id"] ?>" target="_blank">
+                                        <button class="responsbutton" id="edit"><a href="admin-modification.php?modifier-categorie=<?= $uneCategorie["id"] ?>">
                                                 <i class="fas fa-user-edit text-primary edit"></i>
                                             </a></button>
 

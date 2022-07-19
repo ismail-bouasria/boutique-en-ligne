@@ -64,6 +64,17 @@ class Categorie extends Bdd
         return $getIdCategorie['id'];
     }
 
+     //  Methode pour updatele la catégorie'
+     public function updateCategorie($nom,$image,$id)
+
+     {   
+        
+         $sql="UPDATE `categories` SET `nom`= ? ,`image`= ? WHERE `id`= ? ";
+         $updateCategorie = $this->bdd->prepare($sql);
+         $updateCategorie->execute([$nom,$image,$id]);
+          
+     }
+
 
     // Méthode pour récuperer le nom et l'id des categorie
     public function selectAllCategorie()
