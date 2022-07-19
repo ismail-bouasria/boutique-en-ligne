@@ -77,6 +77,7 @@ if (isset($_POST['modcat'])) {
             $filename = $_FILES["photo"]["name"];
             $filetype = $_FILES["photo"]["type"];
             $filesize = $_FILES["photo"]["size"];
+
             // Vérifie l'extension du fichier
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if(!array_key_exists($ext, $allowed)) die(header('Location: ../php/admin-modification.php?err=errorfilename'));
@@ -99,21 +100,21 @@ if (isset($_POST['modcat'])) {
                         $_SESSION['avatar'] = $path;
                         move_uploaded_file($_FILES["photo"]["tmp_name"], "../assets/upload/" . $_FILES["photo"]["name"]);
                         header('location:../php/admin-categories.php?succed=category');
-                        $_SESSION['reussi'] = '<h1> Modification de catégorie réussi !</h1>';
+                        $_SESSION['reussi'] = '<h1> Modification de la catégorie réussi !</h1>';
                     
                     }else {
                         header('Location: ../php/admin-modification.php?err=samecategory');
-                        $_SESSION['erreur'] = '<h1> Ajout de catégorie Impossible !</h1> <p> La catégorie existe déjà. </p>';
+                        $_SESSION['erreur'] = '<h1> Modification de la catégorie Impossible !</h1> <p> La catégorie existe déjà. </p>';
                     }
                     
                 } 
             } else{
                 header('Location: ../php/admin-modification.php?err=errornofile');
-                $_SESSION['erreur'] = '<h1> Ajout de catégorie Impossible !</h1> <p> Aucune image téléchargée. </p>';
+                $_SESSION['erreur'] = '<h1> Modification de la catégorie Impossible !</h1> <p> Aucune image téléchargée. </p>';
         }
     }else {
         header('Location: ../php/admin-modification.php?err=noinfos');
-        $_SESSION['erreur'] = '<h1> Ajout de catégorie Impossible !</h1> <p> Remplir les champs. </p>';
+        $_SESSION['erreur'] = '<h1> Modification de la catégorie Impossible !</h1> <p> Remplir les champs. </p>';
     }
 }
 ?>

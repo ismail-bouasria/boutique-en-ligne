@@ -14,9 +14,10 @@ if (isset($_GET['modifier-categorie'])) {
     $_SESSION['get'] = intval($_GET['modifier-categorie']);
 
    
-}elseif ($_GET['modifier-sous-categorie']) {
-    $_SESSION['get'] = intval($_GET['modifier-categorie']);
+}elseif (isset($_GET['modifier-sous-categorie'])&& $_GET['modifier-sous-categorie']) {
+    $_SESSION['get'] = intval($_GET['modifier-sous-categorie']);
 }
+
 ?>
 
 
@@ -62,14 +63,20 @@ if (isset($_GET['modifier-categorie'])) {
             <section>
                 <h1>Modifier une catégorie</h1>
             </section>
-
+                     
             <form class="form1" action="../traitements/formulaire-categorie.php" method="post" enctype="multipart/form-data">
-
-                <label>Nom</label>
-                <input type="text" name="name">
+                <?php 
+                $getCategorie = $categorie->getCategorie($_SESSION['get']); ?>
+                
+                   <label>Nom</label>
+                <input type="text" name="name" value="<?php echo $getCategorie;?>">
                 <label>Image </label>
                 <input type="file" name="photo">
                 <input id="bouton" type="submit" name="modcat" value='Modifier'>
+                
+
+
+                
             </form>
 
            
@@ -84,14 +91,21 @@ if (isset($_GET['modifier-categorie'])) {
             </section>
 
             <form class="form1" action="../traitements/formulaire-sous-categorie.php" method="post">
+                 <?php 
+                 
+                 $allSousCategories = $sousCategorie->getAllSousCategorieById($_SESSION['get']);
 
-                <label>Choisir une catégorie:</label>
+                 foreach ($allSousCategories as $value) { 
+                   ?>
+                   <label>Choisir une catégorie:</label>
                 <select name="category">
-                    <option value="">catégories</option>
+                    <option value="<?php echo $value['id'] ?>"><?php echo $value['nom_cat'] ?></option>
                     <?php $categorie->selectAllCategorie() ?>
                 </select> 
                 <label>Nom</label>
-                <input type="text" name="name">
+                <input type="text" name="name" value="<?php echo $value['nom'] ?>">
+
+                 <?php }?>
 
                 <input id="bouton" type="submit" name="modsouscat" value='Modifier'>
             </form>

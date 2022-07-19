@@ -57,6 +57,15 @@ class SousCategorie extends Bdd
        return $nb_SousCat= (int) $nb_SousCat['nb_sous_categories'];
    }
 
+     //  Methode pour updatele la sous-catégorie'
+     public function updateSousCategorie($nom,$id)
+
+     {   
+         $sql="UPDATE `sous-categories` SET `nom`= ?  WHERE `id`= ? ";
+         $updateSousCategorie = $this->bdd->prepare($sql);
+         $updateSousCategorie->execute([$nom,$id]);
+          
+     }
 
 
 
@@ -89,6 +98,21 @@ class SousCategorie extends Bdd
             echo '<option value="' . $value['id'] . '">' . $value['nom'] . '</option>';
         }
     }
+
+
+// Méthode pour récuperer le nom et l'id des categorie/sous-categorie
+public function getAllSousCategorieById($id)
+{
+
+    $getAll = $this->bdd->prepare("SELECT categories.id , categories.nom AS nom_cat, sous_categorie.nom
+    FROM categories 
+    INNER JOIN sous_categorie ON categories.id = sous_categorie.id_categorie
+    WHERE sous_categorie.id= ?");
+    $getAll->execute([$id]);
+    $getAllSousCategorie = $getAll->fetchAll();
+    
+    return $getAllSousCategorie;
+}
 
 
 

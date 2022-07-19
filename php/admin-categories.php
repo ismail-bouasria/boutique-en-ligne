@@ -8,13 +8,16 @@ require '../classes/Panier.php';
 $categorie = new Categorie('');
 $sousCategorie = new SousCategorie('');
 
-if (isset($_GET['supprimer'])) {
-   $id =  intval($_GET['supprimer']);
-$categorie->deleteCategorie($id);
-}elseif (isset($_GET['supprSCat'])) {
-    $id =  intval($_GET['supprSCat']);
-    $sousCategorie->deleteSousCategorie($id);
-} ?>
+
+    if (isset($_GET['supprimer'])) {
+        $id =  intval($_GET['supprimer']);
+     $categorie->deleteCategorie($id);
+     }elseif (isset($_GET['supprSCat'])) {
+         $id =  intval($_GET['supprSCat']);
+         $sousCategorie->deleteSousCategorie($id);
+     }
+
+ ?>
 
 
 <!DOCTYPE html>
@@ -69,7 +72,23 @@ $categorie->deleteCategorie($id);
                 <input id="bouton" type="submit" name="subcat" value='Ajouter'>
             </form>
 
-            
+            <section>
+                <h1>modifier une sous categorie</h1>
+            </section>
+
+            <form class="form1" action="../traitements/formulaire-sous-categorie.php" method="post">
+
+                <label>Choisir une catégorie:</label>
+                <select name="category">
+                    <option value="">catégories</option>
+                    <?php $categorie->selectAllCategorie() ?>
+                </select> 
+                <label>Nom</label>
+                <input type="text" name="name">
+
+                <input id="bouton" type="submit" name="modsouscat" value='Modifier'>
+            </form>
+
 
         </div>
 
@@ -167,12 +186,12 @@ $categorie->deleteCategorie($id);
                                 <td><?= $uneCategorie["sousnom"] ?></td>
                                 <td>
                                     <div class="flex">
-                                        <button class="responsbutton"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>">
+                                        <button class="responsbutton"> <a href="admin-modification.php?modifier-sous-categorie=<?= $uneCategorie["souscatid"] ?>">
                                                 <i class="fas fa-user-edit text-primary"></i>
                                                 
                                             </a> </button>
 
-                                        <button class="responsbutton" onclick="openPopup()> <a href="admin-categories.php?supprSCat=<?=$uneCategorie["souscatid"];?>">
+                                        <button class="responsbutton"> <a href="admin-categories.php?supprSCat=<?=$uneCategorie["souscatid"];?>">
                                                 <i class="fas fa-trash-alt text-danger"></i>
                                             </a> </button>
                                     </div>

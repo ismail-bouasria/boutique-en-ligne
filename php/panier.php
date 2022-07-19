@@ -28,6 +28,8 @@ if (isset($_GET['supprimer'])) {
 // condition de modification
 
 if (isset($_GET['modifier'])) {
+    var_dump($_POST);
+    die;
     $idUser = $_SESSION['id'];
     $idProduit =  strip_tags(intval($_GET['modifier']));
     $numero = $commande->getNumero($idUser);
@@ -100,6 +102,7 @@ if (isset($_GET['modifier'])) {
                                     <div>
                                         <form action="panier.php?modifier=<?= $value["id"] ?>" method="post">
                                             <p>Quantité :</p>
+                                            <input type="text" name="id" value="<?= $value["id"] ?>" hidden>
                                             <input type="number" class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite']; ?>" max="<?php echo $value['stock']; ?>" colisage="1">
                                             <button type="submit" class="plus1">Modifier </button>
                                         </form>
