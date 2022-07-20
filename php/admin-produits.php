@@ -9,7 +9,12 @@ require '../classes/Panier.php';
 $sousCategorie = new SousCategorie('');
 $produit = new Produit();
 
-
+if (isset($_GET['supprimer'])) {
+    $id =  intval($_GET['supprimer']);
+    
+ $produit->deleteProduit($id);
+ $_SESSION['reussi'] = '<h1> Suppression produit réussi !</h1>';
+ }
 ?>
 
 <!DOCTYPE html>
@@ -131,11 +136,11 @@ $produit = new Produit();
 
                                 <td>
                                     <div class="flex">
-                                        <button id="size"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $uneCategorie["souscatid"] ?>"target ="_blank">
+                                        <button id="size"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $produit["id"] ?>"target ="_blank">
                                                 <i class="fas fa-user-edit text-primary"></i>
                                             </a> </button>
 
-                                        <button id="size"> <a href="listeCategorie.php?action=supprimer&id=<?= $uneCategorie["souscatid"] ?>">
+                                        <button id="size"> <a href="admin-produits.php?supprimer=<?= $produit['id'] ?>&succed">
                                                 <i class="fas fa-trash-alt text-danger"></i>
                                             </a> </button>
                                     </div>

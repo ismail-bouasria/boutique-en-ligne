@@ -10,7 +10,7 @@ $sousCategorie = new SousCategorie('');
 
 
 
-if (isset($_GET['modifier-categorie'])) {
+if (isset($_GET['modifier-'])) {
     $_SESSION['get'] = intval($_GET['modifier-categorie']);
 
    

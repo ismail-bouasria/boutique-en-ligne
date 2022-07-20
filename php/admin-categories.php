@@ -12,9 +12,11 @@ $sousCategorie = new SousCategorie('');
     if (isset($_GET['supprimer'])) {
         $id =  intval($_GET['supprimer']);
      $categorie->deleteCategorie($id);
+     $_SESSION['reussi'] = '<h1> Suppression catégorie réussi !</h1>';
      }elseif (isset($_GET['supprSCat'])) {
          $id =  intval($_GET['supprSCat']);
          $sousCategorie->deleteSousCategorie($id);
+         $_SESSION['reussi'] = '<h1> Suppression sous-catégorie réussi !</h1>';
      }
 
  ?>

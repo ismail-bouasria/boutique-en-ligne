@@ -74,10 +74,10 @@ class Produit extends Bdd
 
 
 
-    public function deleteProduct($id)
+    public function deleteProduit($id)
     {
         $sql =  "DELETE FROM produits
-                WHERE id = '?'";
+                WHERE id = ? ";
         $deleteProduct = $this->bdd->prepare($sql);
         $deleteProduct->execute([$id]);
     }
