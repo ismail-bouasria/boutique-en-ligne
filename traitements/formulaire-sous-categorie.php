@@ -9,6 +9,7 @@ if (isset($_POST['subsouscat'])) {
     $id = $_POST['category'];
 
     if (!empty($nom)) {
+
         // Vérifie si le fichier a été uploadé sans erreur.
 
         $sousCategorie = new Souscategorie('');
@@ -26,10 +27,9 @@ if (isset($_POST['subsouscat'])) {
         header('Location: ../php/admin-categories.php?err=noinfos');
         $_SESSION['erreur'] = '<h1> Ajout de sous-catégorie Impossible !</h1> <p> Remplir les champs. </p>';
     }
-
-
     
 } 
+
 
 if (isset($_POST['modsouscat'])) {
     $nom = htmlspecialchars($_POST['name']);

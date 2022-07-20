@@ -62,6 +62,8 @@ if (isset($_POST['subcat'])) {
     
 }
 
+
+
 //  Modifier une categorie
 
 if (isset($_POST['modcat'])) {

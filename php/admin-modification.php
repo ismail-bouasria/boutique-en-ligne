@@ -1,12 +1,13 @@
 <?php
 
 session_start();
-require '../classes/Bdd.php';
+require '../classes/Produit.php';
 require '../classes/Souscategorie.php';
 require '../classes/Categorie.php';
 require '../classes/Panier.php';
 $categorie = new Categorie('');
 $sousCategorie = new SousCategorie('');
+$produit = new Produit();
 
 
 
@@ -16,6 +17,8 @@ if (isset($_GET['modifier-'])) {
    
 }elseif (isset($_GET['modifier-sous-categorie'])&& $_GET['modifier-sous-categorie']) {
     $_SESSION['get'] = intval($_GET['modifier-sous-categorie']);
+}elseif (isset($_GET['modifier-produit'])&& $_GET['modifier-produit']) {
+    $_SESSION['get'] = intval($_GET['modifier-produit']);
 }
 
 ?>
@@ -68,7 +71,7 @@ if (isset($_GET['modifier-'])) {
                 <?php 
                 $getCategorie = $categorie->getCategorie($_SESSION['get']); ?>
                 
-                   <label>Nom</label>
+                <label>Nom</label>
                 <input type="text" name="name" value="<?php echo $getCategorie;?>">
                 <label>Image </label>
                 <input type="file" name="photo">
@@ -113,7 +116,43 @@ if (isset($_GET['modifier-'])) {
            
         </div>
 
-       <?php }  ?>
+       <?php }elseif (isset($_GET['modifier-produit'])) { ?>
+         <div class="contenairFormulair">
+
+         <section>
+             <h1>Ajouter un produit </h1>
+         </section>
+
+         <form class="form1" action="../traitements/formulaire-produit.php" method="post" enctype="multipart/form-data">
+            <?php  
+            $produitById = $produit->getAllProduitById($_SESSION['get']);
+
+             foreach ($produitById as $value) { ?>
+             
+            <label>Choisir une sous-catégorie:</label>
+
+            <select name="category">
+                <option value="<?php echo $value['id_souscat'] ?>"><?php echo $value['nom_souscat'] ?></option>
+                <?php $sousCategorie->selectAllSousCategorie() ?>
+            </select>
+            <label>Nom</label>
+            <input type="text" name="name" value="<?php echo $value['nom']; ?>">
+            <label>Image </label>
+            <input type="file" name="photo">
+            <label>Description</label>
+            <textarea name="description" cols="20" rows="5" contenteditable="true"><?php echo $value['description'];?>.</textarea>
+            <label>Stock</label>
+            <input type="number" name="stock" value="<?php echo $value['stock']; ?>">
+            <label>Prix</label>
+            <input type="text" name="price" value="<?php echo $value['prix']; ?>€">
+
+            <input id="bouton" type="submit" name="modifprod" value='Ajouter'>
+            
+             <?php } ?>
+             
+         </form>
+     </div>
+      <?php } ?>
 
     </main>
 

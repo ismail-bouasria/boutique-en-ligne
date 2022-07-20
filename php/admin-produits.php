@@ -136,7 +136,7 @@ if (isset($_GET['supprimer'])) {
 
                                 <td>
                                     <div class="flex">
-                                        <button id="size"> <a href="index.php?controleur=categorie&action=modifier&id=<?= $produit["id"] ?>"target ="_blank">
+                                        <button id="size"> <a href="admin-modification.php?modifier-produit=<?= $produit["id"] ?>"target ="_blank">
                                                 <i class="fas fa-user-edit text-primary"></i>
                                             </a> </button>
 

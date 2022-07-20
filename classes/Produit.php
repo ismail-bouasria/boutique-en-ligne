@@ -32,6 +32,15 @@ class Produit extends Bdd
         return $getId;
     }
 
+    //  Methode pour updatele la catégorie'
+    public function updateProduit($image, $nom, $description, $prix, $stock, $id)
+
+    {
+
+        $sql = "UPDATE `produits` SET `image`= ?,`nom`= ?,`description`= ? ,`prix`= ? ,`stock`= ? ,`id_sous_categorie`= ? WHERE `id`= ?";
+        $updateProduit = $this->bdd->prepare($sql);
+        $updateProduit->execute([$nom, $image, $description, $prix, $stock, $id]);
+    }
 
 
     //  Methode pour trouver les informations de tous les produits
@@ -53,6 +62,23 @@ class Produit extends Bdd
         $getAllProducts->execute([$id]);
         return $getAllProducts->fetch();
     }
+
+
+    // Méthode pour récuperer le s informations des produits
+
+    public function getAllProduitById($id)
+    {
+
+        $getAll = $this->bdd->prepare("SELECT produits.*, sous_categorie.id AS id_souscat, sous_categorie.nom AS nom_souscat
+        FROM produits
+        INNER JOIN sous_categorie ON sous_categorie.id = produits.id_sous_categorie
+        WHERE produits.id= ? ");
+        $getAll->execute([$id]);
+        $getAllProduit = $getAll->fetchAll();
+
+        return $getAllProduit;
+    }
+
 
     //  Methode pour trouver le nom d'une catégorie'
     public function getNameProduct($nom)
@@ -93,12 +119,12 @@ class Produit extends Bdd
     }
 
 
-     //  Methode pour trouver les informations de tous les produits
-     public function getListingProducts()
-     {
-         $sql = "SELECT * FROM `produits`";
-         $getAllProducts = $this->bdd->prepare($sql);
-         $getAllProducts->execute();
-         return $getAllProducts->fetchAll();
-     }
+    //  Methode pour trouver les informations de tous les produits
+    public function getListingProducts()
+    {
+        $sql = "SELECT * FROM `produits`";
+        $getAllProducts = $this->bdd->prepare($sql);
+        $getAllProducts->execute();
+        return $getAllProducts->fetchAll();
+    }
 }
