@@ -13,7 +13,10 @@ body {
     background-size: 50%;
 
 }
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
     /* box-sizing: border-box; */
 }
 
@@ -27,6 +30,7 @@ header {
     top: 0%;
     z-index: 100;
 }
+
 nav li a {
     font-size: x-large;
     align-content: center;
@@ -36,9 +40,10 @@ nav li a {
     margin-top: 5%;
 }
 
-#panier{
+#panier {
     display: flex;
-    width: 100%;}
+    width: 100%;
+}
 
 #bullePanier {
     width: 300%;
@@ -250,7 +255,7 @@ footer {
 #piedDePage {
 
     background-color: rgba(167, 196, 144, 1);
-    width: 90%;
+    width: 100%;
     color: white;
     display: flex;
     justify-content: center;
@@ -264,16 +269,70 @@ footer {
     width: 30% !important;
 }
 
-#chercher{
+#chercher {
     text-transform: none;
     color: #28a745;
 }
-#chercher:hover{
+
+#chercher:hover {
     color: white;
 }
+
+/*------------------------------------------------------------------ MODE DE LIVRAISON ------------------------------------------------------------*/
+
+.titre-livraison {
+    margin-top: 5%;
+    background-color: white;
+    text-align: center;
+}
+
+.contenair-livraison {
+    display: flex;
+    margin-bottom: 5%;
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap !important;
+    align-content: center;
+}
+
+
+.livraison {
+    margin-top: 5%;
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
+    width: 30%;
+    background: #FCFCFC;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25) !important;
+    border-radius: 10px;
+    flex-wrap: wrap;
+
+}
+
+.livraison img {
+
+    margin: 5% 0 0;
+}
+
+.livraison p {
+    margin: 5% 0 5%;
+    font-weight: 900;
+    font-size: x-large;
+    text-align: center;
+    color: #518B68;
+
+}
+
+.click {
+
+    margin-top: 3% !important;
+}
+
 /*----------------------------------------------------------------------MEDIA QUERIES---------------------------------------------------------------------*/
 
-  @media only screen and (min-width:320px) and (max-width:991px) { 
+@media only screen and (min-width:320px) and (max-width:991px) {
 
     #text {
         position: absolute;
@@ -281,7 +340,7 @@ footer {
         bottom: 18vh;
         margin-left: 2%;
     }
-    
+
     #enCeMoment a button {
         width: 34%;
         position: absolute;
@@ -291,8 +350,9 @@ footer {
         left: 65%;
         color: white;
         font-size: 100%;
-       
+
     }
+
     #enCeMoment a button:hover {
         width: 34% !important;
         position: absolute;
@@ -308,13 +368,15 @@ footer {
         cursor: pointer;
     }
 
-    #bienvenue{
+    #bienvenue {
         margin-top: 5%;
         background-color: white;
     }
-    .responsimg2{
-        display:none;
-        
+
+
+    .responsimg2 {
+        display: none;
+
     }
 
     #presentation {
@@ -329,28 +391,56 @@ footer {
         font-size: 100%;
         bottom: 10vh;
         margin-left: 2%;
-    } 
-    
+    }
+
     #text3 {
         position: absolute;
         font-size: 100%;
         bottom: 1vh;
         margin-left: 2%;
-    } 
-      
-    button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    }
+
+    button:not(:disabled),
+    [type="button"]:not(:disabled),
+    [type="reset"]:not(:disabled),
+    [type="submit"]:not(:disabled) {
         cursor: pointer;
         width: 15%;
         padding: 2%;
     }
-        
+
+
     #bullePanier {
         width: 300%;
-        
+
     }
 
-  
-  
+
+    .contenair-livraison {
+        margin: 5% 0% 5%;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+
+     button.livraison {
+        margin: 5% 0 5%;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: stretch;
+        width: 90% !important;
+        background: #FCFCFC;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        flex-wrap: wrap;
+
+    }
+
+
 }
-    
   

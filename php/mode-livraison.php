@@ -11,7 +11,7 @@ require '../classes/Panier.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Mode de Livraison</title>
     <link rel="stylesheet" href="../assets/css/boutique.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
@@ -25,7 +25,28 @@ require '../classes/Panier.php';
     require '../require/header.php';
     ?>
     <main>
-       
+        <section class="titre-livraison">
+            <h1> MODE DE LIVRAISON</h1>
+        </section>
+        <div>
+            <form class="contenair-livraison" action="" method="post">
+
+                <button type="submit" name="click" class="livraison">
+                    <img src="../assets/img/clickandcollect.png" alt="Clickandcollect">
+                    <p class="click"> Click and collect</p>
+                </button>
+
+                <button type="submit" name="place" class="livraison">
+                    <img src="../assets/img/surplace.png" alt="Manger sur place">
+                    <p> Manger sur place</p>
+                </button>
+
+                <button type="submit" name="livraison" class="livraison">
+                    <img src="../assets/img/livraison.png" alt="Livraison">
+                    <p> Livraison </p>
+                </button>
+            </form>
+        </div>
 
     </main>
     <?php
