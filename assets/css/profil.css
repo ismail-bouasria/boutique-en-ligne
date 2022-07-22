@@ -1,3 +1,4 @@
+
 main {
     display: flex;
     justify-content: center;
@@ -14,6 +15,11 @@ section {
 
 }
 
+.form1 input, .form1 select, .form1 textarea {
+    text-align: center;
+    width: 50%;
+    margin: 1%;
+}
 
 #edition,
 #adresse {
@@ -96,6 +102,17 @@ a {
     height: 55px;
     background-color: #88A66A;
     margin: 0 0 10%;
+}
+
+.adrebuton{
+    color: white;
+    font-size: 1.5em;
+    border-style: none;
+    border-radius: 10px;
+    width: 40%;
+    height: 55px;
+    background-color: #88A66A;
+    margin: 2% 0 2%;
 }
 
 #messageErreur {

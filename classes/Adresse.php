@@ -23,21 +23,16 @@ class Adresse extends Bdd
     public function addAdresse($nom, $prenom, $adresse, $code, $ville, $telephone, $id)
     {
         
-        $sql = "INSERT INTO `livraisons` (`nom`, `prenom`, `adresse`, `code_postal`, `ville`, `telephone`, `id_utilisateur`)
+        $sql = "INSERT INTO `adresses` (`nom`, `prenom`, `adresse`, `code_postal`, `ville`, `telephone`, `id_utilisateur`)
          VALUES (?,?,?,?,?,?,?)";
         $query = $this->bdd->prepare($sql);
         $query->execute([$nom,$prenom,$adresse,$telephone,$code,$ville,$id]);
     }
 
 
-
-   
-
-
-
     public function updateAdresse($nom,$prenom,$adresse,$code,$ville,$telephone,$id){
 
-        $sql= "UPDATE `livraisons` 
+        $sql= "UPDATE `adresses` 
         SET `nom`=?,`prenom`=?,`adresse`=?,`code_postal`=?,`ville`=?,`telephone`=?,`id_utilisateur`=? 
         WHERE 1";
         $query = $this->bdd->prepare($sql);
@@ -46,7 +41,7 @@ class Adresse extends Bdd
 
     public function selectAdresseById($id){
 
-        $sql= "SELECT * FROM `livraisons` WHERE `id_utilisateur`=?";
+        $sql= "SELECT * FROM `adresses` WHERE `id_utilisateur`=?";
         $query = $this->bdd->prepare($sql);
         $query->execute([$id]);
         $select = $query->fetchAll();
@@ -55,7 +50,7 @@ class Adresse extends Bdd
 
     public function selectIdAdressByUser($id){
 
-        $sql= "SELECT `id` FROM `livraisons` WHERE `id_utilisateur`=?";
+        $sql= "SELECT `id` FROM `adresses` WHERE `id_utilisateur`=?";
         $query = $this->bdd->prepare($sql);
         $query->execute([$id]);
         $select = $query->fetchAll();

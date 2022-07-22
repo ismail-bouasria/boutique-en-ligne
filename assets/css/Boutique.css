@@ -4,11 +4,12 @@
     padding: 0px;
     font-family: 'Baloo 2', cursive;
     font-size: 100%;
+
 }
 
 body {
     width: 100%;
-    height: fit-content;
+   
     background-image: url(../img/fond.png);
     background-size: 50%;
 
@@ -414,7 +415,7 @@ footer {
         width: 300%;
 
     }
-
+     
 
     .contenair-livraison {
         margin: 5% 0% 5%;
@@ -441,6 +442,27 @@ footer {
 
     }
 
+    .adrebuton{
+        color: white;
+        font-size: 1.5em;
+        border-style: none;
+        border-radius: 10px;
+        width: 100% !important;
+        height: 55px;
+        background-color: #88A66A;
+        margin: 2% 0 2%;
+    }
 
+    .adrebuton{
+        color: white;
+        font-size: 1.5em;
+        border-style: none;
+        border-radius: 10px;
+        width: 100% !important;
+        height: 55px;
+        background-color: #88A66A;
+        margin: 5% 0 35% !important;
+    }
+    
 }
   
