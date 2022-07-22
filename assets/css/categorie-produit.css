@@ -239,6 +239,16 @@ span {
 .page-link {
     color: white;
     width: 2%;
+    position: relative;
+    display: block;
+    margin-left: -1px;
+    line-height: 1.25;
+    background-color: #9DBF8D !important;
+    border: 1px solid #dee2e6;
+}
+
+li .page-link a{
+    width: 100%;
 }
 
 
@@ -258,6 +268,8 @@ span {
 .active {
     pointer-events: none;
     background-color: rgb(46, 113, 46);
+    height: 100% !important;
+    padding:0% 35% 10%;
     color: #fff;
 }
 
@@ -272,6 +284,15 @@ span {
     
     }
 
+    #cat-produits {
+        width: 98% !important;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+    
+    
     .img-content a {
         font-size: 65%;
     }
@@ -292,8 +313,9 @@ span {
     }
 
     .btn-primary2 {
-        color: #fff;
-        background-color: rgba(97, 159, 68, 1);
+        text-decoration: none;
+        height: max-content;
+        width: max-content;
         margin-bottom: 4%;
         display: inline-block;
         text-decoration: none;
@@ -306,18 +328,27 @@ span {
         
     }
     
-    .btn-primary2:hover {
-        background-color: rgb(130, 186, 104);
-        color: #fff;
-        margin-bottom: 4%;
-        display: inline-block;
-        text-decoration: none;
+    .boxpagination nav {
+        width: 90%;
         border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-        text-transform: uppercase;
-        font-weight: small;
-        margin-bottom: 4%;
     }
+    
+    .page-link {
+        position: relative;
+        display: block;
+        margin-left: -1px;
+        line-height: 1.25;
+        background-color: none !important;
+        border: 1px solid #dee2e6;
+    }
+
+    .boxpagination nav ul li {
+        text-align: center;
+        list-style-type: none;
+        width: 100%;
+        border: 1px white solid;
+        padding: 2%;
+    }
+   
 }
 
