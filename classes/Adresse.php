@@ -53,4 +53,12 @@ class Adresse extends Bdd
         return $select;
     }
 
+    public function selectIdAdressByUser($id){
+
+        $sql= "SELECT `id` FROM `livraisons` WHERE `id_utilisateur`=?";
+        $query = $this->bdd->prepare($sql);
+        $query->execute([$id]);
+        $select = $query->fetchAll();
+        return $select;
+    }
 }

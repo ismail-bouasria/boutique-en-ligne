@@ -25,7 +25,24 @@ require '../classes/Panier.php';
     require '../require/header.php';
     ?>
     <main>
-        <section class="titre-livraison">
+        
+
+        <?php
+        $infos = $adresse->selectAdresseById(intval($_SESSION['id']));
+        if (empty($infos)) { ?>
+
+          <h2> Ajouter une <span> adresse ?</span></h2>
+          <form action="../traitements/formulaire-adresse.php" method="post">
+            <input type="text" name="nom" value="" placeholder="Nom">
+            <input type="text" name="prenom" value="" placeholder="Prenom">
+            <input type="text" name="adresse" value="" placeholder="Adresse">
+            <input type="text" name="code" value="" placeholder="Code Postal">
+            <input type="text" name="ville" value="" placeholder="Ville">
+            <input type="text" name="telephone" value="" placeholder="Téléphone">
+            <button type="submit" name="ajouter">Ajouter</button>
+          </form>
+         <?php } else { ?>
+            <section class="titre-livraison">
             <h1> MODE DE LIVRAISON</h1>
         </section>
         <div>
@@ -47,6 +64,7 @@ require '../classes/Panier.php';
                 </button>
             </form>
         </div>
+          <?php } ?>
 
     </main>
     <?php

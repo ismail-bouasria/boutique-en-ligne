@@ -142,7 +142,7 @@ if (isset($_GET['modifier'])) {
 
 
 
-                    <a href="mode-livraison.php"><button type="submit" name="Commander"> Passer à la prochaine etape de la commande </button></a>
+                    <a href="mode-livraison.php"><button class="button-5" type="submit" name="Commander"> Passer la commande </button></a>
 
                 </div>
 
