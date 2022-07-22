@@ -30,7 +30,7 @@ require '../classes/Panier.php';
             <h1 id="text">EN CE MOMENT</h1>
             <h1 id="text2">LE BREAD</h1>
             <h1 id="text3"> CROUSTI POULET</h1>
-            <a href=""><button>JE COMMANDE !</button></a>
+            <a href="http://localhost:8888/boutique-en-ligne/php/page-produit.php?produit=6"><button>JE COMMANDE !</button></a>
 
         </section>
 
