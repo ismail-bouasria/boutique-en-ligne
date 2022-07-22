@@ -282,9 +282,10 @@ footer {
 /*------------------------------------------------------------------ MODE DE LIVRAISON ------------------------------------------------------------*/
 
 .titre-livraison {
-    margin-top: 5%;
-    background-color: white;
-    text-align: center;
+    margin-top: 5% !important;
+    background-color: white !important;
+    text-align: center !important;
+    width: 90% !important;
 }
 
 .contenair-livraison {
@@ -312,6 +313,20 @@ footer {
 
 }
 
+.livraison:hover {
+    margin-top: 5%;
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
+    width: 30%;
+    background: #e1e0e0;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25) !important;
+    border-radius: 10px;
+    flex-wrap: wrap;
+
+}
 .livraison img {
 
     margin: 5% 0 0;

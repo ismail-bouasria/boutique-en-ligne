@@ -57,4 +57,31 @@ if (isset($_POST['modifier'])){
          $_SESSION['erreur'] = '<h1> Modification de l\'adresse Impossible !</h1> <p> Remplir tout les champs. </p>';
     }
 }
+
+
+// <!-- AJOUTER UNE ADRESSE -->
+
+if (isset($_POST['ajouterAdresse'])){
+    $nom = htmlspecialchars($_POST['nom']);
+    $prenom = htmlspecialchars($_POST['prenom']);
+    $adresse = htmlspecialchars($_POST['adresse']);
+    $code = intval($_POST['code']);
+    $ville = htmlspecialchars($_POST['ville']);
+    $tel = htmlspecialchars($_POST['telephone']);
+    $id = intval($_SESSION['id']);
+    
+ 
+    if (!empty($nom) && !empty($prenom) && !empty($adresse) && !empty($code) && !empty($ville) && !empty($tel)) {
+           
+        $addAdresse->addAdresse($nom,$prenom,$adresse,$code,$ville,$tel,$id);
+
+        header('location:../php/mode-livraison.php?succed=addadresse');
+        $_SESSION['reussi'] = '<h1> Ajout de l\'adresse réussi !</h1> <p> Vous pouvez choisir votre mode de livraison</p>';
+        
+    }else {
+        header('Location: ../php/mode-livraison.php?err=noinfo');
+        $_SESSION['erreur'] = '<h1> Ajout de l\'adresse Impossible !</h1> <p> Remplir tout les champs. </p>';
+    }
+}
+
 ?>
