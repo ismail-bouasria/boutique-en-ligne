@@ -135,6 +135,16 @@
 width: 100%;
 }
 
+#messageErreur {
+    text-align: center;
+    background-color: rgb(188, 24, 24);
+    color: whitesmoke;
+    font-size: large;
+}
+#messageErreur h1{
+    font-size: x-large !important;
+}
+
 .red{
     color: #E90F0F;
     font-weight: bold;

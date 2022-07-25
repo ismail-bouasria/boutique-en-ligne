@@ -17,7 +17,7 @@ $idUser = $_SESSION['id'];
 // condition de suppression 
 
 if (isset($_GET['supprimer'])) {
-   
+
     $idProduit =  strip_tags(intval($_GET['supprimer']));
     $numero = $commande->getNumero($idUser);
 
@@ -29,7 +29,7 @@ if (isset($_GET['supprimer'])) {
 // condition de modification
 
 if (isset($_GET['modifier'])) {
-    
+
     $idProduit =  strip_tags(intval($_GET['modifier']));
     $numero = $commande->getNumero($idUser);
     $quantite = intval($_POST["quantite"]);
@@ -69,12 +69,17 @@ if (isset($_GET['modifier'])) {
     ?>
 
     <main>
+        <?php if (isset($_GET['err'])) { ?>
+            <section id="messageErreur">
+                <?php echo $_SESSION['erreur']; ?>
+            </section>
+        <?php } ?>
         <div id="panier-container">
             <div id="panier-produit">
                 <?php
                 if (isset($_SESSION['id'])) {
                     $contenuPanier = $panier->showProduitPanier($_SESSION['id']);
-                }else {
+                } else {
                     header("Location: inscription-connexion.php");
                 }
 
@@ -106,16 +111,18 @@ if (isset($_GET['modifier'])) {
                                         </form>
                                     </div>
                                     <div>
-                                    <?php 
-                                    $stock= $panier->countstock($idUser,$value['id']);
-                                    if ($stock == '0') {?>
-                                        <p class="red"> Attention cet article n'est plus en stock !</p>
-                                   <?php $_SESSION['rupture']=1;
-                                   }
-                                    ?>
-                                   </div>
+                                        <?php
+                                        $stock = $panier->countstock($idUser, $value['id']);
+                                        if ($stock == '0') { ?>
+                                            <p class="red"> Attention cet article n'est plus en stock !</p>
+                                        <?php $_SESSION['rupture'] = true;
+                                        }else {
+                                            $_SESSION['rupture'] = false;
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
-                                  
+
                             </div>
                             <section id="supprimer">
 
@@ -147,9 +154,9 @@ if (isset($_GET['modifier'])) {
                                                 echo $panier->sumPrix($_SESSION['id']);
                                             }; ?>€</h2>
                     </section>
-
-                    <a href="mode-livraison.php"><button class="button-5" type="submit" name="Commander"> Passer la commande </button></a>
-
+                    <form action="../traitements/formulaire-panier.php" method="post">
+                        <button class="button-5" type="submit" name="commander"> Passer commande </button>
+                    </form>
                 </div>
 
 
