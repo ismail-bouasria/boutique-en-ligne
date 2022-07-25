@@ -100,13 +100,21 @@ if (isset($_GET['modifier'])) {
                                     <div>
                                         <form action="panier.php?modifier=<?= $value["id"] ?>" method="post">
                                             <p>Quantité :</p>
-                                            <input type="text" name="id" value="<?= $value["id"] ?>">
                                             <input type="number" class="number quantite" name="quantite" required="required" min="1" value="<?php echo $value['quantite']; ?>" max="<?php echo $value['stock']; ?>" colisage="1">
                                             <button type="submit" class="plus1">Modifier </button>
                                         </form>
                                     </div>
+                                    <div>
+                                    <?php 
+                                    $stock= intval($produit->countstock($value['id']));
+                                    if ($stock == true) {?>
+                                        <p> Attention cette article n'est plus en stock !</p>
+                                   <?php $_SESSION['rupture']=1;
+                                   }
+                                    ?>
+                                   </div>
                                 </div>
-
+                                  
                             </div>
                             <section id="supprimer">
 
@@ -138,9 +146,6 @@ if (isset($_GET['modifier'])) {
                                                 echo $panier->sumPrix($_SESSION['id']);
                                             }; ?>€</h2>
                     </section>
-
-
-
 
                     <a href="mode-livraison.php"><button class="button-5" type="submit" name="Commander"> Passer la commande </button></a>
 

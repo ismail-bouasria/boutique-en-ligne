@@ -42,7 +42,12 @@ $adresse = new Adresse();
             </section>
         <?php } ?>
         <?php
-        $infos = $adresse->selectAdresseById(intval($_SESSION['id']));
+        if (isset($_SESSION['id'])) {
+            $infos = $adresse->selectAdresseById(intval($_SESSION['id'])); 
+        }else {
+            header('Location:inscription-connexion.php');
+        }
+        
         if (empty($infos)) { ?>
 
             <div class="contenairFormulair">

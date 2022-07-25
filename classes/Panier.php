@@ -62,6 +62,18 @@ class Panier extends Bdd
 
     }
 
+     // Methode pour savoir si le produit dans le panier est encore en stock 
+
+     public function countstock($id,$idProduct) {
+
+        $sql = "SELECT produits.stock FROM produits INNER JOIN panier ON produits.id = panier.id_produit WHERE panier.id_utilisateur = ? AND produits.id = ?";
+        $countStock = $this->bdd->prepare($sql);
+        $countStock->execute([$id, $idProduct]);
+        $stock = $countStock->fetch();
+       
+        return $stock;
+
+    }
 
 
     // Methode pour compter le nombre d'article 

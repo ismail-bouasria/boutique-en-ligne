@@ -6,9 +6,6 @@ require("../classes/Produit.php");
 $produit = new Produit();
 
 
-
-
-
 if (isset($_POST["submit"])) {
 
     $categorie = htmlspecialchars($_POST['category']);
@@ -17,8 +14,9 @@ if (isset($_POST["submit"])) {
     $prix = htmlspecialchars($_POST['price']);
     $prix = floatval($prix);
     $stock = htmlspecialchars($_POST['stock']);
+  
 
-    if (!empty($nom) && !empty($categorie) && !empty($description) && !empty($prix) && !empty($stock)) {
+    if (!empty($nom) && !empty($categorie) && !empty($description) && !empty($prix) && !empty($stock) || $stock == 0) {
         // Vérifie si le fichier a été uploadé sans erreur.
         if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
 
@@ -58,11 +56,12 @@ if (isset($_POST["submit"])) {
             $_SESSION['erreur'] = '<h1> Ajout de produit Impossible !</h1> <p> Aucune image téléchargée. </p>';
         }
     } else {
-        // header('Location: ../php/admin-produits.php?err=noinfos');
+        header('Location: ../php/admin-produits.php?err=noinfos');
         $_SESSION['erreur'] = '<h1> Ajout de produit Impossible !</h1> <p> Remplir les champs. </p>';
     }
 }
     
+ var_dump($_POST);
 if (isset($_POST["modifprod"])) {
 
     $categorie = htmlspecialchars($_POST['category']);
@@ -71,8 +70,9 @@ if (isset($_POST["modifprod"])) {
     $prix = htmlspecialchars($_POST['price']);
     $prix = floatval($prix);
     $stock = htmlspecialchars($_POST['stock']);
-    $idProduit = $_SESSION['get'];
-
+    $stock = intval($stock);
+    $idProduit = intval($_SESSION['get']);
+    var_dump($_POST);
     if (!empty($nom) && !empty($categorie) && !empty($description) && !empty($prix) && !empty($stock)) {
         // Vérifie si le fichier a été uploadé sans erreur.
         if (isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0) {
@@ -96,12 +96,13 @@ if (isset($_POST["modifprod"])) {
               
                 $path = '../assets/upload/' . $filename;
                 $produit = new Produit();
-                if (empty($produit->getNameProduct($nom))) {
+                $nomProduit= $produit->getNameProduct($nom);
+                if (!empty($nomProduit) || $name == $nomProduit) {
 
-                    $produit->updateProduit($path, $nom, $description, $prix, $stock, $idProduit);
+                    $produit->updateProduit($path, $nom, $description, $prix, $stock, $categorie, $idProduit);
                     $_SESSION['avatar'] = $path;
                     move_uploaded_file($_FILES["photo"]["tmp_name"], "../assets/upload/" . $_FILES["photo"]["name"]);
-                    header('location:../php/admin-modification.php?succed=addcategory');
+                    header('location:../php/admin-modification.php?modifier-produit='.$idProduit.'&succed=addproduct');
                     $_SESSION['reussi'] = '<h1> Modification de produit réussi !';
                 } else {
                     header('Location: ../php/admin-modification.php?modifier-produit='.$idProduit.'&err=samecategory');
@@ -113,17 +114,12 @@ if (isset($_POST["modifprod"])) {
             $_SESSION['erreur'] = '<h1> modification produit Impossible !</h1> <p> Aucune image téléchargée. </p>';
         }
     } else {
-        // header('Location: ../php/admin-produits.php?err=noinfos');
+        header('Location: ../php/admin-modification.php?err=noinfos');
         $_SESSION['erreur'] = '<h1> modification produit Impossible !</h1> <p> Remplir les champs. </p>';
+        
     }
-}
+} ?>
 
 
 
    
-
-
-
-
-
-?>

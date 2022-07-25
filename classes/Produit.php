@@ -33,13 +33,13 @@ class Produit extends Bdd
     }
 
     //  Methode pour updatele la catégorie'
-    public function updateProduit($image, $nom, $description, $prix, $stock, $id)
+    public function updateProduit($image, $nom, $description, $prix, $stock, $idSousCat, $id)
 
     {
 
         $sql = "UPDATE `produits` SET `image`= ?,`nom`= ?,`description`= ? ,`prix`= ? ,`stock`= ? ,`id_sous_categorie`= ? WHERE `id`= ?";
         $updateProduit = $this->bdd->prepare($sql);
-        $updateProduit->execute([$nom, $image, $description, $prix, $stock, $id]);
+        $updateProduit->execute([ $image, $nom, $description, $prix, $stock, $idSousCat, $id]);
     }
 
 
@@ -98,7 +98,18 @@ class Produit extends Bdd
         $addProduct->execute([$image, $nom, $description, $prix, $stock, $categorie]);
     }
 
+  // Methode pour savoir si le produit dans le panier est encore en stock 
 
+    public function countstock($idProduct) {
+
+    $sql = "SELECT `stock` FROM `produits` WHERE `id`= ?";
+    $countStock = $this->bdd->prepare($sql);
+    $countStock->execute([$idProduct]);
+    $stock = $countStock->fetch();
+   
+    return $stock;
+
+}
 
     public function deleteProduit($id)
     {

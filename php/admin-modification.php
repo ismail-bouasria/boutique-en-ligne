@@ -120,7 +120,7 @@ if (isset($_GET['modifier-'])) {
          <div class="contenairFormulair">
 
          <section>
-             <h1>Ajouter un produit </h1>
+             <h1>Modifier un produit </h1>
          </section>
 
          <form class="form1" action="../traitements/formulaire-produit.php" method="post" enctype="multipart/form-data">
@@ -136,17 +136,17 @@ if (isset($_GET['modifier-'])) {
                 <?php $sousCategorie->selectAllSousCategorie() ?>
             </select>
             <label>Nom</label>
-            <input type="text" name="name" value="<?php echo $value['nom']; ?>">
+            <input type="text" name="name" value="<?php echo $value['nom'];?>">
             <label>Image </label>
             <input type="file" name="photo">
             <label>Description</label>
-            <textarea name="description" cols="20" rows="5" contenteditable="true"><?php echo $value['description'];?>.</textarea>
+            <textarea name="description" cols="20" rows="5" contenteditable="true"><?php echo $value['description'];?></textarea>
             <label>Stock</label>
             <input type="number" name="stock" value="<?php echo $value['stock']; ?>">
             <label>Prix</label>
-            <input type="text" name="price" value="<?php echo $value['prix']; ?>€">
+            <input type="text" name="price" value="<?php echo $value['prix'];?>">
 
-            <input id="bouton" type="submit" name="modifprod" value='Ajouter'>
+            <input id="bouton" type="submit" name="modifprod" value='modifier'>
             
              <?php } ?>
              
