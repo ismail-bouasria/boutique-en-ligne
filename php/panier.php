@@ -12,11 +12,12 @@ $panier = new Panier('');
 $commande = new Commandes();
 $historique = new HistoriquePanier();
 
+$idUser = $_SESSION['id'];
 
 // condition de suppression 
 
 if (isset($_GET['supprimer'])) {
-    $idUser = $_SESSION['id'];
+   
     $idProduit =  strip_tags(intval($_GET['supprimer']));
     $numero = $commande->getNumero($idUser);
 
@@ -28,7 +29,7 @@ if (isset($_GET['supprimer'])) {
 // condition de modification
 
 if (isset($_GET['modifier'])) {
-    $idUser = $_SESSION['id'];
+    
     $idProduit =  strip_tags(intval($_GET['modifier']));
     $numero = $commande->getNumero($idUser);
     $quantite = intval($_POST["quantite"]);
@@ -106,9 +107,9 @@ if (isset($_GET['modifier'])) {
                                     </div>
                                     <div>
                                     <?php 
-                                    $stock= intval($produit->countstock($value['id']));
-                                    if ($stock == true) {?>
-                                        <p> Attention cette article n'est plus en stock !</p>
+                                    $stock= $panier->countstock($idUser,$value['id']);
+                                    if ($stock == '0') {?>
+                                        <p class="red"> Attention cet article n'est plus en stock !</p>
                                    <?php $_SESSION['rupture']=1;
                                    }
                                     ?>

@@ -71,7 +71,7 @@ class Panier extends Bdd
         $countStock->execute([$id, $idProduct]);
         $stock = $countStock->fetch();
        
-        return $stock;
+        return $stock[0];
 
     }
 

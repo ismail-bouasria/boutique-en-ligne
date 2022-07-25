@@ -135,6 +135,10 @@
 width: 100%;
 }
 
+.red{
+    color: #E90F0F;
+    font-weight: bold;
+}
 #supprimer{
     display: flex;
     justify-content: left;
