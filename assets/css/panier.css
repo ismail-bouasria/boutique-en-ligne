@@ -4,12 +4,11 @@
     margin: 2%;
 }
 
-#chercher {
+#chercher{
     text-transform: none;
     color: #28a745;
 }
-
-#chercher:hover {
+#chercher:hover{
     color: white;
 }
 
@@ -20,7 +19,7 @@
     border-right: 3px solid rgba(0, 0, 0, 0.24);
     display: flex;
     justify-content: space-between;
-    align-items: center;
+     align-items: center;
 }
 
 #add-produit {
@@ -41,17 +40,17 @@
 
 #image {
     width: 70%;
-    margin: 0 0 0 15%;
+   margin: 0 0 0 15%;
 }
 
-#information {
+#information{
 
     width: 100%;
 }
 
 #infos {
     display: flex;
-    width: 100%;
+   width: 100% ;
 }
 
 #boxquantite {
@@ -116,8 +115,7 @@
     margin: 0% 1% 0 10%;
 
 }
-
-#total-infos {
+#total-infos{
     width: 40%;
     margin: auto;
 }
@@ -133,8 +131,8 @@
     align-items: center;
 }
 
-#boxquantite {
-    width: 100%;
+#boxquantite{
+width: 100%;
 }
 
 #messageErreur {
@@ -143,79 +141,124 @@
     color: whitesmoke;
     font-size: large;
 }
-
-#messageErreur h1 {
+#messageErreur h1{
     font-size: x-large !important;
 }
 
-.red {
+.red{
     color: #E90F0F;
     font-weight: bold;
 }
-
-#supprimer {
+#supprimer{
     display: flex;
     justify-content: left;
     text-align: end;
     text-decoration: none;
 }
 
-#supprimer button a {
-
+#supprimer button a{
+  
     text-decoration: none;
     color: white;
 }
 
 
 #total-produit section {
-    width: 100%;
-    text-align: center;
+ width: 100% ;
+ text-align: center;
 }
 
 #total-produit button {
     margin: 2%;
 }
 
-@media only screen and (min-width:320px) and (max-width:991px) {
+@media only screen and (min-width:320px) and (max-width:991px) { 
+      
+    button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+        cursor: pointer;
+        width: 22% !important;
+        padding: 2%;
+    }
+        
+    #panier-container {
+        width: 100%;
+        display: flex;
+        margin: 2%;
+        flex-wrap: wrap-reverse !important;
+    }
 
-   
-    #info-produit {
-        background-color: #FFFFFF;
+    #total-infos {
+        width: 96% !important;
+        margin: 0% 0% 2% !important;
+    }
+    
+    #add-produit {
+        background: #FFFFFF;
         box-shadow: 0px 2px 4px rgb(0 0 0 / 25%);
-        display: flex;
-        justify-content: space-between;
         width: 100% !important;
-        margin-top: 5%;
-        flex-wrap: wrap;
-    }
-
-    #cat-produits {
-        width: 100%  !important;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    #card-produit2 {
-        width: 100% !important;
-        margin: 5% !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: space-around;
-    }
-
-    #card-produit {
-        width: 100% !important;
-        display: flex;
-        flex-direction: column;
+        margin: 1% 0 0 !important;
+        margin-bottom: 0% !important;
         text-align: center;
-        align-items: center;
-        align-items: center;
-    }
+        padding: 0% !important;    }
 
-    #card-produit img {
-        width: 98% !important;
+        #panier-produit {
+            display: flex;
+            flex-direction: column;
+            width: 100% !important;
+            border-right: 3px solid rgba(0, 0, 0, 0.24);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+       
+        #total-produit {
+            margin: auto;
+            background: #FCFCFC;
+            border: 1px solid #302f2f1a;
+            border-radius: 7px;
+            width: 98% !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .moins1{
+            margin: 0 1% 1% 1% !important;
+        }
+        #total-produit button {
+            margin: 0 -10% 5% !important;
+         
+            font-size: x-large;
+            width: 126% !important;
 
-    }
+        }
+        #infos {
+            display: inline-block !important;
+            width: 100% !important;
+        }
+        
+        #image {
+            width: 90% !important;
+            margin : 0% !important;
+        }
 
+        
+        .prix {
+            text-align: end;
+            margin: 0% 3% !important;
+            color: #A7C490;
+            font-weight: 600 !important;
+        }
+
+        .plus1{
+            width: 50% !important;
+        }
+        
+        #panier-container {
+            width: 100%;
+            display: flex;
+            margin: 2% 0 0!important;
+            flex-wrap: wrap-reverse !important;
+        }
+  
 }
