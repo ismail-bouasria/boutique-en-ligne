@@ -7,6 +7,10 @@ $commande = new Commandes();
 
 if (isset($_POST['commander'])) {
      
-    $commande->insertCommandes($numero,$idUser,$idPanier)
+    $commande->createCommande($numero,$idUser,$idPanier);
 }
+
+
 ?>
+
+
