@@ -13,6 +13,8 @@ main {
     justify-content: space-between;
     width: 90%;
     margin: 3%;
+    padding-block: 2% !important;
+
 }
 
 h1 {
@@ -50,6 +52,7 @@ form {
 #card-produit2 p {
 
     font-size: 120%;
+    margin: 2%;
 }
 
 
