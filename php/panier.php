@@ -186,7 +186,7 @@ if (isset($_GET['modifier'])) {
                                 <h1> <?php echo $valueP['nom']; ?></h1>
                                 <p> <?php echo $valueP['description']; ?></p>
                                 <h1> Prix : <span> <?php echo $valueP['prix']; ?>€</span> </h1>
-                                <a href="page-produit.php?produit= <?php echo $valueP['id']; ?>" class="btn btn-primary" target="blank"> Commander !</a>
+                                <a href="page-produit.php?produit= <?php echo $valueP['id']; ?>" class="btn btn-primary"> Commander !</a>
                             </div>
                         </div>
 

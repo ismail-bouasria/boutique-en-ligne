@@ -28,13 +28,13 @@ if (isset($_POST['payer'])) {
 
         $panier->deletePanier($idUser);
 
-        
+        header('Location: ../php/commande-valide.php');
 
     } else {
         header('Location: ../php/paiement.php?err=noinfo');
         $_SESSION['erreur'] = '<h1> Paiement Impossible !</h1> <p> Remplir tout les champs. </p>';
     }
-} ?>
+} 
 
 
 ?>

@@ -51,12 +51,12 @@ class HistoriquePanier extends Bdd
 
     public function totalPrix ($id) {
 
-        $sql = "SELECT COUNT(*) AS `produit` FROM `historiques_panier` WHERE `id_utilisateur`= ?";
+        $sql = "SELECT COUNT(*) AS `total` FROM `historiques_panier` WHERE `id_commande`= ?";
         $countProduit = $this->bdd->prepare($sql);
         $countProduit->execute([$id]);
         $count = $countProduit->fetch();
        
-        return $count['produit'];
+        return $count['total'];
 
     }
 
@@ -79,7 +79,9 @@ class HistoriquePanier extends Bdd
 
     public function sumPrix ($id) {
 
-    $sql = "SELECT SUM(historiques_panier.quantite*produits.prix) AS `prix` FROM `panier` JOIN `produits` ON panier.id_produit = produits.id WHERE panier.id_utilisateur=?";
+    $sql = "SELECT SUM(historiques_panier.quantite*produits.prix) AS `prix` 
+    FROM `historiques_panier` JOIN `produits` ON historiques_panier.id_produit = produits.id 
+    WHERE historiques_panier.id_commande=?";
     $sumPrix = $this->bdd->prepare($sql);
     $sumPrix->execute([$id]);
     $sum = $sumPrix->fetch();

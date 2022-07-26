@@ -353,10 +353,11 @@ footer {
 
  .contenairBdc {
     width: 100%;
-    margin:  5% 0 16%;
+    margin:  2% 0 2%;
     display: flex;
     justify-content: center;
  }
+
  .bonCommande{
     width: 50%;
     border-radius: 20px;
@@ -365,8 +366,41 @@ footer {
     align-items: center;
     background-color: white;
  }
+
 .bonCommande img {
     margin: 1% 0 1%;
+}
+
+.bonCommande p {
+    font-size: larger ;
+}
+
+#texth {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 4%;
+}
+
+#texth2 {
+    display: flex;
+    justify-content: flex-start;
+}
+.green{
+    color:#88A66A;
+    font-weight: 900;
+    
+}
+.order{
+    display: flex;
+    flex-direction: column;
+    color:red;
+}
+.tablecommande{
+    text-align: center;
+}
+
+.tablecommande th{
+   width: 1%;
 }
 /*----------------------------------------------------------------------MEDIA QUERIES---------------------------------------------------------------------*/
 

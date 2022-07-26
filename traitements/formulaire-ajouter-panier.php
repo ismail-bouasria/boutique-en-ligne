@@ -30,46 +30,45 @@ if (isset($_POST['panier'])) {
     if (empty($commandeExist)) {
         $numero = uniqid();
 
-        $commande->createCommande($numero,$idUser);
+        $commande->createCommande($numero, $idUser);
     }
-        if (!empty($quantite)) {
-            if (is_int($quantite)) {
-                if ($quantite <= $stock) {
-    
-                    $exist = $panier->getProduitPanier($id,$idUser);
-                    $existHistorique = $historique->getProduitHistorique($id,$idUser);
-                    $idCommande = $commande->getNumero($idUser);
-                    
-    
-                    if (empty($exist)) {
-                        $addPanier = $panier->addPanier($quantite,$id,$idUser);
-                     }else {
-                          $addMore = $panier->addOneMoreProduit($quantite,$id,$idUser);
-                     }
+    if (!empty($quantite)) {
+        if (is_int($quantite)) {
+            if ($quantite <= $stock) {
+
+                $exist = $panier->getProduitPanier($id, $idUser);
+                $existHistorique = $historique->getProduitHistorique($id, $idUser);
+                $idCommande = $commande->getNumero($idUser);
 
 
-                     if (empty($existHistorique)) {
-                        $addhistorique = $historique->addHistoriquePanier($quantite,$id,$idCommande);
-                     }else {
-                          $addMoreHistorique = $historique->addOneMoreHistorique($quantite,$id,$idCommande);
-                     }
-                    
-    
-                    header('Location: ../php/panier.php');
-    
-                    $_SESSION['succes'] = '<h1> Ajout du produit !</h1> <p> Votre produit à correctement était ajouté. </p>';
+                if (empty($exist)) {
+                    $addPanier = $panier->addPanier($quantite, $id, $idUser);
                 } else {
-                    header('Location: ../php/page-produit.?produit=' . $id . 'php?err=nostock');
-                    $_SESSION['erreur'] = "<h1> Ajout du produit Impossible !</h1> <p> Le produit n'est plus disponible. </p>";
+                    $addMore = $panier->addOneMoreProduit($quantite, $id, $idUser);
                 }
+
+
+                if (empty($existHistorique)) {
+                    $addhistorique = $historique->addHistoriquePanier($quantite, $id, $idCommande);
+                } else {
+                    $addMoreHistorique = $historique->addOneMoreHistorique($quantite, $id, $idCommande);
+                }
+
+                $_SESSION['idCommande'] = $idCommande;
+
+                header('Location: ../php/panier.php');
+
+                $_SESSION['succes'] = '<h1> Ajout du produit !</h1> <p> Votre produit à correctement était ajouté. </p>';
             } else {
-                header('Location: ../php/page-produit.php?err=nobint');
-                $_SESSION['erreur'] = '<h1> Ajout du produit Impossible !</h1> <p> Utiliser un nombre entier. </p>';
+                header('Location: ../php/page-produit.?produit=' . $id . 'php?err=nostock');
+                $_SESSION['erreur'] = "<h1> Ajout du produit Impossible !</h1> <p> Le produit n'est plus disponible. </p>";
             }
         } else {
-            header('Location: ../php/page-produit.php?err=quantite');
-            $_SESSION['erreur'] = '<h1> Ajout du produit Impossible !</h1> <p> La quantité du produit est invalide. </p>';
+            header('Location: ../php/page-produit.php?err=nobint');
+            $_SESSION['erreur'] = '<h1> Ajout du produit Impossible !</h1> <p> Utiliser un nombre entier. </p>';
         }
-
-    
+    } else {
+        header('Location: ../php/page-produit.php?err=quantite');
+        $_SESSION['erreur'] = '<h1> Ajout du produit Impossible !</h1> <p> La quantité du produit est invalide. </p>';
+    }
 }
