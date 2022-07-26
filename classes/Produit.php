@@ -89,6 +89,7 @@ class Produit extends Bdd
         return $getName;
     }
 
+
     //  Methode pour ajouter les informations du produits dans la bdd
     public function addProduct($image, $nom, $description, $prix, $stock, $categorie)
     {
@@ -97,6 +98,7 @@ class Produit extends Bdd
         $addProduct = $this->bdd->prepare($sql);
         $addProduct->execute([$image, $nom, $description, $prix, $stock, $categorie]);
     }
+
 
   // Methode pour savoir si le produit dans le panier est encore en stock 
 
@@ -110,6 +112,7 @@ class Produit extends Bdd
     return $stock;
 
 }
+
 
     public function deleteProduit($id)
     {
@@ -130,6 +133,7 @@ class Produit extends Bdd
     }
 
 
+
     //  Methode pour trouver les informations de tous les produits
     public function getListingProducts()
     {
@@ -137,5 +141,14 @@ class Produit extends Bdd
         $getAllProducts = $this->bdd->prepare($sql);
         $getAllProducts->execute();
         return $getAllProducts->fetchAll();
+    }
+
+    //  Methode pour modifier le stock des produits dans le panier 
+    public function UpdateStockProducts($quantite,$idProduct)
+    {
+        $sql = "UPDATE `produits` SET `stock`- ? WHERE `id` = ?";
+        $getAllProducts = $this->bdd->prepare($sql);
+        $getAllProducts->execute($quantite,$idProduct);
+     
     }
 }

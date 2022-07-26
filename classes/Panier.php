@@ -26,6 +26,21 @@ class Panier extends Bdd
 
 
     //  Methode pour modifier la quantite  si l'article existe déjà dans le panier
+    
+
+    public function getQuantitesProduitsPanier($idUser)
+    {
+        $sql = "SELECT  `quantite`,`id_produit` FROM `panier` WHERE `id_utilisateur`= ?";
+        $getQuantite = $this->bdd->prepare($sql);
+        $getQuantite->execute([$idUser]);
+        $quantite = $getQuantite->fetchAll();
+
+       return $quantite;
+
+    }
+
+
+    //  Methode pour recuperer la quantite  et l'id produit du panier de l'user
     public function addOneMoreProduit($quantite, $idProduit, $idUser)
     {
         $sql = "UPDATE `panier` SET `quantite` = quantite + ? WHERE `id_produit`= ? AND `id_utilisateur`= ? ";

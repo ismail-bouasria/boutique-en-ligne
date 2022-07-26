@@ -1,8 +1,7 @@
 <?php 
  session_start();
-require '../classes/Bdd.php';
-require '../classes/Commandes.php';
 require '../classes/Produits.php';
+require '../classes/Commandes.php';
 require '../classes/Panier.php';
 
 $commande = new Commandes();
@@ -20,6 +19,13 @@ if (isset($_POST['payer'])) {
 
     if (!empty($number) && !empty($date) && !empty($cvc)) {
         $commande->finishCommande($idUser);
+        $getquantite = $panier->getQuantitesProduitsPanier($idUser);
+        foreach ($getquantite as $value) {
+            $quantite = $value['quantite'];
+            $idProduit = $value['id_produit'];
+            $produits->UpdateStockProducts($quantite,$idProduit);
+        }
+
     } else {
         header('Location: ../php/paiement.php?err=noinfo');
         $_SESSION['erreur'] = '<h1> Paiement Impossible !</h1> <p> Remplir tout les champs. </p>';
