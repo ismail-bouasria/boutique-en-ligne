@@ -36,6 +36,7 @@ public function getNumero($idUser)
     return $numero[0];
     
 }
+// Methode pour changer l'adresse de la commande
   
 public function UpdateAdressCommande($idAdress,$idUser)
 {
@@ -43,6 +44,16 @@ public function UpdateAdressCommande($idAdress,$idUser)
     $getAdress = $this->bdd->prepare($sql);
     $getAdress->execute([$idAdress,$idUser]);
 
+   
+    
+}
+
+// Methode pour changer la date et l'état de la commande 
+public function finishCommande($idUser)
+{
+    $sql = "UPDATE `commandes` SET `date`= Now(), `etat`='off' WHERE `id_utilisateur`= ? ";
+    $getAdress = $this->bdd->prepare($sql);
+    $getAdress->execute([$idUser])
    
     
 }

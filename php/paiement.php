@@ -39,7 +39,7 @@ require '../classes/Panier.php';
          <div>
          <input   type="number" name="cvc">
          </div>
-         <button  id="bouton" type="submit">Valider le paiement</button>
+         <button  id="bouton" type="submit" name="payer">Valider le paiement</button>
         </form>
        </section>
     </main>
