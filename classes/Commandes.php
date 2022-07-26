@@ -52,6 +52,18 @@ class Commandes extends Bdd
         $getAdress = $this->bdd->prepare($sql);
         $getAdress->execute([$idUser]);
     }
+
+    public function getCommande($idUser)
+    {
+        $sql = "SELECT commandes.*, historiques_panier.* FROM `commandes` 
+        JOIN historiques_panier ON historiques_panier.id_commande = commandes.id WHERE commandes.id_utilisateur= ? ";
+        $getCommande = $this->bdd->prepare($sql);
+        $getCommande->execute([$idUser]);
+        $commande = $getCommande->fetchAll();
+
+        return $commande;
+    }
+
 }
 
 ?>
