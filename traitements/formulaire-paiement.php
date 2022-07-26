@@ -1,6 +1,6 @@
 <?php 
  session_start();
-require '../classes/Produits.php';
+require '../classes/Produit.php';
 require '../classes/Commandes.php';
 require '../classes/Panier.php';
 
@@ -17,14 +17,18 @@ if (isset($_POST['payer'])) {
    $cvc = $_POST['cvc'];
    $idUser = intval($_SESSION['id']);
 
-    if (!empty($number) && !empty($date) && !empty($cvc)) {
+    if (!empty($cardNumber) && !empty($date) && !empty($cvc)) {
         $commande->finishCommande($idUser);
         $getquantite = $panier->getQuantitesProduitsPanier($idUser);
         foreach ($getquantite as $value) {
-            $quantite = $value['quantite'];
-            $idProduit = $value['id_produit'];
+            $quantite = intval($value['quantite']);
+            $idProduit = intval($value['id_produit']);
             $produits->UpdateStockProducts($quantite,$idProduit);
         }
+
+        $panier->deletePanier($idUser);
+
+        
 
     } else {
         header('Location: ../php/paiement.php?err=noinfo');

@@ -67,7 +67,7 @@ $adresse = new Adresse();
                 <h1> MODE DE LIVRAISON</h1>
             </section>
             <div>
-                <form class="contenair-livraison" action="" method="post">
+                <form class="contenair-livraison" action="../traitements/formulaire-livraison.php" method="post">
 
                     <button type="submit" name="click" class="livraison">
                         <img src="../assets/img/clickandcollect.png" alt="Clickandcollect">

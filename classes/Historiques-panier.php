@@ -18,7 +18,7 @@ class HistoriquePanier extends Bdd
     //  Methode pour ajouter des produits à l'historique 
     public function addHistoriquePanier($quantite, $idProduit, $idCommande)
     {
-        $sql = "INSERT INTO `historiques_panier`(`quantite`,`id_produit`, `numero_commande`) VALUES (?,?,?)";
+        $sql = "INSERT INTO `historiques_panier`(`quantite`,`id_produit`, `id_commande`) VALUES (?,?,?)";
         $addHistoriquePanier = $this->bdd->prepare($sql);
         $addHistoriquePanier->execute([$quantite, $idProduit, $idCommande]);
     }
@@ -28,7 +28,7 @@ class HistoriquePanier extends Bdd
     //  Methode pour modifier la quantite  si l'article existe déjà dans l'historique
     public function addOneMoreHistorique($quantite, $idProduit, $idCommande)
     {
-        $sql = "UPDATE `historiques_panier` SET `quantite` = quantite + ? WHERE `id_produit`= ? AND `numero_commande`= ? ";
+        $sql = "UPDATE `historiques_panier` SET `quantite` = quantite + ? WHERE `id_produit`= ? AND `id_commande`= ? ";
         $getProduitPanier = $this->bdd->prepare($sql);
         $getProduitPanier->execute([$quantite,$idProduit,$idCommande]);
        
@@ -39,7 +39,7 @@ class HistoriquePanier extends Bdd
      //  Methode pour modifier la quantite des article déjà dans l'historique'
      public function updateHistorique($quantite, $idProduit, $numero)
      {
-         $sql = "UPDATE `historiques_panier` SET `quantite`= ? WHERE `id_produit`= ? AND `numero_commande`= ? ";
+         $sql = "UPDATE `historiques_panier` SET `quantite`= ? WHERE `id_produit`= ? AND `id_commande`= ? ";
          $getProduitPanier = $this->bdd->prepare($sql);
          $getProduitPanier->execute([$quantite,$idProduit,$numero]);
         
@@ -110,7 +110,7 @@ class HistoriquePanier extends Bdd
          FROM `produits`
          JOIN `historiques_panier`
          ON historiques_panier.id_produit = produits.id
-        WHERE produits.id = ? AND `numero_commande`= ? ";
+        WHERE produits.id = ? AND `id_commande`= ? ";
         $getProduitHistorique = $this->bdd->prepare($sql);
         $getProduitHistorique->execute([$idProduit, $idUser]);
         $getHistorique= $getProduitHistorique->fetch();
@@ -126,7 +126,7 @@ class HistoriquePanier extends Bdd
 
     //  Methode pour montrer des produits dans le panier  panier
     public function deleteProduitHistorique($idNumero,$idProduit){
-        $sql = "DELETE FROM `historiques_panier` WHERE `numero_commande`=? AND `id_produit`=?";
+        $sql = "DELETE FROM `historiques_panier` WHERE `id_commande`=? AND `id_produit`=?";
         $addPanier = $this->bdd->prepare($sql);
         $addPanier->execute([$idNumero,$idProduit]);
         $panier = $addPanier->fetchAll();

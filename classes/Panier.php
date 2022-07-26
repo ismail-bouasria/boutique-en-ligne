@@ -176,4 +176,11 @@ class Panier extends Bdd
 
         return $panier;
     }
+
+    public function deletePanier($id)
+    {
+        $sql =  "DELETE FROM `panier` WHERE `id_utilisateur`=?";
+        $deleteProduct = $this->bdd->prepare($sql);
+        $deleteProduct->execute([$id]);
+    }
 }

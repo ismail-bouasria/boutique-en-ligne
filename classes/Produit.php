@@ -146,9 +146,9 @@ class Produit extends Bdd
     //  Methode pour modifier le stock des produits dans le panier 
     public function UpdateStockProducts($quantite,$idProduct)
     {
-        $sql = "UPDATE `produits` SET `stock`- ? WHERE `id` = ?";
+        $sql = "UPDATE `produits` SET `stock`= (`stock`- ?) WHERE `id` = ?";
         $getAllProducts = $this->bdd->prepare($sql);
-        $getAllProducts->execute($quantite,$idProduct);
-     
+        $getAllProducts->execute([$quantite,$idProduct]);
+        return $getAllProducts->fetchAll();
     }
 }
