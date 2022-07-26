@@ -186,6 +186,11 @@ nav li a {
 
 }
 
+.form1 div input{
+
+    width: 10%;
+}
+
 #localisation div:nth-child(1) {
     display: flex;
     margin: 0 0 5% 8%;
