@@ -91,7 +91,7 @@ $idCommande = intval($_SESSION['idCommande']);
         <h5 id="texth"> Prix total : <?php  echo $historique->sumPrix($idCommande); ?> €</h5>
         <h5 id="texth2"> Total produit : <?php  echo $historique->totalPrix($idCommande); ?> </h5>
 
-        <p>* Vous pouvez retrouvez un récapitutalif de vos commande dans votre zone membre.*</p>
+        <p id="texth3">* Vous pouvez retrouvez un récapitutalif de vos commandes dans votre zone membre.*</p>
 
         </section>
     </div>

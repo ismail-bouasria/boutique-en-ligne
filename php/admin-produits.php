@@ -82,7 +82,7 @@ if (isset($_GET['supprimer'])) {
 
         <div class="contenairCategorie">
             <section>
-                <h1>Liste des produits categories </h1>
+                <h1>Liste des produits </h1>
             </section>
 
             <?php
