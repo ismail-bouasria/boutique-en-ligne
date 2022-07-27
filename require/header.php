@@ -70,10 +70,13 @@
                 </div>
       </li>
     </ul>
-    <form id="formsearch" method="POST" class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-3" id="search" type="search" placeholder="Votre produit" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <span id="chercher">Chercher</span></button>
-    </form>
+    <div id="searchContainer">
+      <form id="formsearch" method="POST" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-3" id="search" type="search" placeholder="Votre produit" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"> <span id="chercher">Chercher</span></button>
+      </form>
+
+    </div>
   </div>
 </nav>
     

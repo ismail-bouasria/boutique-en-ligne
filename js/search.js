@@ -3,14 +3,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     const searchBar = document.getElementById('search');
     const form = document.getElementById('formsearch');
+    
+    searchBar.addEventListener('input', () =>{
 
-    searchBar.addEventListener('keyup', () =>{
-
-        fetch('../classes/Search.php')
+        fetch('../classes/Search.php?search='+searchBar.value+'')
         .then((response) => response.json())
         .then((response) => {
+            // console.log(response)s
 
-            //first check if the search bar is empty or not
+            //Première condition si la barre de recherche est vide ou pas 
             if (searchBar.value != '')
             {
                 let removeableDiv = document.getElementById('divContent');
@@ -20,76 +21,37 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     removeableDiv.remove();
                 }
                 
-                //create the div element in which we are going to add our links
-                let searchDiv = document.createElement('DIV');
-
-                //give it an id
+                //creation de l'élément div pour ajouter mes lien produit
+                let searchDiv = document.createElement('div'),
+                searchContainer = document.querySelector('#searchContainer');
+                //leur donne un id 
                 searchDiv.id = "divContent";
 
-                //create a set to add all the infos in
-                let searchSet = new Set();
-
-                //add the div after the form
-                form.after(searchDiv);
-
-                //fill the set with elements that correspond to the value of the bar
-                for(let i = 0; i<Object.keys(response).length ;i++)
-                {
-                    let data = (response[i]);
-
-                    Object.keys(data).forEach(function(key) {
-
-                        let tempValue = JSON.stringify(data[key]).toLowerCase();
-
-                        if( tempValue.includes(searchBar.value.toLowerCase()))
-                        {        
-                            searchSet.add(data[key]);
-                        }
-                    })
+                function textHTML(str){
+                    var text = document.createElement('textarea');
+                    text.innerHTML = str;
+                    return text.value;
                 }
 
-                //check if the set is filled or not
-                if( searchSet.size > 0)
-                {   
-                    let BreakException = "10!";
-                    let count = 0;
 
-                    //je fais un try catch pour limiter la génération à 10
-                    //il n'y a pas de break en Js
-                    try 
-                    {
-                        //for each sur le set de pokemon
-                        searchSet.forEach( element => {
-                            count++;
+                response.forEach(element => {
+                    var span = document.createElement('span'),
+                         a = document.createElement('a'),
+                         img = document.createElement('img');
 
-                            let form = document.createElement('FORM');
-                            form.setAttribute('method', 'POST');
+                    a.href="./page-produit.php?produit="+element.id;
+                    img.src= element.image;
+                     span.classList.add('spanSearch');
+                    a.innerHTML = element.nom
+                    span.append(img);
+                    span.append(a)
+                    searchDiv.append(span)
+                    
+                        
+                    
+                    });
+                    searchContainer.append(searchDiv);
 
-                            let inputSearchTxt = document.createElement('INPUT');
-                            inputSearchTxt.setAttribute('name','searchText');
-                            inputSearchTxt.setAttribute('type', 'hidden');
-                            inputSearchTxt.setAttribute('value', element);
-                            form.appendChild(inputSearchTxt);
-                            
-                            let submitSearch = document.createElement('INPUT');
-                            submitSearch.setAttribute('name', 'search');
-                            submitSearch.setAttribute('type', 'submit');
-                            submitSearch.setAttribute('value', element);
-                            submitSearch.setAttribute('class', 'btn btn-link text-decoration-none text-dark');
-                            form.appendChild(submitSearch);
-
-                            searchDiv.appendChild(form);
-
-                            if (count == 10) throw BreakException;
-
-                        })
-                    } 
-                    catch (e) 
-                    {
-                        if (e !== BreakException) throw e;
-                    }   
-                                 
-                }
             }
             else //if bar is empty
             {

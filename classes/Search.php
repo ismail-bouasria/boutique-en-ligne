@@ -6,7 +6,6 @@ require '../classes/Bdd.php';
 class Search extends Bdd
 
 {
-    private $id;
 
 
     public function __Construct()
@@ -21,12 +20,10 @@ class Search extends Bdd
     public function SearchProduct($search)
     {
 
-        $sql = "SELECT produits.nom AS nomProduit, produits.image FROM produits JOIN sous_categorie ON sous_categorie.id = produits.id_sous_categorie
-        WHERE  produits.nom LIKE ? 
-        OR 
-          sous_categorie.nom LIKE ? ";
+        $sql = "SELECT produits.* , produits.nom AS nomProduit, produits.image FROM produits JOIN sous_categorie ON sous_categorie.id = produits.id_sous_categorie
+        WHERE  produits.nom LIKE ?  ";
         $searchCommande = $this->bdd->prepare($sql);
-        $searchCommande->execute(['%'.$search.'%','%'.$search.'%']);
+        $searchCommande->execute(['%'.$search.'%']);
         $search = $searchCommande->fetchAll(PDO::FETCH_ASSOC);
     
         $searchJSON= json_encode($search);
@@ -39,6 +36,8 @@ class Search extends Bdd
    
 }
 
-$search = new Search();
-
-$search->SearchProduct('burger');
+if(isset($_GET['search'])){
+    $searchKey = htmlentities($_GET['search']);
+    $search = new Search;
+    $search->SearchProduct($searchKey);
+}

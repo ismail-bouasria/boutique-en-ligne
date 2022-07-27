@@ -414,7 +414,35 @@ footer {
 .tablecommande th {
     width: 1%;
 }
+#searchContainer{
+    position: relative;
+}
+#divContent{
+    position: absolute;
 
+    background: #d9f8d9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.spanSearch{
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 2%;
+
+}
+
+.spanSearch img {
+    width: 40%;
+    border-radius: 5px;
+}
+
+.spanSearch a {
+    text-decoration: none;
+    color: black;
+}
 /*----------------------------------------------------------------------MEDIA QUERIES---------------------------------------------------------------------*/
 
 @media only screen and (min-width:320px) and (max-width:991px) {
