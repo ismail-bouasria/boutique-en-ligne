@@ -18,6 +18,7 @@ require '../classes/Panier.php';
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/search.js"></script>
 </head>
 
 <body>
@@ -60,7 +61,7 @@ require '../classes/Panier.php';
 
         <section id="formulaire">
             <article id='inscription'>
-                <h2>Nouveaux chez nous ? <br><span>Inscrivez-vous</span></h2>
+                <h2>Nouveaux chez nous ? <br><span>Inscrivez-vous !</span></h2>
                 <form action="../traitements/formulaire-inscription.php" method="post">
                     <input type="text" name="login" placeholder="Votre login">
                     <input type="mail" name="email" placeholder="Votre adresse email">

@@ -61,7 +61,7 @@ if (isset($_POST['modifier'])){
 
 // <!-- AJOUTER UNE ADRESSE -->
 
-if (isset($_POST['ajouterAdresse'])){
+if (isset($_POST['modeadresse'])){
     $nom = htmlspecialchars($_POST['nom']);
     $prenom = htmlspecialchars($_POST['prenom']);
     $adresse = htmlspecialchars($_POST['adresse']);

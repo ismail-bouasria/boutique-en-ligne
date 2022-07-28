@@ -419,11 +419,14 @@ footer {
 }
 #divContent{
     position: absolute;
-
-    background: #d9f8d9;
+    border-radius: 5px ;
+    background: white;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 40vh;
+    overflow-y: scroll;
+    text-decoration: none;
 }
 .spanSearch{
 
@@ -443,6 +446,8 @@ footer {
     text-decoration: none;
     color: black;
 }
+
+
 /*----------------------------------------------------------------------MEDIA QUERIES---------------------------------------------------------------------*/
 
 @media only screen and (min-width:320px) and (max-width:991px) {

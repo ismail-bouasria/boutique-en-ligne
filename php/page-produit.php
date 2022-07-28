@@ -32,6 +32,7 @@ $_SESSION['idproduit'] = $infosProduit['id'];
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="../js/bootstrap.js"></script>
     <script src="../js/produit.js"></script>
+    <script src="../js/search.js"></script>
     <title><?php echo $infosProduit['nom']; ?></title>
      
 
@@ -73,8 +74,10 @@ $_SESSION['idproduit'] = $infosProduit['id'];
                         <form action="../traitements/formulaire-ajouter-panier.php" method="post">
 
                             <label> Quantité</label>
-                            <div>
+                            <div id="select">
+                            <button id="moins">-</button>
                                 <input type="number" id="quantite" name="quantite" min="1" value="1" max="<?php echo $_SESSION['stockproduit']; ?>" class="form-control" colisage="1">
+                                <button id="plus">+</button>
                             </div>
                             <div>
                                 <button class="button-5" type="submit" name="panier"> Ajouter au panier </button>

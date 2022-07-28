@@ -25,6 +25,7 @@ if (!isset($_SESSION['id'])) {
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/53bdaa6800.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
+    <script src="../js/search.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <title>Commandes</title>
@@ -44,71 +45,119 @@ if (!isset($_SESSION['id'])) {
             </section>
 
             <?php
-            if (isset($_SESSION['droit']) == 'administrateur') {
+            if ($_SESSION['droit'] == 'administrateur') {
                 $listeCommandes = $commandes->selectAllCommandes();
-            } else {
-                $listeCommandes = $commandes->selectAllById(intval($_SESSION['id']));
-            }
-
-            if (empty($listeUser)) : ?>
-                <div>
+                if (empty($listeCommandes)) : ?>
                     <div>
-                        <ul>
-                            <li>
-                                <i></i> Aucune commandes d'enregister
-                            </li>
-                        </ul>
+                        <div>
+                            <ul>
+                                <li>
+                                    <i></i> Aucune commandes d'enregister
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            <?php else : ?>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>
-                                <h3>Login</h3>
-                            </th>
-                            <th>
-                                <h3>Numero</h3>
-                            </th>
-                            <th>
-                                <h3>Panier</h3>
-                            </th>
-
-                            <th>
-                                <h3>Action</h3>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-
-                        foreach ($listeCommandes as $commandes) : ?>
+                <?php else : ?>
+                    <table>
+                        <thead>
                             <tr>
-
-                                <td> <?= $commandes["login"] ?></td>
-                                <td><?= $commandes["numero"] ?></td>
-                                <td>
-                                    <p> Nom : <?= $commandes["nom"] ?> Prix : <?= $commandes["prix"] ?> Quantité : <?= $commandes["quantité"] ?> </p>
-                                    <p> Total : <?php $total = [$commandes["prix"] * $commandes["quantité"]];
-                                                      echo array_sum($total);  ?> </p>
-                                </td>
-
-
-                                </td>
-                                <td>
-                                    <div class="flex">
-
-                                        <button id="size"> <a href="utilisateurs.php?supprimer=<?= $user['id'] ?>">
-                                                <i class="fas fa-trash-alt text-danger"></i>
-                                            </a> </button>
-                                    </div>
-                                </td>
+                                <th>
+                                    <h3>Login</h3>
+                                </th>
+                                <th>
+                                    <h3>Numero</h3>
+                                </th>
+                                <th>
+                                    <h3>Panier</h3>
+                                </th>
+    
+                                <th>
+                                    <h3>Action</h3>
+                                </th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            <?php endif; ?>
-        </div>
+                        </thead>
+                        <tbody>
+                            <?php
+    
+                            foreach ($listeCommandes as $commandes) : ?>
+                                <tr>
+    
+                                    <td> <?= $commandes["login"] ?></td>
+                                    <td><?= $commandes["numero"] ?></td>
+                                    <td>
+                                        <p> Nom : <?= $commandes["nom"] ?> Prix : <?= $commandes["prix"] ?> Quantité : <?= $commandes["quantite"] ?> </p>
+                                        <p> Total : <?php $total = [$commandes["prix"] * $commandes["quantite"]];
+                                                          echo array_sum($total);  ?> </p>
+                                    </td>
+    
+    
+                                    </td>
+                                    <td>
+                                       
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div> <?php
+            } else {
+                $listeCommandes = $commandes->selectAllCommandesByUser(intval($_SESSION['id']));
+                if (empty($listeCommandes)) : ?>
+                    <div>
+                        <div>
+                            <ul>
+                                <li>
+                                    <i></i> Aucune commandes d'enregister
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                <?php else : ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h3>Numero</h3>
+                                </th>
+                                <th>
+                                    <h3>Date</h3>
+                                </th>
+                                <th>
+                                    <h3>Panier</h3>
+                                </th>
+    
+                                <th>
+                                    <h3>Total</h3>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                                <tr>
+    
+                                    <td> <?= $listeCommandes[0]['numero'] ?> </td>
+                                    <td><?= $listeCommandes[0]["date"] ?></td>
+                                    <td>
+    
+                                        <p> Total : <?php $total = [$listeCommandes[0]["prix"] * $listeCommandes[0]["quantite"]];
+                                                          echo array_sum($total);   ?> € </p>
+                                    </td>
+    
+    
+                                    </td>
+                                    <td>
+                                       
+                                    </td>
+                                </tr>
+                            <?php ?>
+                        </tbody>
+                    </table>
+                <?php endif; } ?>
+            </div>
+            
+
+           
 
 
 

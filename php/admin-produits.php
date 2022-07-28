@@ -31,6 +31,7 @@ if (isset($_GET['supprimer'])) {
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/search.js"></script>
     <title>Administration Produits</title>
 
 </head>

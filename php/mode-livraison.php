@@ -24,6 +24,7 @@ $adresse = new Adresse();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="https://kit.fontawesome.com/53bdaa6800.js" crossorigin="anonymous"></script>
+    <script src="../js/search.js"></script>
 </head>
 
 <body class="w-full h-full">
@@ -53,13 +54,13 @@ $adresse = new Adresse();
             <div class="contenairFormulair">
                 <h2> Ajouter une <span> adresse ?</span></h2>
                 <form class="form1" action="../traitements/formulaire-adresse.php" method="post">
-                    <input type="text" name="nom" value="" placeholder="Nom">
-                    <input type="text" name="prenom" value="" placeholder="Prenom">
+                    <input type="text" name="nom" value="" placeholder="nom">
+                    <input type="text" name="prenom" value="" placeholder="prenom">
                     <input type="text" name="adresse" value="" placeholder="Adresse">
-                    <input type="text" name="code" value="" placeholder="Code Postal">
-                    <input type="text" name="ville" value="" placeholder="Ville">
-                    <input type="text" name="telephone" value="" placeholder="Téléphone">
-                    <button class="adrebuton" type="submit" name="ajouterAdresse">Ajouter</button>
+                    <input type="text" name="code" value="" placeholder="code">
+                    <input type="text" name="ville" value="" placeholder="ville">
+                    <input type="text" name="telephone" value="" placeholder="telephone">
+                    <button class="adrebuton" type="submit" name="Mode-adresse">Ajouter</button>
                 </form>
             </div>
         <?php } else { ?>

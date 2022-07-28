@@ -26,6 +26,17 @@ class Commandes extends Bdd
 
 
     //  Methode pour selectionner le numero de commande si la commande existe déjà et en cours (ON) : 
+    public function getNumeroCommande($idUser)
+    {
+        $sql = "SELECT `numero` FROM `commandes` WHERE `id_utilisateur`= ?  AND `etat`='off'";
+        $getNumero = $this->bdd->prepare($sql);
+        $getNumero->execute([$idUser]);
+        $numero = $getNumero->fetch();
+
+        return $numero[0];
+    }
+
+    //  Methode pour selectionner le numero de commande si la commande existe déjà et en cours (ON) : 
     public function getNumero($idUser)
     {
         $sql = "SELECT `id` FROM `commandes` WHERE `id_utilisateur`= ?  AND `etat`='on'";
@@ -45,6 +56,8 @@ class Commandes extends Bdd
         $getAdress->execute([$idAdress, $idUser]);
     }
 
+
+
     // Methode pour changer la date et l'état de la commande 
     public function finishCommande($idUser)
     {
@@ -52,6 +65,8 @@ class Commandes extends Bdd
         $getAdress = $this->bdd->prepare($sql);
         $getAdress->execute([$idUser]);
     }
+
+
 
     public function getCommande($idUser,$idCommande)
     {
@@ -66,7 +81,38 @@ class Commandes extends Bdd
 
         return $commande;
     }
+   
+    //Methode pour selectionner toute les commandes 
 
+    public function SelectAllCommandes()
+    {
+        $sql = "SELECT  utilisateurs.login,commandes.id,commandes.numero,commandes.id_adresse,commandes.date, historiques_panier.quantite,produits.nom,produits.prix 
+        FROM commandes 
+        JOIN historiques_panier ON commandes.id = historiques_panier.id_commande 
+        JOIN produits ON produits.id = historiques_panier.id_produit 
+        JOIN utilisateurs ON utilisateurs.id = commandes.id_utilisateur";
+        $getAllCommande = $this->bdd->prepare($sql);
+        $getAllCommande->execute();
+        $allCommande = $getAllCommande->fetchAll();
+
+        return $allCommande;
+    }
+
+
+    //Methode pour selectionner toute les commandes 
+
+    public function SelectAllCommandesByUSer($idUser)
+    {
+        $sql = "SELECT  utilisateurs.login,commandes.id,commandes.numero,commandes.id_adresse,commandes.date, historiques_panier.quantite,produits.nom,produits.prix 
+        FROM commandes 
+        JOIN historiques_panier ON commandes.id = historiques_panier.id_commande 
+        JOIN produits ON produits.id = historiques_panier.id_produit 
+        JOIN utilisateurs ON utilisateurs.id = commandes.id_utilisateur WHERE commandes.id_utilisateur = ?";
+        $getAllCommande = $this->bdd->prepare($sql);
+        $getAllCommande->execute([$idUser]);
+        $allCommande = $getAllCommande->fetchAll();
+
+        return $allCommande;
+    }
 }
-
 ?>

@@ -23,6 +23,7 @@ $user = new User('','','');
   <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
+    <script src="../js/search.js"></script>
 </head>
 
 <body>
@@ -58,12 +59,12 @@ $user = new User('','','');
 
           <h2> Ajouter une <span> adresse ?</span></h2>
           <form action="../traitements/formulaire-adresse.php" method="post">
-            <input type="text" name="nom" value="" placeholder="Nom">
-            <input type="text" name="prenom" value="" placeholder="Prenom">
-            <input type="text" name="adresse" value="" placeholder="Adresse">
-            <input type="text" name="code" value="" placeholder="Code Postal">
-            <input type="text" name="ville" value="" placeholder="Ville">
-            <input type="text" name="telephone" value="" placeholder="Téléphone">
+            <input type="text" name="nom" value="" placeholder="nom">
+            <input type="text" name="prenom" value="" placeholder="prenom">
+            <input type="text" name="adresse" value="" placeholder="adresse">
+            <input type="text" name="code" value="" placeholder="code">
+            <input type="text" name="ville" value="" placeholder="ville">
+            <input type="text" name="telephone" value="" placeholder="telephone">
             <button type="submit" name="ajouter">Ajouter</button>
           </form>
          <?php } else { ?>

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
 
-
+      
     const searchBar = document.getElementById('search');
     const form = document.getElementById('formsearch');
     
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         fetch('../classes/Search.php?search='+searchBar.value+'')
         .then((response) => response.json())
         .then((response) => {
-            // console.log(response)s
+            // console.log(response)
 
             //Première condition si la barre de recherche est vide ou pas 
             if (searchBar.value != '')
@@ -53,11 +53,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     searchContainer.append(searchDiv);
 
             }
-            else //if bar is empty
+            else // si la bar est vide 
             {
                 let removeableDiv = document.getElementById('divContent');
 
-                //check if search bar is empty but there was a div created beforehand
+                //vérifier si la barre de recherche est vide mais qu'il y a eu une div créé au préalable
                 if(removeableDiv != null)
                 {
                     removeableDiv.remove();
