@@ -40,15 +40,15 @@ $user = new User('','','');
         <?php echo $_SESSION['reussi']; ?>
       </section>
     <?php } ?>
-    <section>
+    <section id="profil">
       <article id='edition'>
         <?php   $profil = $user->getInfosUserId($_SESSION['id'])?>
         <h2>Modifier vos <span>informations</span></h2>
         <form action="../traitements/formulaire-profil.php" method="post">
           <input type="text" name="login" value="<?php echo $profil['login']; ?>" >
           <input type="mail" name="email" value="<?php echo $profil['email']; ?>" >
-          <input type="password" name="password" value="" placeholder="Entrer un nouveau mot de passe ou le même pour modifier le profil">
-          <input type="password" name="password2" value="" placeholder="Confirmer un nouveau mot de passe ou le même pour modifier le profil">
+          <input type="password" name="password" value="" placeholder="Entrer mot de passe pour modifier le profil">
+          <input type="password" name="password2" value="" placeholder="Confirmer le mot de passe ou le même pour modifier le profil">
           <a href="#"><button type="submit" name="modifierprofil">Modifier</button></a>
         </form>
       </article>

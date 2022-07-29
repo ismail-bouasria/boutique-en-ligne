@@ -45,7 +45,7 @@ class Adresse extends Bdd
         $query = $this->bdd->prepare($sql);
         $query->execute([$id]);
         $select = $query->fetchAll();
-        return $select;
+        return $select[0];
     }
 
     public function selectIdAdressByUser($id){
@@ -53,7 +53,7 @@ class Adresse extends Bdd
         $sql= "SELECT `id` FROM `adresses` WHERE `id_utilisateur`=?";
         $query = $this->bdd->prepare($sql);
         $query->execute([$id]);
-        $select = $query->fetchAll();
+        $select = $query->fetch();
         return $select;
     }
 }

@@ -75,7 +75,7 @@ $sousCategorie = new SousCategorie('');
             </form>
 
             <section>
-                <h1>modifier une sous categorie</h1>
+                <h1>Ajouter une sous categorie</h1>
             </section>
 
             <form class="form1" action="../traitements/formulaire-sous-categorie.php" method="post">
@@ -88,7 +88,7 @@ $sousCategorie = new SousCategorie('');
                 <label>Nom</label>
                 <input type="text" name="name">
 
-                <input id="bouton" type="submit" name="modsouscat" value='Modifier'>
+                <input id="bouton" type="submit" name="subsouscat" value='Modifier'>
             </form>
 
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../classes/Bdd.php';
+require '../classes/Produit.php';
 require '../classes/Categorie.php';
 require '../classes/Panier.php';
 ?>
@@ -13,7 +13,7 @@ require '../classes/Panier.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="../assets/css/boutique.css">
-    
+    <link rel="stylesheet" href="../assets/css/categorie-produit.css">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/cssboot/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -76,19 +76,65 @@ require '../classes/Panier.php';
         </div>
 
         <div class="contenairProduit">
-            <section>
-                <h1>
-                    Nos produits phares !
-                </h1>
-            </section>
+            <div id="categorie">
+                <section>
+                    <h1>
+                        Nos produits phares !
+                    </h1>
+                </section>
+                <div class="flexy">
+                    <?php
+                    $produit = new Produit();
+                    $getProduit = $produit->famousProduct();
+
+                    foreach ($getProduit as $valueP) { ?>
+                        <div id="cat-produits">
+
+                            <div class="img-container">
+                                <img src="<?php echo $valueP['image']; ?>" alt="<?php echo $valueP['nom']; ?>" />
+                                <div class="img-content">
+                                    <h1> <?php echo $valueP['nom']; ?></h1>
+                                    <p> <?php echo $valueP['description']; ?></p>
+                                    <h1> Prix : <span> <?php echo $valueP['prix']; ?>€</span> </h1>
+                                    <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class="btn btn-primary"> Commander !</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    <?php  } ?>
+                </div>
+            </div>
         </div>
 
         <div class="contenairProduit">
-            <section>
-                <h1>
-                    Nos dernières recettes !
-                </h1>
-            </section>
+            <div id="categorie">
+                <section>
+                    <h1>
+                        Nos dernières recettes !
+                    </h1>
+                </section>
+                <div class="flexy">
+                    <?php
+                    $produit = new Produit();
+                    $getProduit = $produit->lastProduct();
+
+                    foreach ($getProduit as $valueP) { ?>
+                        <div id="cat-produits">
+
+                            <div class="img-container">
+                                <img src="<?php echo $valueP['image']; ?>" alt="<?php echo $valueP['nom']; ?>" />
+                                <div class="img-content">
+                                    <h1> <?php echo $valueP['nom']; ?></h1>
+                                    <p> <?php echo $valueP['description']; ?></p>
+                                    <h1> Prix : <span> <?php echo $valueP['prix']; ?>€</span> </h1>
+                                    <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class="btn btn-primary"> Commander !</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    <?php  } ?>
+                </div>
+            </div>
         </div>
     </main>
     <?php

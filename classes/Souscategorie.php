@@ -58,12 +58,12 @@ class SousCategorie extends Bdd
    }
 
      //  Methode pour updatele la sous-catégorie'
-     public function updateSousCategorie($nom,$id)
+     public function updateSousCategorie($nom,$idcat,$id)
 
      {   
-         $sql="UPDATE `sous-categories` SET `nom`= ?  WHERE `id`= ? ";
+         $sql="UPDATE `sous_categorie` SET `nom`= ? ,`id_categorie`= ? WHERE `id`= ? ";
          $updateSousCategorie = $this->bdd->prepare($sql);
-         $updateSousCategorie->execute([$nom,$id]);
+         $updateSousCategorie->execute([$nom,$idcat,$id]);
           
      }
 

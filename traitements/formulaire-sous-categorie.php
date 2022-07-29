@@ -42,7 +42,7 @@ if (isset($_POST['modsouscat'])) {
         $nomSousCategorie= $sousCategorie->getNameSousCategorie($nom);
         if (empty($nomSousCategorie) || $nom == $nomSousCategorie) {
 
-            $sousCategorie->UpdateSousCategorie($nom,$id);
+            $sousCategorie->UpdateSousCategorie($nom,$id,$idSousCategorie);
 
             header('location:../php/admin-modification.php?modifier-sous-categorie='.$idSousCategorie.'&succed=addcategory');
             $_SESSION['reussi'] = '<h1> Modification de la sous-catégorie réussi !</h1> <p> Nouvelle catégorie a été ajoutée. </p>';

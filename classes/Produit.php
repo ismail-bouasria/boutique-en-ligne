@@ -143,6 +143,28 @@ class Produit extends Bdd
         return $getAllProducts->fetchAll();
     }
 
+    //  Methode pour trouver les informations des 3 derniers produits
+    public function lastProduct()
+    {
+        $sql = "SELECT * FROM `produits` ORDER BY `id` DESC LIMIT 3";
+        $getLastProducts = $this->bdd->prepare($sql);
+        $getLastProducts->execute();
+        return $getLastProducts->fetchAll();
+    }
+
+    //  Methode pour trouver les informations des 3  produits les plus acheter
+    public function famousProduct()
+    {
+        $sql = "SELECT produits.*, commandes.*,historiques_panier.* FROM `produits` 
+        JOIN historiques_panier ON produits.id = historiques_panier.id_produit 
+        JOIN commandes ON commandes.id =historiques_panier.id_commande 
+        WHERE commandes.etat='off' ORDER BY historiques_panier.quantite DESC LIMIT 3";
+        $getLastProducts = $this->bdd->prepare($sql);
+        $getLastProducts->execute();
+        return $getLastProducts->fetchAll();
+    }
+
+
     //  Methode pour modifier le stock des produits dans le panier 
     public function UpdateStockProducts($quantite,$idProduct)
     {

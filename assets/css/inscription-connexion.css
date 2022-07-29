@@ -18,7 +18,7 @@ main {
 
 input {
   overflow: visible;
-  margin: 1% !important;
+  margin: 2% !important;
 }
 
 
@@ -142,8 +142,9 @@ small a:hover {
 
 #mdp {
   color: #848484;
-  font-size: x-small;
+  font-size: small;
   text-align: center;
+  margin: 2%;
 }
 
 /*----------------------------------------------------------------------MEDIA QUERIES---------------------------------------------------------------------*/
