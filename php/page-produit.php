@@ -34,7 +34,7 @@ $_SESSION['idproduit'] = $infosProduit['id'];
     <script src="../js/produit.js"></script>
     <script src="../js/search.js"></script>
     <title><?php echo $infosProduit['nom']; ?></title>
-     
+
 
 </head>
 
@@ -75,7 +75,7 @@ $_SESSION['idproduit'] = $infosProduit['id'];
 
                             <label> Quantité</label>
                             <div id="select">
-                            <button id="moins">-</button>
+                                <button id="moins">-</button>
                                 <input type="number" id="quantite" name="quantite" min="1" value="1" max="<?php echo $_SESSION['stockproduit']; ?>" class="form-control" colisage="1">
                                 <button id="plus">+</button>
                             </div>
@@ -100,12 +100,12 @@ $_SESSION['idproduit'] = $infosProduit['id'];
                     <h2><b>Une autre envie ? Craquez pour notre selection !</b></h2>
                 </section>
                 <div id="flexcat">
-                <?php
-                        $getProduit = $produit->getAllProducts();
+                    <?php
+                    $getProduit = $produit->getAllProducts();
 
-                        foreach ($getProduit as $valueP) { ?>
-                    <div id="cat-produits">
-                        
+                    foreach ($getProduit as $valueP) { ?>
+                        <div id="cat-produits">
+
                             <div class="img-container">
                                 <img src="<?php echo $valueP['image']; ?>" alt="<?php echo $valueP['nom']; ?>" />
                                 <div class="img-content">
@@ -115,8 +115,8 @@ $_SESSION['idproduit'] = $infosProduit['id'];
                                     <a href="page-produit.php?produit=<?php echo $valueP['id']; ?>" class="btn btn-primary"> Commander !</a>
                                 </div>
                             </div>
-                        
-                    </div>
+
+                        </div>
                     <?php  } ?>
                 </div>
             </div>

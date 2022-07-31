@@ -117,7 +117,7 @@ if (isset($_GET['modifier'])) {
                                         if ($stock == '0') { ?>
                                             <p class="red"> Attention cet article n'est plus en stock !</p>
                                         <?php $_SESSION['rupture'] = true;
-                                        }else {
+                                        } else {
                                             $_SESSION['rupture'] = false;
                                         }
                                         ?>

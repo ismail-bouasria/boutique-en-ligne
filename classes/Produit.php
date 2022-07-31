@@ -32,7 +32,7 @@ class Produit extends Bdd
         return $getId;
     }
 
-    //  Methode pour updatele la catégorie'
+    //  Methode pour updatele le produit'
     public function updateProduit($image, $nom, $description, $prix, $stock, $idSousCat, $id)
 
     {

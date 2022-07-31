@@ -54,6 +54,6 @@ class Adresse extends Bdd
         $query = $this->bdd->prepare($sql);
         $query->execute([$id]);
         $select = $query->fetch();
-        return $select;
+        return $select[0];
     }
 }

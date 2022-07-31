@@ -12,23 +12,18 @@ document.addEventListener('DOMContentLoaded', function loaded() {
         var max = parseInt(document.getElementById('quantite').getAttribute('max'));
 
         plus.onclick = function (e) {
-            if ( input.value < max){
-                    e.preventDefault();
-                    input.value++;
-            }else{
+            if (input.value < max) {
+                e.preventDefault();
+                input.value++;
+            } else {
                 e.preventDefault();
 
             }
         }
-            moins.onclick = function (e) {
-                e.preventDefault();
-                if (input.value > 1) input.value--;
-            }
-       
-
+        moins.onclick = function (e) {
+            e.preventDefault();
+            if (input.value > 1) input.value--;
+        }
     };
-
-   
-
 
 })

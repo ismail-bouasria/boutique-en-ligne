@@ -9,7 +9,6 @@ $contentPanier = $panier->showProduitPanier($idUser);
 
 if (isset($_POST['commander'])) {
 
-    $stock = $panier->countstock($idUser, $value['id']);
     if (!empty($contentPanier)) {
         if ($_SESSION['rupture']== True ) {
             header("Location:../php/panier.php?err=emptyproduit.php");

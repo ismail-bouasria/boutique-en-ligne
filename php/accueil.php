@@ -11,6 +11,10 @@ require '../classes/Panier.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="No Wasting For Eat - Consommer de façn écologique">
+    <meta name="tags" content="no wasting for eat, nwfe, sandwichs, bread, crousti, poulet, desserts, restaurant, burger ,sandwich, boissons, manger, boire,
+    marseille, livraison, commander, creation site internet marseille">
+    <meta name="author" content="bouasria-ismaïl">
     <title>Accueil</title>
     <link rel="stylesheet" href="../assets/css/boutique.css">
     <link rel="stylesheet" href="../assets/css/categorie-produit.css">
@@ -28,12 +32,11 @@ require '../classes/Panier.php';
     ?>
     <main>
         <section id="enCeMoment">
-            <img class="responsimg" src="../assets/img/Breads-poulet-pane.jpg" width=100% alt="">
+            <img class="responsimg" src="../assets/img/Breads-poulet-pane.jpg" width=100% alt="Crousti poulet">
             <h1 id="text">EN CE MOMENT</h1>
             <h1 id="text2">LE BREAD</h1>
             <h1 id="text3"> CROUSTI POULET</h1>
-            <a href="http://localhost:8888/boutique-en-ligne/php/page-produit.php?produit=6"><button>JE COMMANDE !</button></a>
-
+            <a href="../php/page-produit.php?produit=6"><button>JE COMMANDE !</button></a>
         </section>
 
         <section id="bienvenue">
