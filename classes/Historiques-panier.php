@@ -94,7 +94,7 @@ class HistoriquePanier extends Bdd
 
  public function sumProduit ($id) {
 
-    $sql = "SELECT SUM(quantite) AS `produit` FROM `panier` WHERE `id_utilisateur`= ?";
+    $sql = "SELECT SUM(quantite) AS `produit` FROM `historiques_panier` WHERE `id_commande`= ?";
     $sumProduit = $this->bdd->prepare($sql);
     $sumProduit->execute([$id]);
     $sum = $sumProduit->fetch();

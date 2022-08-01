@@ -11,9 +11,9 @@ require '../classes/Panier.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="No Wasting For Eat - Consommer de façn écologique">
+    <meta name="description" content="No Wasting For Eat - Consommer de façon écologique">
     <meta name="tags" content="no wasting for eat, nwfe, sandwichs, bread, crousti, poulet, desserts, restaurant, burger ,sandwich, boissons, manger, boire,
-    marseille, livraison, commander, creation site internet marseille">
+    marseille, livraison, commander, site internet de restauration">
     <meta name="author" content="bouasria-ismaïl">
     <title>Accueil</title>
     <link rel="stylesheet" href="../assets/css/boutique.css">

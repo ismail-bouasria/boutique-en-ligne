@@ -86,11 +86,7 @@ if (isset($_GET['modifier'])) {
 
                 if (!empty($contenuPanier)) {
 
-
-                    foreach ($contenuPanier as $value) {
-
-
-                ?>
+                    foreach ($contenuPanier as $value) { ?>
 
                         <div id="add-produit">
                             <section class="prix">
